@@ -1,0 +1,2038 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<pnml>
+<net id="Net-One" type="P/T net">
+<place id="P0">
+<graphics>
+<position x="465.0" y="360.0"/>
+</graphics>
+<name>
+<value>ConPurse</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+</Datatype-group>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken>
+<token>
+<data>
+<value>arda</value>
+</data>
+<data>
+<value>100</value>
+</data>
+<data>
+<value>true</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>mike</value>
+</data>
+<data>
+<value>arda</value>
+</data>
+<data>
+<value>50</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>idle</value>
+</data>
+<data>
+<value>none</value>
+</data>
+<data>
+<value>none</value>
+</data>
+<data>
+<value>0</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>1</value>
+</data>
+</token>
+<token>
+<data>
+<value>bob</value>
+</data>
+<data>
+<value>200</value>
+</data>
+<data>
+<value>true</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>bob</value>
+</data>
+<data>
+<value>arda</value>
+</data>
+<data>
+<value>50</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>idle</value>
+</data>
+<data>
+<value>none</value>
+</data>
+<data>
+<value>none</value>
+</data>
+<data>
+<value>0</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>1</value>
+</data>
+</token>
+</listToken>
+</abtoken>
+</place>
+<place id="P2">
+<graphics>
+<position x="810.0" y="570.0"/>
+</graphics>
+<name>
+<value>LogBook</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>LogBook</value>
+</name>
+<Ntype>
+<value>56</value>
+</Ntype>
+<types>
+<value>string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>6</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group>
+<DataType>
+<name>
+<value>LogBook</value>
+</name>
+<Ntype>
+<value>56</value>
+</Ntype>
+<types>
+<value>string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>6</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+</Datatype-group>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<place id="P3">
+<graphics>
+<position x="465.0" y="225.0"/>
+</graphics>
+<name>
+<value>msg_out</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+</Datatype-group>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<place id="P4">
+<graphics>
+<position x="465.0" y="15.0"/>
+</graphics>
+<name>
+<value>msg_in</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+</Datatype-group>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken>
+<token>
+<data>
+<value>startFrom</value>
+</data>
+<data>
+<value>bob</value>
+</data>
+<data>
+<value>50</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>arda</value>
+</data>
+<data>
+<value>bob</value>
+</data>
+<data>
+<value>50</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>arda</value>
+</data>
+</token>
+<token>
+<data>
+<value>startTo</value>
+</data>
+<data>
+<value>arda</value>
+</data>
+<data>
+<value>50</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>arda</value>
+</data>
+<data>
+<value>bob</value>
+</data>
+<data>
+<value>50</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>bob</value>
+</data>
+</token>
+</listToken>
+</abtoken>
+</place>
+<transition id="T0">
+<graphics>
+<position x="225.0" y="150.0"/>
+</graphics>
+<name>
+<value>startFrom</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>(msg_from[1]="startFrom")&#8743;&#8707;purse&#8712;CF&#8901;((purse[1]=msg_from[10])&#8743;(purse[1]&#8800;msg_from[2])&#8743;(purse[2]&#8805;msg_from[3])&#8743;(purse[10]="idle")&#8743;(CFpai=CF&#8722;{purse}&#8746;{[purse[1],purse[2],purse[3],purse[4]+1,purse[1],msg_from[2],msg_from[3],purse[4],msg_from[4],"epr",purse[11],purse[12],purse[13],purse[14],purse[15]]}))&#8743;msg={["forged",msg_from[2],msg_from[3],msg_from[4],msg_from[5],msg_from[6],msg_from[7],msg_from[8],msg_from[9],msg_from[10]]}</value>
+</formula>
+</transition>
+<transition id="T1">
+<graphics>
+<position x="660.0" y="180.0"/>
+</graphics>
+<name>
+<value>req</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>(msg_req[1]="req")&#8743;&#8707;purse&#8712;CR&#8901;((purse[1]=msg_req[10])&#8743;(purse[10]="epr")&#8743;(CRpai=CR&#8722;{purse}&#8746;{[purse[1],purse[2]-msg_req[7],purse[3],purse[4],purse[5],purse[6],purse[7],purse[8],purse[9],"epa",purse[11],purse[12],purse[13],purse[14],purse[15]]}))&#8743;msg={["val",msg_req[2],msg_req[3],msg_req[4],purse[5],purse[6],purse[7],purse[8],purse[9],msg_req[6]]}</value>
+</formula>
+</transition>
+<transition id="T2">
+<graphics>
+<position x="150.0" y="450.0"/>
+</graphics>
+<name>
+<value>startTo</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>(msg_to[1]="startTo")&#8743;&#8707;purse&#8712;CT&#8901;((purse[1]=msg_to[10])&#8743;(purse[1]&#8800;msg_to[2])&#8743;(purse[2]&#8805;msg_to[3])&#8743;(purse[10]="idle")&#8743;(CTpai=CT&#8722;{purse}&#8746;{[purse[1],purse[2],purse[3],purse[4]+1,purse[1],msg_to[2],msg_to[3],purse[4],msg_to[4],"epv",purse[11],purse[12],purse[13],purse[14],purse[15]]}))&#8743;msg={["req",msg_to[2],msg_to[3],msg_to[4],msg_to[2],purse[1],msg_to[3],purse[4],msg_to[4],msg_to[2]]}</value>
+</formula>
+</transition>
+<transition id="T3">
+<graphics>
+<position x="270.0" y="510.0"/>
+</graphics>
+<name>
+<value>readExceptionLog</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>(msg_read[1]="readExceptionLog")&#8743;&#8707;purse&#8712;C1&#8901;((purse[1]=msg_read[10])&#8743;(purse[10]="idle")&#8743;(purse[3]="true")&#8743;C1pai=C1&#8743;msg={["exceptionLogResult",msg_read[2],msg_read[3],msg_read[4],purse[11],purse[12],purse[13],purse[14],purse[15],msg_read[10]]})</value>
+</formula>
+</transition>
+<transition id="T4">
+<graphics>
+<position x="555.0" y="600.0"/>
+</graphics>
+<name>
+<value>clearExceptionLog</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>(msg_clr[1]="clearExceptionLog")&#8743;&#8707;purse&#8712;C2&#8901;((purse[1]=msg_clr[10])&#8743;(purse[10]="idle")&#8743;((purse[3]="true"))&#8743;(C2pai=C2&#8722;{purse}&#8746;{[purse[1],purse[2],"false",purse[4],purse[5],purse[6],purse[7],purse[8],purse[9],purse[10],purse[11],purse[12],purse[13],purse[14],purse[15]]}))&#8743;msg={["forged",msg_clr[2],msg_clr[3],msg_clr[4],msg_clr[5],msg_clr[6],msg_clr[7],msg_clr[8],msg_clr[9],msg_clr[10]]}</value>
+</formula>
+</transition>
+<transition id="T5">
+<graphics>
+<position x="765.0" y="225.0"/>
+</graphics>
+<name>
+<value>ack</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>(msg_ack[1]="ack")&#8743;&#8707;purse&#8712;CA&#8901;((purse[1]=msg_ack[10])&#8743;(purse[10]="epa")&#8743;(CApai=CA&#8722;{purse}&#8746;{[purse[1],purse[2],purse[3],purse[4],purse[5],purse[6],purse[7],purse[8],purse[9],"idle",purse[11],purse[12],purse[13],purse[14],purse[15]]}))&#8743;msg={["forged",msg_ack[2],msg_ack[3],msg_ack[4],msg_ack[5],msg_ack[6],msg_ack[7],msg_ack[8],msg_ack[9],msg_ack[10]]}</value>
+</formula>
+</transition>
+<transition id="T6">
+<graphics>
+<position x="810.0" y="420.0"/>
+</graphics>
+<name>
+<value>val</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>(msg_val[1]="val")&#8743;&#8707;purse&#8712;CV&#8901;((purse[1]=msg_val[10])&#8743;(purse[10]="epv")&#8743;(CVpai=CV&#8722;{purse}&#8746;{[purse[1],purse[2]+msg_val[7],purse[3],purse[4],purse[5],purse[6],purse[7],purse[8],purse[9],"idle",purse[11],purse[12],purse[13],purse[14],purse[15]]}))&#8743;msg={["ack",msg_val[2],msg_val[3],msg_val[4],purse[5],purse[6],purse[7],purse[8],purse[9],msg_val[5]]}</value>
+</formula>
+</transition>
+<transition id="T7">
+<graphics>
+<position x="660.0" y="495.0"/>
+</graphics>
+<name>
+<value>Abort</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>msg_abort[1]="startFrom"&#8744;msg_abort[1]="startTo"&#8744;msg_abort[1]="clearExceptionLog"&#8743;&#8707;purse&#8712;C3&#8901;((purse[1]=msg_abort[10])&#8743;purse[10]="epv"&#8744;purse[10]="epa"&#8743;(C3pai=C3&#8722;{purse}&#8746;{[purse[1],purse[2],"true",purse[4],purse[5]+1,purse[6],purse[7],purse[8],purse[9],"idle",purse[5],purse[6],purse[7],purse[8],purse[9]]}))&#8743;LBpai=LB&#8746;{[purse[1],purse[5],purse[6],purse[7],purse[8],purse[9]]}</value>
+</formula>
+</transition>
+<transition id="T8">
+<graphics>
+<position x="390.0" y="585.0"/>
+</graphics>
+<name>
+<value>readExceptionLogForged</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>(msg_read[1]="readExceptionLog")&#8743;&#8707;purse&#8712;C4&#8901;((purse[1]=msg_read[10])&#8743;(purse[10]="idle")&#8743;(purse[3]="false")&#8743;C4pai=C4&#8743;msg={["forged",msg_read[2],msg_read[3],msg_read[4],msg_read[5],msg_read[6],msg_read[7],msg_read[8],msg_read[9],msg_read[10]]})</value>
+</formula>
+</transition>
+<transition id="T9">
+<graphics>
+<position x="450.0" y="135.0"/>
+</graphics>
+<name>
+<value>ether</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>e_in[1]&#8800;"forged"&#8743;e_out=e_in</value>
+</formula>
+</transition>
+<arc id="P0 to T0" source="P0" target="T0" variable="CF">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="464" y="363" curvePoint="false"/>
+<arcpath id="001" x="291" y="237" curvePoint="false"/>
+<arcpath id="002" x="241" y="171" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T1" source="P0" target="T1" variable="CR">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="487" y="361" curvePoint="false"/>
+<arcpath id="001" x="666" y="201" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T2" source="P0" target="T2" variable="CT">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="462" y="376" curvePoint="false"/>
+<arcpath id="001" x="166" y="468" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T3" source="P0" target="T3" variable="C1">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="465" y="381" curvePoint="false"/>
+<arcpath id="001" x="286" y="528" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T4" source="P0" target="T4" variable="C2">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="482" y="385" curvePoint="false"/>
+<arcpath id="001" x="567" y="597" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T5" source="P0" target="T5" variable="CA">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="488" y="362" curvePoint="false"/>
+<arcpath id="001" x="511" y="345" curvePoint="false"/>
+<arcpath id="002" x="771" y="240" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T6" source="P0" target="T6" variable="CV">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="491" y="374" curvePoint="false"/>
+<arcpath id="001" x="816" y="440" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T7" source="P0" target="T7" variable="C3">
+<graphics/>
+<inscription>
+<value>3</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="486" y="383" curvePoint="false"/>
+<arcpath id="001" x="554" y="463" curvePoint="false"/>
+<arcpath id="002" x="666" y="512" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T8" source="P0" target="T8" variable="C4">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="468" y="384" curvePoint="false"/>
+<arcpath id="001" x="345" y="572" curvePoint="false"/>
+<arcpath id="002" x="396" y="598" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P2 to T7" source="P2" target="T7" variable="LBpai">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>LogBook</value>
+</name>
+<Ntype>
+<value>56</value>
+</Ntype>
+<types>
+<value>string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>6</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="815" y="568" curvePoint="false"/>
+<arcpath id="001" x="803" y="542" curvePoint="false"/>
+<arcpath id="002" x="677" y="506" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P3 to T9" source="P3" target="T9" variable="e_in">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="474" y="222" curvePoint="false"/>
+<arcpath id="001" x="462" y="162" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T0" source="P4" target="T0" variable="msg_from">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="463" y="34" curvePoint="false"/>
+<arcpath id="001" x="242" y="153" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T1" source="P4" target="T1" variable="msg_req">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="488" y="36" curvePoint="false"/>
+<arcpath id="001" x="667" y="183" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T2" source="P4" target="T2" variable="msg_to">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="463" y="32" curvePoint="false"/>
+<arcpath id="001" x="155" y="156" curvePoint="false"/>
+<arcpath id="002" x="162" y="447" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T3" source="P4" target="T3" variable="msg_read">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="462" y="30" curvePoint="false"/>
+<arcpath id="001" x="121" y="104" curvePoint="false"/>
+<arcpath id="002" x="124" y="549" curvePoint="false"/>
+<arcpath id="003" x="276" y="522" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T4" source="P4" target="T4" variable="msg_clr">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="462" y="29" curvePoint="false"/>
+<arcpath id="001" x="52" y="88" curvePoint="false"/>
+<arcpath id="002" x="60" y="627" curvePoint="false"/>
+<arcpath id="003" x="561" y="612" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T5" source="P4" target="T5" variable="msg_ack">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="491" y="31" curvePoint="false"/>
+<arcpath id="001" x="693" y="102" curvePoint="false"/>
+<arcpath id="002" x="772" y="228" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T6" source="P4" target="T6" variable="msg_val">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="491" y="30" curvePoint="false"/>
+<arcpath id="001" x="776" y="94" curvePoint="false"/>
+<arcpath id="002" x="822" y="417" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T7" source="P4" target="T7" variable="msg_abort">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="491" y="28" curvePoint="false"/>
+<arcpath id="001" x="892" y="80" curvePoint="false"/>
+<arcpath id="002" x="896" y="516" curvePoint="false"/>
+<arcpath id="003" x="677" y="499" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T8" source="P4" target="T8" variable="msg_read">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="462" y="29" curvePoint="false"/>
+<arcpath id="001" x="84" y="95" curvePoint="false"/>
+<arcpath id="002" x="85" y="595" curvePoint="false"/>
+<arcpath id="003" x="396" y="605" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T0 to P0" source="T0" target="P0" variable="CFpai">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="241" y="165" curvePoint="false"/>
+<arcpath id="001" x="329" y="245" curvePoint="false"/>
+<arcpath id="002" x="465" y="362" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T0 to P3" source="T0" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="242" y="159" curvePoint="false"/>
+<arcpath id="001" x="462" y="232" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T1 to P0" source="T1" target="P0" variable="CRpai">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="666" y="195" curvePoint="false"/>
+<arcpath id="001" x="550" y="282" curvePoint="false"/>
+<arcpath id="002" x="486" y="360" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T1 to P3" source="T1" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="667" y="189" curvePoint="false"/>
+<arcpath id="001" x="491" y="233" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T2 to P0" source="T2" target="P0" variable="CTpai">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="167" y="461" curvePoint="false"/>
+<arcpath id="001" x="277" y="422" curvePoint="false"/>
+<arcpath id="002" x="462" y="375" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T2 to P3" source="T2" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="167" y="454" curvePoint="false"/>
+<arcpath id="001" x="464" y="245" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T3 to P0" source="T3" target="P0" variable="C1pai">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="287" y="521" curvePoint="false"/>
+<arcpath id="001" x="369" y="432" curvePoint="false"/>
+<arcpath id="002" x="463" y="379" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T3 to P3" source="T3" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="287" y="514" curvePoint="false"/>
+<arcpath id="001" x="468" y="249" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T4 to P0" source="T4" target="P0" variable="C2pai">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="567" y="597" curvePoint="false"/>
+<arcpath id="001" x="501" y="493" curvePoint="false"/>
+<arcpath id="002" x="479" y="386" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T4 to P3" source="T4" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="567" y="597" curvePoint="false"/>
+<arcpath id="001" x="480" y="251" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T5 to P0" source="T5" target="P0" variable="CApai">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="771" y="246" curvePoint="false"/>
+<arcpath id="001" x="490" y="366" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T5 to P3" source="T5" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="772" y="234" curvePoint="false"/>
+<arcpath id="001" x="491" y="236" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T6 to P0" source="T6" target="P0" variable="CVpai">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="816" y="433" curvePoint="false"/>
+<arcpath id="001" x="615" y="364" curvePoint="false"/>
+<arcpath id="002" x="491" y="371" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T6 to P3" source="T6" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="817" y="426" curvePoint="false"/>
+<arcpath id="001" x="490" y="244" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T7 to P0" source="T7" target="P0" variable="C3pai">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="667" y="502" curvePoint="false"/>
+<arcpath id="001" x="489" y="380" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T7 to P2" source="T7" target="P2" variable="LB">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>LogBook</value>
+</name>
+<Ntype>
+<value>56</value>
+</Ntype>
+<types>
+<value>string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>6</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="676" y="513" curvePoint="false"/>
+<arcpath id="001" x="777" y="557" curvePoint="false"/>
+<arcpath id="002" x="808" y="574" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T8 to P0" source="T8" target="P0" variable="C4pai">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="397" y="591" curvePoint="false"/>
+<arcpath id="001" x="379" y="561" curvePoint="false"/>
+<arcpath id="002" x="470" y="385" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T8 to P3" source="T8" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="402" y="582" curvePoint="false"/>
+<arcpath id="001" x="473" y="251" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T9 to P4" source="T9" target="P4" variable="e_out">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="462" y="132" curvePoint="false"/>
+<arcpath id="001" x="474" y="41" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+</net>
+</pnml>
