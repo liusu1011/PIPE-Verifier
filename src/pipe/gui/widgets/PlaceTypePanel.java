@@ -14,6 +14,8 @@ import javax.swing.JSpinner;
 import javax.swing.ListSelectionModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import pipe.dataLayer.DataLayer;
 import pipe.dataLayer.MarkingParameter;
@@ -171,7 +173,23 @@ public class PlaceTypePanel extends JPanel {
 			  dml.addElement(dtPool.get(i).getName());
 		  }
 		  Typelist = new javax.swing.JList(dml);
-
+		  Typelist.addListSelectionListener(
+				  new ListSelectionListener(){
+					@Override
+					public void valueChanged(ListSelectionEvent e) {
+						String selectedName = Typelist.getSelectedValue().toString();
+						for(int i=0;i<dtPool.size();i++)
+						{
+							if(selectedName.equals(dtPool.get(i).getName()))
+							{
+								showdefine(dtPool.get(i));
+								break;
+							}
+						}
+					}
+					  
+				  }
+				  );
 		  powcheckbox = new javax.swing.JCheckBox();
 	      setLayout(new java.awt.GridBagLayout());
 	      
