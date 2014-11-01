@@ -31,6 +31,9 @@
 
     <xsl:template match="place">
         <xsl:element name="place">
+        	<xsl:attribute name="type">
+            	<xsl:value-of select="place/type/value"/>
+         	</xsl:attribute>
             <xsl:attribute name="initialMarking">
                 <xsl:value-of select="@initialMarking"/>
             </xsl:attribute>

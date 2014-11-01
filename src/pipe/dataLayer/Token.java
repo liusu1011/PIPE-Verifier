@@ -28,8 +28,6 @@ public class Token
 		tokenType = input;
 		isDef = true;
 		Tlist = new Vector<BasicType>();
-//		System.out.println("The size of Tlist is: "+Tlist.size());
-//		defineTlist(tokenType);
 	}
 	
 	/**
@@ -69,24 +67,6 @@ public class Token
 			return false;
 		return true;
 	}
-	
-	
-//	public boolean add(BasicType[] bt)
-//	{
-//		
-//		if(!isDef)
-//			return false;
-////		if(bt.length != tokenType.getNumofElement())
-////			return false;
-//		System.out.println(isDef);
-//		for(int i = 0; i < bt.length; i ++)
-//		{
-////			if(tokenType.getTypebyIndex(i) != bt[i].kind)
-////				return false;
-//			Tlist.add(i, bt[i]);
-//		}
-//		return true;
-//	}
 	
 	public boolean add(BasicType[] bt){
 		

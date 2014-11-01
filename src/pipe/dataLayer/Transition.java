@@ -1040,67 +1040,67 @@ public class Transition
     * to symbol table
     * Parameter mode: true->fire_mode, false->check_mode
     */
-   public boolean getTokenExpired(boolean mode, int[] getTokIndex){
-	   /**
-	    * Below is real code
-	    */
-	   //Get token from arcIn Places;
-	   for(Arc ai : getArcInList()){
-		   Place pi = (Place)(ai.getSource());
-//		   if(!mode){
-//		   System.out.println("********InPlaceToken************");
-//		   for(Token tp:pi.getToken().listToken){
-//			   System.out.println(tp.Tlist.firstElement().Tint);
+//   public boolean getTokenExpired(boolean mode, int[] getTokIndex){
+//	   /**
+//	    * Below is real code
+//	    */
+//	   //Get token from arcIn Places;
+//	   for(Arc ai : getArcInList()){
+//		   Place pi = (Place)(ai.getSource());
+////		   if(!mode){
+////		   System.out.println("********InPlaceToken************");
+////		   for(Token tp:pi.getToken().listToken){
+////			   System.out.println(tp.Tlist.firstElement().Tint);
+////		   }
+////		   System.out.println("********FinishGetToken************");
+////		   }
+//		   
+//		   //check if the place token is an empty place; 
+//		   if(pi.getToken().listToken.isEmpty())return false;
+//		   /**
+//		    * if it is powerset, then get abToken;
+//		    * else get the first token in abToken;
+//		    */
+//		   if(pi.getToken().getDataType().getPow()){
+//			   //When firing a transition, clear the abToken in place (powerset) affect the abToken already insert to symTable of the transition, which is not expected.
+//			   abToken TOK= new abToken(pi.getToken().getDataType());
+//			   TOK.listToken.addAll(pi.getToken().listToken);
+//			   symTable.insert(ai.getVar(), TOK);
+//			   if(mode){
+//				   pi.getToken().listToken.clear();
+//			   }
+//		   }else{
+//			   symTable.insert(ai.getVar(), pi.getToken().listToken.firstElement());
+//			   if(mode){
+//				   pi.getToken().listToken.remove(pi.getToken().listToken.firstElement());
+//			   }
 //		   }
-//		   System.out.println("********FinishGetToken************");
+//		   
+//	   }
+//	   
+//	   //Get Token from arcOut Places;
+//	   for(Arc ao : getArcOutList()){
+//		   Place po = (Place)(ao.getTarget());
+////		   if(!mode){
+////		   System.out.println("********getToken************");
+////		   for(Token tp:p.getToken().listToken){
+////			   System.out.println(tp.Tlist.firstElement().Tint);
+////		   }
+////		   System.out.println("********FinishGetToken************");
+////		   }
+//		   /**
+//		    * if it is powerset, then get abToken;
+//		    * else get the first token in abToken;
+//		    */
+//		   if(po.getDataType().getPow()){
+//			   abToken tok = new abToken(po.getDataType());
+//			   symTable.insert(ao.getVar(), tok);
+//		   }else{
+//			   Token tok = new Token(po.getDataType());
+//			   tok.defineTlist(po.getDataType());
+//			   symTable.insert(ao.getVar(), tok);
 //		   }
-		   
-		   //check if the place token is an empty place; 
-		   if(pi.getToken().listToken.isEmpty())return false;
-		   /**
-		    * if it is powerset, then get abToken;
-		    * else get the first token in abToken;
-		    */
-		   if(pi.getToken().getDataType().getPow()){
-			   //When firing a transition, clear the abToken in place (powerset) affect the abToken already insert to symTable of the transition, which is not expected.
-			   abToken TOK= new abToken(pi.getToken().getDataType());
-			   TOK.listToken.addAll(pi.getToken().listToken);
-			   symTable.insert(ai.getVar(), TOK);
-			   if(mode){
-				   pi.getToken().listToken.clear();
-			   }
-		   }else{
-			   symTable.insert(ai.getVar(), pi.getToken().listToken.firstElement());
-			   if(mode){
-				   pi.getToken().listToken.remove(pi.getToken().listToken.firstElement());
-			   }
-		   }
-		   
-	   }
-	   
-	   //Get Token from arcOut Places;
-	   for(Arc ao : getArcOutList()){
-		   Place po = (Place)(ao.getTarget());
-//		   if(!mode){
-//		   System.out.println("********getToken************");
-//		   for(Token tp:p.getToken().listToken){
-//			   System.out.println(tp.Tlist.firstElement().Tint);
-//		   }
-//		   System.out.println("********FinishGetToken************");
-//		   }
-		   /**
-		    * if it is powerset, then get abToken;
-		    * else get the first token in abToken;
-		    */
-		   if(po.getDataType().getPow()){
-			   abToken tok = new abToken(po.getDataType());
-			   symTable.insert(ao.getVar(), tok);
-		   }else{
-			   Token tok = new Token(po.getDataType());
-			   tok.defineTlist(po.getDataType());
-			   symTable.insert(ao.getVar(), tok);
-		   }
-	   }
+//	   }
 	   
 	   
 	   
@@ -1130,34 +1130,47 @@ public class Transition
 //	   bt2.Tstring = "pipe";
 //	   tok2.Tlist.add(bt2);
 //	   this.symTable.insert(key2, tok2);
-	   return true;
-
-   }
+//	   return true;
+//
+//   }
    
-   
+   /**
+    * 
+    * @param mode : get and remove token
+    * @param tokCombs
+    * @return
+    */
    public boolean getToken(boolean mode, int[] tokCombs){
 	  int pNum = 0;
 	   for(Arc ai : getArcInList()){
 		   Place pi = (Place)(ai.getSource());
 		   
 		   //check if the place token is an empty place; 
-		   if(pi.getToken().listToken.isEmpty())return false;
-		   /**
-		    * if it is powerset, then get abToken;
-		    * else get the first token in abToken;
-		    */
-		   if(pi.getToken().getDataType().getPow()){
-			   //When firing a transition, clear the abToken in place (powerset) affect the abToken already insert to symTable of the transition, which is not expected.
-			   abToken TOK= new abToken(pi.getToken().getDataType());
-			   TOK.listToken.addAll(pi.getToken().listToken);
-			   symTable.insert(ai.getVar(), TOK);
-			   if(mode){
-				   pi.getToken().listToken.clear();
+		   if(pi instanceof SimplePlace)
+		   {
+			   if(((SimplePlace) pi).getToken() == null)
+				   return false;
+		   }else if(pi instanceof PowersetPlace)
+		   {
+			   if(((PowersetPlace) pi).getToken() ==  null)
+				   return false;
+		   }else return false;
+		   
+		   //SimplePlace, get token
+		   //PowersetPlace, get first element in tokens
+		   if(pi instanceof SimplePlace)
+		   {   
+			   symTable.insert(ai.getVar(), ((SimplePlace) pi).getToken());
+			   if(mode)
+			   {
+				   ((SimplePlace) pi).deleteToken();
 			   }
-		   }else{
-			   symTable.insert(ai.getVar(), pi.getToken().listToken.get(tokCombs[pNum]));
+		   }else if(pi instanceof PowersetPlace)
+		   {
+			   Token tempTok = ((PowersetPlace) pi).getToken(tokCombs[pNum]);
+			   symTable.insert(ai.getVar(), tempTok);
 			   if(mode){
-				   pi.getToken().listToken.remove(pi.getToken().listToken.get(tokCombs[pNum]));
+				   ((PowersetPlace) pi).deleteToken(tokCombs[pNum]);
 			   }
 		   }
 		   pNum++;
@@ -1165,23 +1178,14 @@ public class Transition
 	   
 	   for(Arc ao : getArcOutList()){
 		   Place po = (Place)(ao.getTarget());
-//		   if(!mode){
-//		   System.out.println("********getToken************");
-//		   for(Token tp:p.getToken().listToken){
-//			   System.out.println(tp.Tlist.firstElement().Tint);
-//		   }
-//		   System.out.println("********FinishGetToken************");
-//		   }
-		   /**
-		    * if it is powerset, then get abToken;
-		    * else get the first token in abToken;
-		    */
-		   if(po.getDataType().getPow()){
-			   abToken tok = new abToken(po.getDataType());
-			   symTable.insert(ao.getVar(), tok);
-		   }else{
+		   if(po instanceof SimplePlace)
+		   {
 			   Token tok = new Token(po.getDataType());
-			   tok.defineTlist(po.getDataType());
+			   symTable.insert(ao.getVar(), tok);
+		   }else if(po instanceof PowersetPlace)
+		   {
+			   //TODO: when arc has more than one variables
+			   Token tok = new Token(po.getDataType());
 			   symTable.insert(ao.getVar(), tok);
 		   }
 	   }
@@ -1189,76 +1193,29 @@ public class Transition
    }
    
    /**
-    * if transition is not enabled after check
-    * we will put the checked token in the end of arcInPlaces' vector.
-    */
-   
-   public void tailToken(){
-	   for(Arc a : getArcInList()){
-		   Place p = (Place)(a.getSource());
-		   
-		   if(p.getToken().listToken.firstElement().getTokentype().getPow()){
-			   //do nothing because it is abToken, do have to tail it.
-		   }else{
-			   Token ft = p.getToken().listToken.firstElement();
-			   if(ft!=null){
-				   p.getToken().listToken.remove(ft);
-				   p.getToken().listToken.add(ft);
-			  }
-		   }
-		   
-	   }
-   }
-   
-   /**
     * update transition out variables to transition out places
     * @return
     */
-   public void sendToken(){
-	   if(getArcOutList() != null){
-	   for(Arc a : getArcOutList()){
-		   Place p = (Place)(a.getTarget());
-		   for(Symbol s : symTable.table){
-			   if(s.getKey().equals(a.getVar())){
-				   if(s.getBinder() instanceof Token){
-					   p.getToken().listToken.add((Token)s.getBinder());
-				   }else if(s.getBinder() instanceof abToken){
-					   p.setToken((abToken)s.getBinder());
+   public void sendToken()
+   {
+	   if(getArcOutList() != null)
+	   {
+		   for(Arc a : getArcOutList())
+		   {
+			   Place p = (Place)(a.getTarget());
+			   for(Symbol s : symTable.table)
+			   {
+				   if(s.getKey().equals(a.getVar()))
+				   {
+					   if(s.getBinder() instanceof Token)
+					   {
+						   p.receiveToken((Token)s.getBinder());
+					   }
 				   }
 			   }
 		   }
-//			   System.out.println("********OutPlaceToken************");
-//			   for(Token tp:p.getToken().listToken){
-//				   System.out.println(tp.Tlist.firstElement().Tint);
-//			   }
-//			   System.out.println("********FinishSendToken************");
-		   
-	   }
-	   
 	   }
    }
-   
-// public boolean TestCheckTransitionIsEnabled(){
-//   boolean b = this.getToken(false);
-//   if(b){
-//   String formula = this.getFormula();
-//   ErrorMsg errorMsg = new ErrorMsg(formula);	   
-//   Parse p = new Parse(formula, errorMsg);
-//   Sentence s = p.absyn;
-//   s.accept(new Interpreter(errorMsg, this, 0));
-//   
-//   if(s.bool_val){	   
-//	   System.out.println("This Transition is enabled!!!");
-//	   return true;
-//   }else{
-//	   System.out.println("Not enabled!!!");
-//	   return false;
-//   }
-//   }else{
-//	   System.out.println("Get Token Failure!!!");
-//	   return false;
-//   }
-//}
    
    public SymbolTable getTransSymbolTable(){
 	   return this.symTable;
@@ -1280,7 +1237,4 @@ public class Transition
 	   
 	   return dependentTrans;
    }
-   
-   
-   
 }

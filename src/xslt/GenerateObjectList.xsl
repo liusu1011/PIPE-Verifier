@@ -97,41 +97,14 @@
          </xsl:attribute>
       </xsl:element>
    </xsl:template>   
-   
-   <xsl:template match="sysPlace">
-      <xsl:element name="sysPlace">
-         <xsl:call-template name="place-transition"/>
-		 <xsl:for-each select = "agentToken">
-			<xsl:call-template name = "agentTokenTemplate"/>
-		 </xsl:for-each>
-      </xsl:element>
-   </xsl:template>
-   
-   <xsl:template name="agentTokenTemplate">
-   	  <xsl:element name="agentToken">
-   	  	<xsl:attribute name="name">
-   	  		<xsl:value-of select="@name"/>
-   	  	</xsl:attribute>
-				<xsl:call-template name = "agentNetTemplate"/>
-   	  </xsl:element>
-   </xsl:template>
-   
-   <xsl:template name="agentNetTemplate">
-   	  <xsl:element name="agentNet">
-   	  <xsl:apply-templates select="agentNet/labels"/>
-      <xsl:apply-templates select="agentNet/definition"/>
-      <xsl:apply-templates select="agentNet/place"/>
-      <xsl:apply-templates select="agentNet/transition"/>
-      <xsl:apply-templates select="agentNet/arc"/>
-      <xsl:apply-templates select="agentNet/stategroup"/>
-      <xsl:apply-templates select="agentNet/page"/>
-      <xsl:apply-templates select="agentNet/module"/>       
-   	  </xsl:element>
-   </xsl:template>  
+    
    
    <xsl:template match="place">
       <xsl:element name="place">
          <!-- David Patterson 24 Nov 2006 Move call-template after attributes -->
+         <xsl:attribute name="type">
+            <xsl:value-of select="place/type/value"/>
+         </xsl:attribute>
          <xsl:attribute name="initialMarking">
             <xsl:value-of select="initialMarking/value"/>
          </xsl:attribute>
@@ -156,7 +129,7 @@
 		<xsl:for-each select = "Datatype-group/DataType">
 			<xsl:call-template name = "group-DataType"/>
 		</xsl:for-each>
-		<xsl:call-template name = "abTokentemplate"/>
+		<xsl:call-template name = "Tokentemplate"/>
       </xsl:element>
    </xsl:template>
    
@@ -204,9 +177,9 @@
         </xsl:attribute>
    </xsl:template>
    
-   <xsl:template name = "abTokentemplate">
+   <xsl:template name = "Tokentemplate">
 		<xsl:attribute name = "isDef">
-			<xsl:value-of select= "abtoken/isDef/value"/>
+			<xsl:value-of select= "isDef/value"/>
 		</xsl:attribute>
 		<xsl:for-each select = "abtoken/listToken/token">
 			<xsl:element name = "token">
@@ -388,175 +361,5 @@
        </xsl:element>
        
     </xsl:template>
-	
-	
-	   <xsl:template match="agentNet/page">
-      <xsl:apply-templates select="labels"/>
-      <xsl:apply-templates select="definition"/>
-      <xsl:apply-templates select="place"/>
-      <xsl:apply-templates select="transition"/>
-      <xsl:apply-templates select="arc"/>
-      <xsl:apply-templates select="module"/>
-      <xsl:apply-templates select="stategroup"/>
-   </xsl:template>
-   
-   <xsl:template match="agentNet/module">
-      <xsl:apply-templates select="labels"/>
-      <xsl:apply-templates select="definition"/>
-      <xsl:apply-templates select="place"/>
-      <xsl:apply-templates select="transition"/>
-      <xsl:apply-templates select="arc"/>
-      <xsl:apply-templates select="interface"/>
-      <xsl:apply-templates select="stategroup"/>
-   </xsl:template>
-   
-   <xsl:template match="agentNet/labels">
-      <xsl:element name="labels">
-         <xsl:attribute name="xPosition">
-            <xsl:value-of select="@x"/>
-         </xsl:attribute>
-         <xsl:attribute name="yPosition">
-            <xsl:value-of select="@y"/>
-         </xsl:attribute>
-         <xsl:attribute name="w">
-            <xsl:value-of select="@width"/>
-         </xsl:attribute>
-         <xsl:attribute name="h">
-            <xsl:value-of select="@height"/>
-         </xsl:attribute>
-         <xsl:attribute name="border">
-            <xsl:value-of select="@border"/>
-         </xsl:attribute>
-         <xsl:attribute name="txt">
-            <xsl:value-of select="text"/>
-         </xsl:attribute>                        
-      </xsl:element>
-   </xsl:template>
-   
-   <xsl:template match="agentNet/definition">
-      <xsl:element name="definition">
-         <xsl:attribute name="positionX">
-            <xsl:value-of select="graphics/position/@x"/>
-         </xsl:attribute>
-         <xsl:attribute name="positionY">
-            <xsl:value-of select="graphics/position/@y"/>
-         </xsl:attribute>         
-         <xsl:attribute name="expression">
-            <xsl:value-of select="@expression"/>
-         </xsl:attribute>
-         <xsl:attribute name="name">
-            <xsl:value-of select="@name"/>
-         </xsl:attribute>
-         <xsl:attribute name="type">
-            <xsl:value-of select="@defType"/>
-         </xsl:attribute>
-      </xsl:element>
-   </xsl:template>   
-   
-     <xsl:template match="agentNet/place">
-      <xsl:element name="place">
-         <!-- David Patterson 24 Nov 2006 Move call-template after attributes -->
-         <xsl:attribute name="initialMarking">
-            <xsl:value-of select="initialMarking/value"/>
-         </xsl:attribute>
-         <xsl:attribute name="markingOffsetX">
-            <xsl:value-of select="initialMarking/graphics/offset/@x"/>
-         </xsl:attribute>
-         <xsl:attribute name="markingOffsetY">
-            <xsl:value-of select="initialMarking/graphics/offset/@y"/>
-         </xsl:attribute>
-         <xsl:attribute name="capacity">
-            <xsl:value-of select="capacity/value"/>
-         </xsl:attribute>
-<!--         <xsl:apply-templates select="place-toolspecific"/>         -->
-<!--         <xsl:attribute name="parameter">
-            <xsl:value-of select="toolspecific/name/value"/>
-         </xsl:attribute>-->
-         <xsl:attribute name="parameter">
-            <xsl:value-of select="toolspecific/@markingDefinition"/>
-         </xsl:attribute>         
-         <xsl:call-template name="place-transition"/>
-		 <xsl:call-template name="DataType"/>
-		<xsl:for-each select = "Datatype-group/DataType">
-			<xsl:call-template name = "group-DataType"/>
-		</xsl:for-each>
-		<xsl:call-template name = "abTokentemplate"/>
-      </xsl:element>
-   </xsl:template>
-   
-      <xsl:template match="agentNet/transition">
-      <xsl:element name="transition">
-         <xsl:attribute name="rate">
-            <xsl:value-of select="rate/value"/>
-         </xsl:attribute>
-         <xsl:attribute name="timed">
-            <xsl:value-of select="timed/value"/>
-         </xsl:attribute>
-         <xsl:attribute name="angle">
-            <xsl:value-of select="orientation/value"/>
-         </xsl:attribute>
-         <xsl:attribute name="infiniteServer">
-            <xsl:value-of select="infiniteServer/value"/>
-         </xsl:attribute>
-         <xsl:attribute name="priority">
-            <xsl:value-of select="priority/value"/>
-         </xsl:attribute>
-         <xsl:attribute name="weight">
-            <xsl:value-of select="weight/value"/>
-         </xsl:attribute>
-<!--         <xsl:attribute name="parameter">
-            <xsl:value-of select="toolspecific/name/value"/>
-         </xsl:attribute>               -->
-         <xsl:attribute name="parameter">
-            <xsl:value-of select="toolspecific/@rateDefinition"/>
-         </xsl:attribute> 
-         <xsl:attribute name="formula">
-            <xsl:value-of select="formula/value"/>
-         </xsl:attribute>          
-         <xsl:call-template name="place-transition"/>
-      </xsl:element>
-   </xsl:template>
-   
-   <xsl:template match="agentNet/arc">
-      <xsl:element name="arc">
-         <!-- David Patterson 24 Nov 2006 Move call-template after attributes -->
-         <xsl:attribute name="source">
-            <xsl:value-of select="@source"/>
-         </xsl:attribute>
-         <xsl:attribute name="target">
-            <xsl:value-of select="@target"/>
-         </xsl:attribute>
-         <xsl:attribute name="inscription">
-            <xsl:value-of select="inscription/value"/>
-         </xsl:attribute>
-         <xsl:attribute name="inscriptionOffsetX">
-            <xsl:value-of select="inscription/graphics/offset/@x"/>
-         </xsl:attribute>
-         <xsl:attribute name="inscriptionOffsetY">
-            <xsl:value-of select="inscription/graphics/offset/@y"/>
-         </xsl:attribute>
-         <xsl:attribute name="tagged">
-            <xsl:value-of select="tagged/value"/>
-         </xsl:attribute>
-		 <xsl:attribute name = "Var">
-			<xsl:value-of select="@variable"/>
-		 </xsl:attribute>
-         <xsl:call-template name="place-transition-arc"/>
-         <xsl:apply-templates select="arcpath"/>		
-         <xsl:apply-templates select="type"/>		
-      </xsl:element>
-   </xsl:template>
-   
-   <xsl:template match="agentNet/stategroup">
-      <xsl:element name="stategroup">
-         <!-- BarryK Aug 2007 for state group storage -->
-         <xsl:attribute name="id">
-            <xsl:value-of select="@id"/>
-         </xsl:attribute>
-         <xsl:attribute name="name">
-            <xsl:value-of select="name/value"/>
-         </xsl:attribute>
-         <xsl:apply-templates select="statecondition"/>
-      </xsl:element>
-   </xsl:template>
+
 </xsl:stylesheet>

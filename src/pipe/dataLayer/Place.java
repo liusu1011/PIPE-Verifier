@@ -48,34 +48,36 @@ import pipe.gui.widgets.EscapableDialog;
  * @author Edwin Chung 16 Mar 2007: modified the constructor and several
  * other functions so that DataLayer objects can be created outside the
  * GUI
+ * 
+ * @author Su Liu: modified for high level Petri nets data structure
  */
-public class Place 
+public abstract class Place 
         extends PlaceTransitionObject {
 
    public final static String type = "Place";
    /** Initial Marking */
-   private Integer initialMarking = 0;
+   protected Integer initialMarking = 0;
    
    /** Current Marking */
-    private Integer currentMarking = 0;
+   protected Integer currentMarking = 0;
    
    /** Initial Marking X-axis Offset */
-   private Double markingOffsetX = 0d;
+   protected Double markingOffsetX = 0d;
    
    /** Initial Marking Y-axis Offset */
-   private Double markingOffsetY = 0d;
+   protected Double markingOffsetY = 0d;
    
    /**  Value of the capacity restriction; 0 means no capacity restriction */
-   private Integer capacity = 0;
+   protected Integer capacity = 0;
    /*
    private boolean strongCapacity = false;
   */
    
    /** Initial Marking X-axis Offset */
-   private Double capacityOffsetX = 0.0;
+   protected Double capacityOffsetX = 0.0;
    
    /** Initial Marking Y-axis Offset */
-   private Double capacityOffsetY = 22.0;
+   protected Double capacityOffsetY = 22.0;
    
    public static final int DIAMETER = Pipe.PLACE_TRANSITION_HEIGHT;
    
@@ -91,14 +93,12 @@ public class Place
    private static Shape proximityPlace =
             (new BasicStroke(Pipe.PLACE_TRANSITION_PROXIMITY_RADIUS)).createStrokedShape(place);
 
-   private MarkingParameter markingParameter = null;
+   protected MarkingParameter markingParameter = null;
    
    protected ArrayList<Arc> arcOutList = new ArrayList<Arc>();
    protected ArrayList<Transition> transOutList = new ArrayList<Transition>();
    
-   public abToken token;
-   private DataType dataType;
-   private Vector<DataType> group = null;
+   protected DataType dataType;
    
    /**
     * Create Petri-Net Place object
@@ -132,9 +132,9 @@ public class Place
       componentHeight = DIAMETER;
       setCapacity(capacityInput);
       setCentre((int)positionX, (int)positionY);
-      group = new Vector<DataType>();
+//      group = new Vector<DataType>();
       dataType = null;
-      token = new abToken();
+//      token = new abToken();
       
       //updateBounds();
    }   
@@ -150,48 +150,74 @@ public class Place
       componentWidth = DIAMETER;
       componentHeight = DIAMETER;
       setCentre((int)positionX, (int)positionY);
-      group = new Vector<DataType>();
+//      group = new Vector<DataType>();
       dataType = null;
-      token = new abToken();
+//      token = new abToken();
       //updateBounds();    
    }
 
    
    public Place paste(double x, double y, boolean fromAnotherView){
-      Place copy = new Place (
-              Grid.getModifiedX(x + this.getX() + Pipe.PLACE_TRANSITION_HEIGHT/2),
-              Grid.getModifiedY(y + this.getY() + Pipe.PLACE_TRANSITION_HEIGHT/2));
-      copy.pnName.setName(this.pnName.getName()  
-                          + "(" + this.getCopyNumber() +")");
-      this.newCopy(copy);
-      copy.nameOffsetX = this.nameOffsetX;
-      copy.nameOffsetY = this.nameOffsetY;
-      copy.capacity = this.capacity;
-      copy.attributesVisible = this.attributesVisible;
-      copy.initialMarking = this.initialMarking;
-      copy.currentMarking = this.currentMarking;
-      copy.markingOffsetX = this.markingOffsetX;
-      copy.markingOffsetY = this.markingOffsetY;
-      copy.markingParameter = this.markingParameter;
-      copy.update();
+      Place copy = null;
+      if(this instanceof SimplePlace)
+      {
+    	  copy = new SimplePlace (
+                  Grid.getModifiedX(x + this.getX() + Pipe.PLACE_TRANSITION_HEIGHT/2),
+                  Grid.getModifiedY(y + this.getY() + Pipe.PLACE_TRANSITION_HEIGHT/2));
+      }else if (this instanceof PowersetPlace)
+      {
+    	  copy = new PowersetPlace (
+                  Grid.getModifiedX(x + this.getX() + Pipe.PLACE_TRANSITION_HEIGHT/2),
+                  Grid.getModifiedY(y + this.getY() + Pipe.PLACE_TRANSITION_HEIGHT/2));
+      }
+      
+      if(copy != null)
+      {
+    	  copy.pnName.setName(this.pnName.getName()  
+                  + "(" + this.getCopyNumber() +")");
+    	  this.newCopy(copy);
+    	  	copy.nameOffsetX = this.nameOffsetX;
+			copy.nameOffsetY = this.nameOffsetY;
+			copy.capacity = this.capacity;
+			copy.attributesVisible = this.attributesVisible;
+			copy.initialMarking = this.initialMarking;
+			copy.currentMarking = this.currentMarking;
+			copy.markingOffsetX = this.markingOffsetX;
+			copy.markingOffsetY = this.markingOffsetY;
+			copy.markingParameter = this.markingParameter;
+			copy.update();
+      }
+      
       return copy;
    }
    
    
    public Place copy(){
-      Place copy = new Place (Zoomer.getUnzoomedValue(this.getX(), zoom), 
-                              Zoomer.getUnzoomedValue(this.getY(), zoom));
-      copy.pnName.setName(this.getName());
-      copy.nameOffsetX = this.nameOffsetX;
-      copy.nameOffsetY = this.nameOffsetY;
-      copy.capacity = this.capacity;
-      copy.attributesVisible = this.attributesVisible;
-      copy.initialMarking = this.initialMarking;
-      copy.currentMarking = this.currentMarking;
-      copy.markingOffsetX = this.markingOffsetX;
-      copy.markingOffsetY = this.markingOffsetY;
-      copy.markingParameter = this.markingParameter;
-      copy.setOriginal(this);
+      Place copy = null;
+      if(this instanceof SimplePlace)
+      {
+    	  copy = new SimplePlace (Zoomer.getUnzoomedValue(this.getX(), zoom), 
+                  Zoomer.getUnzoomedValue(this.getY(), zoom));
+      }else if( this instanceof PowersetPlace)
+      {
+    	  copy = new PowersetPlace (Zoomer.getUnzoomedValue(this.getX(), zoom), 
+                  Zoomer.getUnzoomedValue(this.getY(), zoom));
+      }
+      
+      if(copy != null)
+      {
+    	  copy.pnName.setName(this.getName());
+          copy.nameOffsetX = this.nameOffsetX;
+          copy.nameOffsetY = this.nameOffsetY;
+          copy.capacity = this.capacity;
+          copy.attributesVisible = this.attributesVisible;
+          copy.initialMarking = this.initialMarking;
+          copy.currentMarking = this.currentMarking;
+          copy.markingOffsetX = this.markingOffsetX;
+          copy.markingOffsetY = this.markingOffsetY;
+          copy.markingParameter = this.markingParameter;
+          copy.setOriginal(this);
+      }
       return copy;
    }   
    
@@ -513,8 +539,8 @@ public class Place
 	      contentPane.setLayout(new BoxLayout(contentPane,BoxLayout.PAGE_AXIS));      
 	     
 	      // 2 Add Place editor
-	      contentPane.add( new PlaceTypePanel(guiDialog.getRootPane(), 
-	               this,group,CreateGui.getModel(), CreateGui.getView()));
+	      contentPane.add( new PlaceTypePanel(guiDialog.getRootPane(), this,
+	               CreateGui.getModel(), CreateGui.getView()));
 
 	      guiDialog.setResizable(false);     
 	      
@@ -590,7 +616,6 @@ public class Place
    public void setDataType(DataType dt)
    {
 	   dataType = dt;
-	   token.definetype(dt);
    }
    
    public DataType getDataType()
@@ -612,62 +637,18 @@ public class Place
        }
    }
    
-   public void setGroup(Vector<DataType> _group)
-   {
-	   group = _group;
-   }
+   public abstract boolean receiveToken(Token t);
    
-   public Vector<DataType> getGroup()
-   {
-	   return this.group;
-   }
+//   public void setGroup(Vector<DataType> _group)
+//   {
+//	   group = _group;
+//   }
+//   
+//   public Vector<DataType> getGroup()
+//   {
+//	   return this.group;
+//   }
    
-   public void setToken(abToken t)
-   {
-	   token = t;
-   }
-   
-   public abToken getToken()
-   {
-	   return token;
-   }
-   
-   public boolean addToken(BasicType[] bt)
-   {
-	   if(dataType == null)
-		   return false;
-	   Token newtoken = new Token(dataType);
-	   
-	   if(!newtoken.add(bt))
-		   return false;
-	   
-	   if(token.addToken(newtoken))
-		   return true;
-	   return false;
-   }
-   
-   
-   public void deleteToken()
-   {
-//	   token.listToken.clear();
-	   int size = token.listToken.size();
-	   System.out.println("dddddddddddddddddddddsize: "+size);
-	   for(int i=0;i<size;i++){
-		   token.listToken.remove(0);
-		   System.out.println("the size now!!!!: "+size);
-	   }
-   }
-   
-   public void tailToken(){
-	   if(this.getToken().listToken.firstElement().getTokentype().getPow()){
-		   //do nothing because it is abToken, do have to tail it.
-	   }else{
-		   Token ft = this.getToken().listToken.firstElement();
-		   if(ft!=null){
-			   this.getToken().listToken.remove(ft);
-			   this.getToken().listToken.add(ft);
-		  }
-	   }
-   }
+
 
 }

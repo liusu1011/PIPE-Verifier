@@ -72,10 +72,14 @@ public class StatusBar
    
    public void changeText(int type ){
       switch(type){
-         case Pipe.PLACE:
+         case Pipe.SIMPLEPLACE:
             changeText(textforPlace);
             break;
             
+         case Pipe.POWERSETPLACE:
+             changeText(textforPlace);
+             break;
+         
          case Pipe.IMMTRANS:
             changeText(textforTrans);
             break;

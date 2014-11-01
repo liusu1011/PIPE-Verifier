@@ -28,7 +28,6 @@ public class PlaceTypePanel extends JPanel {
 	   GuiView view;
 	   JRootPane rootPane;
 	   boolean flag;
-	   Vector<DataType> group;
 	   Vector<DataType> dtPool;
 	   DefaultListModel dml;
 //	   boolean isModify = false;
@@ -37,14 +36,13 @@ public class PlaceTypePanel extends JPanel {
 	   /**
 	    * Creates new form PlaceEditor
 	    */
-	   public PlaceTypePanel(JRootPane _rootPane, Place _place, Vector<DataType> _group,
+	   public PlaceTypePanel(JRootPane _rootPane, Place _place,
 	           DataLayer _pnmlData, GuiView _view) {
 
 		  place = _place;
 	      dataType = _place.getDataType();
 	      pnmlData = _pnmlData;
 	      view = _view;
-	      group = _group;
 	      dtPool = _pnmlData.dtPool;
 	      
 	      flag = false;
@@ -53,9 +51,6 @@ public class PlaceTypePanel extends JPanel {
 	      dml = new DefaultListModel();
 	      
 	      initComponents();
-//	      if(dataType != null)
-//	    	  SetValue(dataType.getName());
-//	      showdefine(dataType);
 	      rootPane.setDefaultButton(okButton);
 	   }
 	   
@@ -127,43 +122,6 @@ public class PlaceTypePanel extends JPanel {
 				  }
 			  }
 	   }
-//	   private void SetValue1(String name)
-//	   {
-//		   for(int i = 0; i < group.size(); i ++)
-//			  {
-//				  if(group.get(i).getName().equals(name))
-//				  {
-//					  Vector<String> types = group.get(i).getTypes();
-//					  String s;
-//					  if(group.get(i).getPow())
-//						  s = "P(< ";
-//					  else s = "< ";
-//					  for(int j = 0; j < types.size(); j ++)
-//					  {
-//						  s += types.get(j);
-//						  if(j < types.size() - 1)
-//						  {
-//							  s += " ,";
-//						  }
-//					  }
-//					  if(group.get(i).getPow())
-//						  s += " >)";
-//					  else s += " >";
-//					  showMessage(s);
-//					  nameTextField.setText(group.get(i).getName());
-//					  if(dataType != null)
-//						  if(name.equals(dataType.getName()))
-//							  	isTypeCheckBox.setSelected(true);
-//					  powcheckbox.setSelected(group.get(i).getPow());
-//					  this.isTypeCheckBox.setSelected(false);
-//					  if(dataType != null)
-//						  if(dataType.getName().equals(name.trim()))
-//							  this.isTypeCheckBox.setSelected(true);
-//					  showdefine(group.get(i));
-//					  break;
-//				  }
-//			  }
-//	   }
 	   
 	   /** This method is called from within the constructor to
 	    * initialize the form.
@@ -399,17 +357,17 @@ public class PlaceTypePanel extends JPanel {
 	            	 return;
 	             }
 	        	 
-	             for(int i = 0; i < group.size(); i ++)
-	             {
-	            	 if(sele.trim().equals(group.get(i).getName().trim()))
-	            	 {
-	            		 if(group.get(i).getPow())
-	            		 {
-	            			 showWarning("Power Set can not be include");
-	            			 return;
-	            		 }
-	            	 }
-	             }
+//	             for(int i = 0; i < group.size(); i ++)
+//	             {
+//	            	 if(sele.trim().equals(group.get(i).getName().trim()))
+//	            	 {
+//	            		 if(group.get(i).getPow())
+//	            		 {
+//	            			 showWarning("Power Set can not be include");
+//	            			 return;
+//	            		 }
+//	            	 }
+//	             }
 	             String str = TypeTextField.getText().trim();
 	             if(str.contains("<")&& !str.endsWith(">") && !str.endsWith(")"))
 				   {
@@ -458,17 +416,17 @@ public class PlaceTypePanel extends JPanel {
 	    	            	 showWarning("Can not include itself");
 	    	            	 return;
 	    	             }
-	    	             for(int i = 0; i < group.size(); i ++)
-	    	             {
-	    	            	 if(sele.trim().equals(group.get(i).getName().trim()))
-	    	            	 {
-	    	            		 if(group.get(i).getPow())
-	    	            		 {
-	    	            			 showWarning("Power Set can not be include");
-	    	            			 return;
-	    	            		 }
-	    	            	 }
-	    	             }
+//	    	             for(int i = 0; i < group.size(); i ++)
+//	    	             {
+//	    	            	 if(sele.trim().equals(group.get(i).getName().trim()))
+//	    	            	 {
+//	    	            		 if(group.get(i).getPow())
+//	    	            		 {
+//	    	            			 showWarning("Power Set can not be include");
+//	    	            			 return;
+//	    	            		 }
+//	    	            	 }
+//	    	             }
 	    	             String str = TypeTextField.getText().trim();
 	    	             if(str.contains("<")&& !str.endsWith(">") && !str.endsWith(")"))
 	    				   {
@@ -667,11 +625,7 @@ public class PlaceTypePanel extends JPanel {
 		   
 		   if(this.createButton.getText().equals("Create"))
 		   {
-			   dt = new DataType(nameTextField.getText().trim(), str2, powcheckbox.isSelected(),group);
-//			   Vector<String> v = dt.getTypes();
-//			   for(int i = 0; i < v.size(); i++)
-//				   System.out.print(v.get(i) + " ");
-			   group.add(dt);
+			   dt = new DataType(nameTextField.getText().trim(), str2, powcheckbox.isSelected());
 			   dtPool.add(dt);
 			   dml.addElement(dt.getName());
 			   if(this.isTypeCheckBox.isSelected())

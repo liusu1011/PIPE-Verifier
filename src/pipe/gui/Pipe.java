@@ -27,7 +27,8 @@ public class Pipe {
    public static final int STOP         = 104;
    public static final int CONVERTZ3 = 88;
    
-   public static final int PLACE        = 105;
+   public static final int SIMPLEPLACE = 105;
+   public static final int POWERSETPLACE = 119;
    public static final int SYSPLACE 	= 205;
    public static final int IMMTRANS     = 106;
    public static final int TIMEDTRANS   = 114;

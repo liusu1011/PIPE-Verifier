@@ -14,91 +14,43 @@ public class DataType
 	
 	private int NumofElement;
 	private boolean isDef;
-	
-	private Vector<DataType> group;
-	
+		
 	public DataType()
 	{
 		ID = UUID.randomUUID().toString();
 		types = new Vector<String>();
 		Ntype = 0;
-		group = null;
 		isPow = false;
 		isDef = false;
 	}
 	
-	public DataType(String _name, String[] _types, boolean _isPow, Vector<DataType> _group)
+	public DataType(String _name, String[] _types, boolean _isPow)
 	{
 		ID = UUID.randomUUID().toString();
 		name = _name;
-		group = _group;
 		isPow = _isPow;
 		types = new Vector<String>();
 		defineType(_types);
 	}
 	
-	public void defineType(String[] t)
+	public boolean defineType(String[] t)
 	{
-		int num = 0;
-		types = new Vector<String>();
-		for(int i = 0; i < t.length; i ++)
+		for(int i=0;i<t.length;i++)
 		{
-			if(t[i].equals("string")||t[i].equals("int"))
+			if(!(t[i].equalsIgnoreCase("string") || t[i].equalsIgnoreCase("int")))
 			{
-				num ++;
+				System.out.println("definetype error: not string or int type input!");
+				return false;
 			}
-			else
-			{
-				if(group != null)
-					return;
-				for(int j = 0; j < group.size(); j ++)
-				{
-					if(group.get(j).getName().equals(t[i]))
-					{
-						num += group.get(j).getNumofElement();
-						break;
-					}
-				}
-			}
-			types.add( t[i]);
+			
+			types.add(t[i]);
 		}
-		NtranslateFrom(num);
 		isDef = true;
+		return true;
 	}
-	
-	public int NtranslateFrom( int num)
-	{
-		Ntype = 0;
-		for(int i = 0; i < types.size(); i ++)
-		{
-			if(types.get(i).equals("string"))
-			{
-				Ntype += Math.pow(2, num - i - 1);
-				//num --;
-			}
-			else if(!types.get(i).equals("int"))
-			{
-				for(int j = 0; j < group.size(); j ++)
-				{
-					if(group.get(j).ID.equals(types.get(i)))
-					{
-						Ntype += group.get(i).Ntype * Math.pow(2,num - i - group.get(i).getNumofElement());
-						//num -= group.get(i).getNumofElement();
-						break;
-					}
-				}
-			}
-		}
-		NumofElement = num;
-		return Ntype;
-	}
-	
 	
 	public int getTypebyIndex(int index)
 	{
-//		String binary = Integer.toBinaryString(Ntype);
-//		
-//		return Integer.parseInt(binary.substring(index, index+1)); 
 		int type = 0;
 		if(types.get(index).equals("int"))type = 0;
 		else if(types.get(index).equals("string"))type = 1;
@@ -135,16 +87,6 @@ public class DataType
 		return name;
 	}
 	
-	public void setGroup(Vector<DataType> _group)
-	{
-		group = _group;
-	}
-	
-	public Vector<DataType> getGroup()
-	{
-		return this.group;
-	}
-	
 	public void setTypes(Vector<String> _types)
 	{
 		types = _types;
@@ -163,16 +105,6 @@ public class DataType
 	public boolean getDef()
 	{
 		return isDef;
-	}
-	
-	public void setNtype(int _Ntype)
-	{
-		Ntype = _Ntype;
-	}
-	
-	public int getNtype()
-	{
-		return Ntype;
 	}
 
 }

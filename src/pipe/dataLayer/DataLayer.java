@@ -1193,6 +1193,7 @@ public class DataLayer
       String datatypeisDef = element.getAttribute("datatype-isDef");
       
       String abtokenisdef = element.getAttribute("isDef");
+      String type = element.getAttribute("");
       
       if (positionXTempStorage.length() > 0) {
          positionXInput = Double.valueOf(positionXTempStorage).doubleValue() *
@@ -1369,7 +1370,7 @@ public class DataLayer
     		  
     	  }
       }
-      place.setGroup(g_dt);
+//      place.setGroup(g_dt);
       
       if (parameterTempStorage.length() > 0) {
          if (existsMarkingParameter(parameterTempStorage)) { 
@@ -1387,49 +1388,49 @@ public class DataLayer
    }
    
    
-   private DataLayer createAgentNet(Element agentNetElement){
-	   DataLayer agentNet = new DataLayer();
-	   Element element = null;
-	   Node node = null;
-	   NodeList nodeList = null;
-	   
-	   nodeList = agentNetElement.getChildNodes();
-	   
-	   for(int i=0;i<nodeList.getLength();i++){
-		   node = nodeList.item(i);
-		   if(node instanceof Element){
-			   element = (Element)node;
-			   if ("labels".equals(element.getNodeName())){
-				   agentNet.addAnnotation(createAnnotation(element));
-			   }else if ("definition".equals(element.getNodeName())){
-	                  Note note = createParameter(element);
-	                  if (note instanceof MarkingParameter) {
-	                	  agentNet.addAnnotation((MarkingParameter)note);
-	                  } else if (note instanceof RateParameter) {
-	                	  agentNet.addAnnotation((RateParameter)note);
-	                  }
-	               } else if("place".equals(element.getNodeName())){ 
-	            	   agentNet.addPlace(createPlace(element));
-	               } else if ("transition".equals(element.getNodeName())){
-	            	   agentNet.addTransition(createTransition(element));
-	               } else if ("arc".equals(element.getNodeName())) {
-	                  Arc newArc = agentNet.createArc(element);
-	                  if (newArc instanceof InhibitorArc) {
-	                	  agentNet.addArc((InhibitorArc) newArc);
-	                  } else {
-	                	  agentNet.addArc((NormalArc) newArc);
-	                	  agentNet.checkForInverseArc((NormalArc) newArc);
-	                  }
-	               } else if ("stategroup".equals(element.getNodeName())) {
-	            	   agentNet.addStateGroup(createStateGroup(element));
-	               } else {
-	                  System.out.println("!" + element.getNodeName());
-	               }
-	            }
-	         }
-
-	   return agentNet;
-   }
+//   private DataLayer createAgentNet(Element agentNetElement){
+//	   DataLayer agentNet = new DataLayer();
+//	   Element element = null;
+//	   Node node = null;
+//	   NodeList nodeList = null;
+//	   
+//	   nodeList = agentNetElement.getChildNodes();
+//	   
+//	   for(int i=0;i<nodeList.getLength();i++){
+//		   node = nodeList.item(i);
+//		   if(node instanceof Element){
+//			   element = (Element)node;
+//			   if ("labels".equals(element.getNodeName())){
+//				   agentNet.addAnnotation(createAnnotation(element));
+//			   }else if ("definition".equals(element.getNodeName())){
+//	                  Note note = createParameter(element);
+//	                  if (note instanceof MarkingParameter) {
+//	                	  agentNet.addAnnotation((MarkingParameter)note);
+//	                  } else if (note instanceof RateParameter) {
+//	                	  agentNet.addAnnotation((RateParameter)note);
+//	                  }
+//	               } else if("place".equals(element.getNodeName())){ 
+//	            	   agentNet.addPlace(createPlace(element));
+//	               } else if ("transition".equals(element.getNodeName())){
+//	            	   agentNet.addTransition(createTransition(element));
+//	               } else if ("arc".equals(element.getNodeName())) {
+//	                  Arc newArc = agentNet.createArc(element);
+//	                  if (newArc instanceof InhibitorArc) {
+//	                	  agentNet.addArc((InhibitorArc) newArc);
+//	                  } else {
+//	                	  agentNet.addArc((NormalArc) newArc);
+//	                	  agentNet.checkForInverseArc((NormalArc) newArc);
+//	                  }
+//	               } else if ("stategroup".equals(element.getNodeName())) {
+//	            	   agentNet.addStateGroup(createStateGroup(element));
+//	               } else {
+//	                  System.out.println("!" + element.getNodeName());
+//	               }
+//	            }
+//	         }
+//
+//	   return agentNet;
+//   }
    
    /**
     * Creates a Arc object from a Arc DOM Element

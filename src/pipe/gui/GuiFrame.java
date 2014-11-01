@@ -105,7 +105,7 @@ public class GuiFrame
    private GridAction toggleGrid;
    private ZoomAction zoomOutAction, zoomInAction, zoomAction;
    private DeleteAction deleteAction;
-   private TypeAction annotationAction, arcAction, inhibarcAction, placeAction,
+   private TypeAction annotationAction, arcAction, inhibarcAction, simplePlaceAction, powersetPlaceAction,
            transAction, timedtransAction, tokenAction, selectAction, rateAction,
            markingAction, deleteTokenAction, dragAction;
    private AnimateAction startAction, stepforwardAction, stepbackwardAction,
@@ -326,8 +326,10 @@ public class GuiFrame
       addMenuItem(drawMenu, selectAction =
               new TypeAction("Select", Pipe.SELECT, "Select components","S",true));
       drawMenu.addSeparator();
-      addMenuItem(drawMenu, placeAction =
-              new TypeAction("Place", Pipe.PLACE, "Add a place","P",true));
+      addMenuItem(drawMenu, simplePlaceAction =
+              new TypeAction("SimplePlace", Pipe.SIMPLEPLACE, "Add a simple place","P",true));
+      addMenuItem(drawMenu, powersetPlaceAction =
+              new TypeAction("PowersetPlace", Pipe.POWERSETPLACE, "Add a powerset place","PO",true));
       addMenuItem(drawMenu, transAction =
               new TypeAction("Immediate transition", Pipe.IMMTRANS,
               "Add an immediate transition","I",true));
@@ -474,7 +476,8 @@ public class GuiFrame
       toolBar.addSeparator();
       addButton(drawingToolBar,selectAction);
       drawingToolBar.addSeparator();
-      addButton(drawingToolBar,placeAction);//Add Draw Menu Buttons
+      addButton(drawingToolBar, simplePlaceAction);//Add Draw Menu Buttons
+      addButton(drawingToolBar, powersetPlaceAction);
       addButton(drawingToolBar,transAction);
 //      addButton(drawingToolBar,timedtransAction);
       addButton(drawingToolBar,arcAction);
@@ -576,7 +579,8 @@ public class GuiFrame
       saveAction.setEnabled(status);
       saveAsAction.setEnabled(status);
       
-      placeAction.setEnabled(status);
+      simplePlaceAction.setEnabled(status);
+      powersetPlaceAction.setEnabled(status);
       arcAction.setEnabled(status);
       inhibarcAction.setEnabled(status);
       annotationAction.setEnabled(status);
@@ -983,7 +987,8 @@ public class GuiFrame
    
    public void restoreMode() {
       mode = prev_mode;
-      placeAction.setSelected(mode == Pipe.PLACE);
+      simplePlaceAction.setSelected(mode == Pipe.SIMPLEPLACE);
+      powersetPlaceAction.setSelected(mode == Pipe.POWERSETPLACE);
       transAction.setSelected(mode == Pipe.IMMTRANS);
       timedtransAction.setSelected(mode == Pipe.TIMEDTRANS);
       arcAction.setSelected(mode == Pipe.ARC);
@@ -1275,8 +1280,11 @@ public class GuiFrame
          this.setSelected(true);
          
          // deselect other actions
-         if (this != placeAction) {
-            placeAction.setSelected(false);
+         if (this != simplePlaceAction) {
+        	 simplePlaceAction.setSelected(false);
+         }
+         if (this != powersetPlaceAction) {
+        	 powersetPlaceAction.setSelected(false);
          }
          if (this != transAction) {
             transAction.setSelected(false);

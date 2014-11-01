@@ -1,6 +1,15 @@
 package pipe.dataLayer;
 
+import java.awt.Container;
 import java.util.Vector;
+
+import javax.swing.BoxLayout;
+
+import pipe.gui.CreateGui;
+import pipe.gui.Grid;
+import pipe.gui.Pipe;
+import pipe.gui.Zoomer;
+import pipe.gui.widgets.*;
 
 /**
  * PowersetPlace can have a list of tokens.
@@ -37,9 +46,31 @@ public class PowersetPlace extends Place {
 		   }
 	   }
 	   
-	   public Vector<Token> getToken()
+	   public Token getToken()
+	   {
+		   if(!tokens.isEmpty())
+			   return tokens.firstElement();
+		   else return null;
+	   }
+	   
+	   public Token getToken(int index)
+	   {
+		   if(!tokens.isEmpty())
+		   {
+			   return tokens.get(index);
+		   }
+		   else
+			   return null;
+	   }
+	   
+	   public Vector<Token> getTokens()
 	   {
 		   return tokens;
+	   }
+	   
+	   public int getTokensCount() 
+	   {
+		   return tokens.size();
 	   }
 	   
 	   public boolean addToken(BasicType[] bt)
@@ -58,10 +89,24 @@ public class PowersetPlace extends Place {
 		   return false;
 	   }
 	   
+	   public boolean deleteToken(int index)
+	   {
+		   if(index < tokens.size())
+		   {
+			   tokens.removeElementAt(index);
+			   return true;
+		   }
+		   return false;
+	   }
 	   
 	   public boolean deleteToken(Token _token)
 	   {
 		   return tokens.remove(_token);
+	   }
+	   
+	   public void emptyTokens()
+	   {
+		   tokens = null;
 	   }
 	   
 	   public boolean tailToken(){
@@ -73,5 +118,11 @@ public class PowersetPlace extends Place {
 			  }
 			   return false;
 	   }
-
+	   
+	   public boolean receiveToken(Token t)
+	   {
+		   this.tokens.add(t);
+		   return true;
+	   }
+	   
 }

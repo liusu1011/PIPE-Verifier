@@ -33,7 +33,9 @@ import pipe.dataLayer.Parameter;
 import pipe.dataLayer.PetriNetObject;
 import pipe.dataLayer.Place;
 import pipe.dataLayer.PlaceTransitionObject;
+import pipe.dataLayer.PowersetPlace;
 import pipe.dataLayer.RateParameter;
+import pipe.dataLayer.SimplePlace;
 import pipe.dataLayer.Transition;
 import pipe.gui.handler.AnimationHandler;
 import pipe.gui.handler.AnnotationNoteHandler;
@@ -478,15 +480,31 @@ public class GuiView
       }
       
       
-      private PlaceTransitionObject newPlace(Point p){
-         p = adjustPoint(p, view.getZoom());
-         
-         pnObject = new Place(Grid.getModifiedX(p.x), Grid.getModifiedY(p.y));
-         model.addPetriNetObject(pnObject);
-         view.addNewPetriNetObject(pnObject);
-         return (PlaceTransitionObject)pnObject;
-      }
+//      private PlaceTransitionObject newPlace(Point p){
+//         p = adjustPoint(p, view.getZoom());
+//         pnObject = new Place(Grid.getModifiedX(p.x), Grid.getModifiedY(p.y));
+//         model.addPetriNetObject(pnObject);
+//         view.addNewPetriNetObject(pnObject);
+//         return (PlaceTransitionObject)pnObject;
+//      }
 
+      private PlaceTransitionObject newSimplePlace(Point p)
+      {
+    	  p = adjustPoint(p, view.getZoom());
+          pnObject = new SimplePlace(Grid.getModifiedX(p.x), Grid.getModifiedY(p.y));
+          model.addPetriNetObject(pnObject);
+          view.addNewPetriNetObject(pnObject);
+          return (PlaceTransitionObject)pnObject;
+      }
+      
+      private PlaceTransitionObject newPowersetPlace(Point p)
+      {
+    	  p = adjustPoint(p, view.getZoom());
+          pnObject = new PowersetPlace(Grid.getModifiedX(p.x), Grid.getModifiedY(p.y));
+          model.addPetriNetObject(pnObject);
+          view.addNewPetriNetObject(pnObject);
+          return (PlaceTransitionObject)pnObject;
+      }
       
       private PlaceTransitionObject newTransition(Point p, boolean timed){
          p = adjustPoint(p, view.getZoom());
@@ -511,12 +529,13 @@ public class GuiView
       public void mousePressed(MouseEvent e){
          Point start = e.getPoint();
          Point p;
+         PlaceTransitionObject pto = null;
          
          if (SwingUtilities.isLeftMouseButton(e)) {
             int mode = app.getMode();
             switch (mode){
-               case Pipe.PLACE:
-                  PlaceTransitionObject pto = newPlace(e.getPoint());
+               case Pipe.SIMPLEPLACE:
+                  pto = newSimplePlace(e.getPoint());
                   getUndoManager().addNewEdit(
                           new AddPetriNetObjectEdit(pto, view, model));
                   if (e.isControlDown()) {
@@ -524,6 +543,15 @@ public class GuiView
                      pnObject.dispatchEvent(e);
                   }
                   break; 
+               case Pipe.POWERSETPLACE:
+            	   pto = newPowersetPlace(e.getPoint());
+                   getUndoManager().addNewEdit(
+                           new AddPetriNetObjectEdit(pto, view, model));
+                   if (e.isControlDown()) {
+                      app.setFastMode(Pipe.FAST_TRANSITION);
+                      pnObject.dispatchEvent(e);
+                   }
+                   break; 
                case Pipe.IMMTRANS:
                case Pipe.TIMEDTRANS:
                   boolean timed = (mode == Pipe.TIMEDTRANS ? true : false);
@@ -632,33 +660,33 @@ public class GuiView
                   }
                   break;
                   
-               case Pipe.FAST_PLACE:
-                  if (e.isMetaDown() || metaDown) { // provisional
-                     if (createArc != null) {
-                        addPoint(createArc, e);
-                     }
-                  } else {
-                     if (createArc == null) {
-                        break;
-                     }                     
-                     // user has not clicked on an old PetriNetObject, so
-                     // a new PNO must be created
-                     view.newPNO = true;
-
-                     createPTO = newPlace(e.getPoint());
-                     getUndoManager().addNewEdit(
-                             new AddPetriNetObjectEdit(createPTO, view, model));
-                     pnObject.getMouseListeners()[0].mouseReleased(e);
-                     if (e.isControlDown()){
-                        // keep "fast mode"
-                        app.setMode(Pipe.FAST_TRANSITION);
-                        pnObject.getMouseListeners()[0].mousePressed(e);
-                     } else {
-                        //exit "fast mode"
-                        app.resetMode();
-                     }
-                  }
-                  break;
+//               case Pipe.FAST_PLACE:
+//                  if (e.isMetaDown() || metaDown) { // provisional
+//                     if (createArc != null) {
+//                        addPoint(createArc, e);
+//                     }
+//                  } else {
+//                     if (createArc == null) {
+//                        break;
+//                     }                     
+//                     // user has not clicked on an old PetriNetObject, so
+//                     // a new PNO must be created
+//                     view.newPNO = true;
+//
+//                     createPTO = newPlace(e.getPoint());
+//                     getUndoManager().addNewEdit(
+//                             new AddPetriNetObjectEdit(createPTO, view, model));
+//                     pnObject.getMouseListeners()[0].mouseReleased(e);
+//                     if (e.isControlDown()){
+//                        // keep "fast mode"
+//                        app.setMode(Pipe.FAST_TRANSITION);
+//                        pnObject.getMouseListeners()[0].mousePressed(e);
+//                     } else {
+//                        //exit "fast mode"
+//                        app.resetMode();
+//                     }
+//                  }
+//                  break;
                   
                case Pipe.FAST_TRANSITION:
                   if (e.isMetaDown() || metaDown) { // provisional
