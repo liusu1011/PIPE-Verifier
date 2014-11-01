@@ -6,11 +6,13 @@ import java.util.Collections;
 import java.util.Vector;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.ListSelectionModel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.UIManager;
 import javax.swing.event.ChangeListener;
 
 import pipe.dataLayer.BasicType;
@@ -18,12 +20,9 @@ import pipe.dataLayer.DataLayer;
 import pipe.dataLayer.DataType;
 import pipe.dataLayer.MarkingParameter;
 import pipe.dataLayer.Place;
+import pipe.gui.CreateGui;
 import pipe.gui.GuiView;
 
-/**
- *
- * @author  pere
- */
 public class PlaceEditorPanel 
         extends javax.swing.JPanel {
    
@@ -194,6 +193,11 @@ public class PlaceEditorPanel
       placeEditorPanel.add(capacityLabel, gridBagConstraints);
       
       capacityTextField.setText(Integer.toString(place.getCapacity()));
+      if(!place.getDataType().getPow())
+      {
+    	  capacityTextField.setEditable(false);
+    	  capacityTextField.setBackground(java.awt.Color.GRAY);
+      }
       gridBagConstraints = new java.awt.GridBagConstraints();
       gridBagConstraints.gridwidth = 1;
       gridBagConstraints.gridx = 1;
@@ -367,19 +371,6 @@ public class PlaceEditorPanel
          doOK();
       }
    }//GEN-LAST:event_okButtonKeyPressed
-
-   /**
-    * for large scale tokens input
-    */
-   private void doadd1()
-   {
-	   for(int k=0;k<20;k++){
-		   newtoken.setText("["+k+"]");
-//		   newtoken.setText("["+k+","+k+"]");
-		   doadd();
-	   }
-	   
-   }
    
    private void doadd()
    {
@@ -455,7 +446,17 @@ public class PlaceEditorPanel
    }
    
    private void AddButtonHandler(java.awt.event.ActionEvent evt){
+	   if(!place.getDataType().getPow() && place.getToken().getTokenCount()>0)
+	   {
+		   JOptionPane.showMessageDialog(CreateGui.getApp(), "Token count exceeds capacity!", "Capacity Limit Violation", JOptionPane.ERROR_MESSAGE);
+		   return;
+	   }
 	   doadd();
+	   if(place.getDataType().getPow())
+	   {
+		   this.capacity++;
+	   }
+	   capacityTextField.setText(Integer.toString(capacity));
 	   dml.clear();
 	   inittype();
 	   initToken();

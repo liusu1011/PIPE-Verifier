@@ -185,63 +185,20 @@ public class Animator {
 	      }
 	   }
    
-   
-//   public void doHighLevelRandomFiringexpired() {
-////      DataLayer data = CreateGui.currentPNMLData();
-////      Transition t = data.fireRandomTransition(); //revisar
-////      //CreateGui.getAnimationHistory().clearStepsForward(); //ok - igual
-////      //removeStoredTransitions(); //ok - igual
-////      if (t != null) {
-////         fireTransition(t); //revisar
-////         //unhighlightDisabledTransitions();
-////         //highlightEnabledTransitions();
-////      } else {
-////         CreateGui.getApp().getStatusBar().changeText( 
-////                 "ERROR: No transition to fire." );
-////      }
-//	   ArrayList tempTrans = new ArrayList();
-//	   DataLayer data = CreateGui.currentPNMLData();
-//	   for(int i=0;i<data.getTransitionsCount();i++){
-//		   if(data.checkTransitionIsEnabled(data.getTransition(i))){
-//			   tempTrans.add(data.getTransition(i));
-//		   }		   
-//	   }
-//	   
-////	   for(Arc a : getArcInList()
-//	   
-//	   if(!tempTrans.isEmpty()){
-//		   fireHighLevelTransition(data.randomPickTransition(tempTrans));
-//   
-//	   }else{
-//		   CreateGui.getApp().getStatusBar().changeText("ERROR: No transition to fire.");
-//	   }
-//	   tempTrans.clear();
-//
-//   }
-   
    public void doHighLevelRandomFiring(){
 	   DataLayer data = CreateGui.currentPNMLData();
-	   
-//	   System.out.println("unknown listing before fire action:");
-//	   for(int k=0;k<data.unkowns.size();k++){
-//		   System.out.println(data.unkowns.get(k).getName());
-//	   }
-//	   System.out.println("disabled listing before fire action:");
-//	   for(int d=0;d<data.disabled.size();d++){
-//		   System.out.println(data.disabled.get(d).getName());
-//	   }
-//	   
-//	   System.out.println("---------------------------------");
-	   
+	   if(data.unkowns.isEmpty()) {
+		   JOptionPane.showMessageDialog(CreateGui.getApp(), "None of the transtions are enabled!");
+	   }
 	   while(!data.unkowns.isEmpty()){
 		   Transition tCandidate = data.randomPickTransition(data.unkowns);
 		   data.unkowns.remove(tCandidate);
-		   if(!data.checkStatus(tCandidate)){
+		   if(!tCandidate.checkStatusAndFireWhenEnabled()){
 			   data.disabled.add(tCandidate);
-			   System.out.println("Transition: "+tCandidate.getName()+" is not enabled");
+			   System.out.println("Animator.doHighLevelRandomFiring Transition: "+tCandidate.getName()+" is not enabled");
 		   }else{
-			   fireHighLevelTransition(tCandidate);
-			   System.out.println("Transition: "+tCandidate.getName()+" is fired");
+			   fireHighLevelTransitionInGUI(tCandidate);
+			   System.out.println("Animator.doHighLevelRandomFiring Transition: "+tCandidate.getName()+" is fired");
 			   data.unkowns.add(tCandidate);
 			   
 			   Iterator<Transition> iDepTrans = tCandidate.getDependentTrans().iterator();
@@ -255,23 +212,7 @@ public class Animator {
 			   break;
 		   }
 		   
-	   }
-	   
-	   
-	   
-	   
-	   
-//	   System.out.println("unknown listing before fire action:");
-//	   for(int j=0;j<data.unkowns.size();j++){
-//		   System.out.println(data.unkowns.get(j).getName());
-//	   }
-//	   System.out.println("disabled listing before fire action:");
-//	   for(int s=0;s<data.disabled.size();s++){
-//		   System.out.println(data.disabled.get(s).getName());
-//	   }
-//	   
-	   
-	   System.out.println("None of transition can be enabled!!!");
+	   }	   
    }
      
    
@@ -334,34 +275,15 @@ public class Animator {
 	      }
 	   }
 
-   
-   public void fireHighLevelTransition(Transition transition){
-//      Animator animator = CreateGui.getAnimator();
-//
-//      CreateGui.getAnimationHistory().addHistoryItem(transition.getName());
-//      CreateGui.currentPNMLData().fireTransition(transition);
-//      CreateGui.currentPNMLData().setEnabledTransitions();
-//      animator.highlightEnabledTransitions();
-//      animator.unhighlightDisabledTransitions();
-//      if (count == firedTransitions.size()) {
-//         firedTransitions.add(transition);
-//         count++;
-//      } else {
-//         removeStoredTransitions(count + 1);
-//         firedTransitions.set(count++, transition);                  
-//         
-//      }
-      
-      /**
-       * replaced by Su Liu
-       */
+   /**
+    * fire the transition in GUI
+    * @param transition
+    */
+   public void fireHighLevelTransitionInGUI(Transition transition){
+
       Animator animator = CreateGui.getAnimator();
 
       CreateGui.getAnimationHistory().addHistoryItem(transition.getName());
-//      CreateGui.currentPNMLData().fireSelectedTransition(transition);
-//      CreateGui.currentPNMLData().setEnabledTransitions();
-//      animator.highlightEnabledTransitions();
-//      animator.unhighlightDisabledTransitions();
       transition.setHighlighted(true);
       transition.repaint();
       if (count == firedTransitions.size()) {

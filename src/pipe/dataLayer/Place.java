@@ -649,9 +649,7 @@ public class Place
    
    public void deleteToken()
    {
-//	   token.listToken.clear();
 	   int size = token.listToken.size();
-	   System.out.println("dddddddddddddddddddddsize: "+size);
 	   for(int i=0;i<size;i++){
 		   token.listToken.remove(0);
 		   System.out.println("the size now!!!!: "+size);

@@ -16,6 +16,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import javax.swing.JOptionPane;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -1035,122 +1037,16 @@ public class Transition
 	   return arcOutVarList;
    }
    
-   /**
-    * get token from places in placeInList with the defined type from label
-    * to symbol table
-    * Parameter mode: true->fire_mode, false->check_mode
-    */
-   public boolean getTokenExpired(boolean mode, int[] getTokIndex){
-	   /**
-	    * Below is real code
-	    */
-	   //Get token from arcIn Places;
-	   for(Arc ai : getArcInList()){
-		   Place pi = (Place)(ai.getSource());
-//		   if(!mode){
-//		   System.out.println("********InPlaceToken************");
-//		   for(Token tp:pi.getToken().listToken){
-//			   System.out.println(tp.Tlist.firstElement().Tint);
-//		   }
-//		   System.out.println("********FinishGetToken************");
-//		   }
-		   
-		   //check if the place token is an empty place; 
-		   if(pi.getToken().listToken.isEmpty())return false;
-		   /**
-		    * if it is powerset, then get abToken;
-		    * else get the first token in abToken;
-		    */
-		   if(pi.getToken().getDataType().getPow()){
-			   //When firing a transition, clear the abToken in place (powerset) affect the abToken already insert to symTable of the transition, which is not expected.
-			   abToken TOK= new abToken(pi.getToken().getDataType());
-			   TOK.listToken.addAll(pi.getToken().listToken);
-			   symTable.insert(ai.getVar(), TOK);
-			   if(mode){
-				   pi.getToken().listToken.clear();
-			   }
-		   }else{
-			   symTable.insert(ai.getVar(), pi.getToken().listToken.firstElement());
-			   if(mode){
-				   pi.getToken().listToken.remove(pi.getToken().listToken.firstElement());
-			   }
-		   }
-		   
-	   }
-	   
-	   //Get Token from arcOut Places;
-	   for(Arc ao : getArcOutList()){
-		   Place po = (Place)(ao.getTarget());
-//		   if(!mode){
-//		   System.out.println("********getToken************");
-//		   for(Token tp:p.getToken().listToken){
-//			   System.out.println(tp.Tlist.firstElement().Tint);
-//		   }
-//		   System.out.println("********FinishGetToken************");
-//		   }
-		   /**
-		    * if it is powerset, then get abToken;
-		    * else get the first token in abToken;
-		    */
-		   if(po.getDataType().getPow()){
-			   abToken tok = new abToken(po.getDataType());
-			   symTable.insert(ao.getVar(), tok);
-		   }else{
-			   Token tok = new Token(po.getDataType());
-			   tok.defineTlist(po.getDataType());
-			   symTable.insert(ao.getVar(), tok);
-		   }
-	   }
-	   
-	   
-	   
-	   
-	   
-	   /**
-	    * The code below just for testing.
-	    */
-//	   String[] str = {"int"};
-//	   String key1 = "a";
-//	   DataType type1 = new DataType("type1",str,true,null);
-//	   Token tok1 = new Token(type1);
-//	   BasicType bt = new BasicType();
-//	   bt.kind = 0;
-//	   bt.Tint = 5;
-//	   bt.Tstring = "";
-//	   tok1.Tlist.add(bt);
-//	   this.symTable.insert(key1, tok1);
-//	   
-//	   String[] str2 = {"string"};
-//	   String key2 = "b";
-//	   DataType type2 = new DataType("type2",str2,true,null);
-//	   Token tok2 = new Token(type2);
-//	   BasicType bt2 = new BasicType();
-//	   bt2.kind = 1;
-//	  // bt.Tint = 5;
-//	   bt2.Tstring = "pipe";
-//	   tok2.Tlist.add(bt2);
-//	   this.symTable.insert(key2, tok2);
-	   return true;
-
-   }
-   
-   
    public boolean getToken(boolean mode, int[] tokCombs){
 	  int pNum = 0;
 	   for(Arc ai : getArcInList()){
 		   Place pi = (Place)(ai.getSource());
-		   
-		   //check if the place token is an empty place; 
-		   if(pi.getToken().listToken.isEmpty())return false;
 		   /**
-		    * if it is powerset, then get abToken;
-		    * else get the first token in abToken;
+		    * if it is simple place, then get first token;
+		    * else get the specific token from tokenlist
 		    */
-		   if(pi.getToken().getDataType().getPow()){
-			   //When firing a transition, clear the abToken in place (powerset) affect the abToken already insert to symTable of the transition, which is not expected.
-			   abToken TOK= new abToken(pi.getToken().getDataType());
-			   TOK.listToken.addAll(pi.getToken().listToken);
-			   symTable.insert(ai.getVar(), TOK);
+		   if(!pi.getToken().getDataType().getPow()){
+			   symTable.insert(ai.getVar(), pi.getToken().listToken.firstElement());
 			   if(mode){
 				   pi.getToken().listToken.clear();
 			   }
@@ -1165,25 +1061,9 @@ public class Transition
 	   
 	   for(Arc ao : getArcOutList()){
 		   Place po = (Place)(ao.getTarget());
-//		   if(!mode){
-//		   System.out.println("********getToken************");
-//		   for(Token tp:p.getToken().listToken){
-//			   System.out.println(tp.Tlist.firstElement().Tint);
-//		   }
-//		   System.out.println("********FinishGetToken************");
-//		   }
-		   /**
-		    * if it is powerset, then get abToken;
-		    * else get the first token in abToken;
-		    */
-		   if(po.getDataType().getPow()){
-			   abToken tok = new abToken(po.getDataType());
-			   symTable.insert(ao.getVar(), tok);
-		   }else{
-			   Token tok = new Token(po.getDataType());
-			   tok.defineTlist(po.getDataType());
-			   symTable.insert(ao.getVar(), tok);
-		   }
+		   Token tok = new Token(po.getDataType());
+		   tok.defineTlist(po.getDataType());
+		   symTable.insert(ao.getVar(), tok);
 	   }
 	   return true;  
    }
@@ -1222,43 +1102,95 @@ public class Transition
 			   if(s.getKey().equals(a.getVar())){
 				   if(s.getBinder() instanceof Token){
 					   p.getToken().listToken.add((Token)s.getBinder());
-				   }else if(s.getBinder() instanceof abToken){
-					   p.setToken((abToken)s.getBinder());
 				   }
 			   }
 		   }
-//			   System.out.println("********OutPlaceToken************");
-//			   for(Token tp:p.getToken().listToken){
-//				   System.out.println(tp.Tlist.firstElement().Tint);
-//			   }
-//			   System.out.println("********FinishSendToken************");
-		   
-	   }
-	   
+	   	}
 	   }
    }
    
-// public boolean TestCheckTransitionIsEnabled(){
-//   boolean b = this.getToken(false);
-//   if(b){
-//   String formula = this.getFormula();
-//   ErrorMsg errorMsg = new ErrorMsg(formula);	   
-//   Parse p = new Parse(formula, errorMsg);
-//   Sentence s = p.absyn;
-//   s.accept(new Interpreter(errorMsg, this, 0));
-//   
-//   if(s.bool_val){	   
-//	   System.out.println("This Transition is enabled!!!");
-//	   return true;
-//   }else{
-//	   System.out.println("Not enabled!!!");
-//	   return false;
-//   }
-//   }else{
-//	   System.out.println("Get Token Failure!!!");
-//	   return false;
-//   }
-//}
+   public void tokCombinations(ArrayList<Place> placeList, ArrayList tokCombs, int loopCount, int[] tokens){
+	   if(loopCount == placeList.size()){
+		   int[] pTok = new int[placeList.size()];
+		   System.arraycopy(tokens, 0, pTok, 0, placeList.size());
+		   tokCombs.add(pTok);
+	   }else{
+		   int numOfTok = placeList.get(loopCount).getToken().listToken.size();
+		   boolean powerset = placeList.get(loopCount).getToken().getDataType().getPow();
+		   for(int i=0;i<numOfTok;i++){
+			   if(powerset){
+				   tokens[loopCount] = 1;
+			   }else tokens[loopCount] = i;
+			   
+			   tokCombinations(placeList,tokCombs,loopCount+1,tokens);
+		   }
+	   } 
+   }
+   
+   public boolean checkStatusAndFireWhenEnabled(){
+	   boolean status = false;
+	   
+	   int numOfPlaces = this.getPlaceInList().size();
+	   int loopCount = 0;
+	   
+	   int[] tokens = new int[numOfPlaces];
+	   ArrayList tokCombs = new ArrayList();
+	   
+	   //check if all input places emptyness
+	   for(Place p : getPlaceInList()){
+		   if(p.getToken().listToken.isEmpty()){
+			   System.out.println("Transition.checkStatusAndFire: input place lack of token.");
+			   return false;
+		   }
+	   }
+	   //check if all output places has room since simple place may be already full
+	   for(Place p: this.getPlaceOutList())
+	   {
+		   if(!p.getDataType().getPow())
+		   {
+			   if(p.getToken().getTokenCount()>0)
+				   return false;
+		   }
+	   }
+	   
+	   //calculate combinations
+	   tokCombinations(getPlaceInList(),tokCombs,loopCount,tokens);
+	   
+	   //check
+	   int[] comb = new int[numOfPlaces];
+	   
+	   Iterator iTokCombs = tokCombs.iterator();
+	   while(iTokCombs.hasNext() && !status){
+		   
+		   comb = (int[])iTokCombs.next();
+		   
+		   boolean getTokBool = this.getToken(false, comb);
+		   if(getTokBool){
+		   String formula = this.getFormula();
+		   ErrorMsg errorMsg = new ErrorMsg(formula);	   
+		   Parse p = new Parse(formula, errorMsg);
+		   Sentence s = p.absyn;
+		   s.accept(new Interpreter(errorMsg, this, 0));
+		   status = s.bool_val;
+		   this.getTransSymbolTable().cleanTable();
+		   }
+	   }
+	   
+	   //fire
+	   if(status){
+		   this.getToken(true, comb);
+		   String formula = this.getFormula();
+		   ErrorMsg errorMsg = new ErrorMsg(formula);	   
+		   Parse p = new Parse(formula, errorMsg);
+		   Sentence s = p.absyn;
+		   s.accept(new Interpreter(errorMsg, this, 1));
+		   
+		   this.sendToken();
+		   this.getTransSymbolTable().cleanTable();
+	   }
+	   
+	   return status;
+   }
    
    public SymbolTable getTransSymbolTable(){
 	   return this.symTable;
@@ -1281,6 +1213,44 @@ public class Transition
 	   return dependentTrans;
    }
    
-   
+   public boolean checkIsReadyToDefine()
+   {
+	   boolean isReady = true;
+	   //check connnected arcs
+	   for(Arc a:this.getArcList())
+	   {
+		   if(a.getVar().equals(""))
+		   {
+		    	  JOptionPane.showMessageDialog(CreateGui.getApp(), 
+		    			  "This transition is not ready to specify, please define Arc:"+a.getName()+"'s variable!", 
+		    			  "Unable To Specify Violation", JOptionPane.ERROR_MESSAGE);
+		    	  return false;
+		   }
+	   }
+	   //connected places
+	   for(Place pi:this.getPlaceInList())
+	   {
+		   if(pi.getDataType() == null)
+		   {
+		    	  JOptionPane.showMessageDialog(CreateGui.getApp(), 
+		    			  "This transition is not ready to specify, please define place:"+pi.getName()+"'s datatype!", 
+		    			  "Unable To Specify Violation", JOptionPane.ERROR_MESSAGE);
+		    	  return false;
+		   }
+	   }
+	   
+	   for(Place po:this.getPlaceOutList())
+	   {
+		   if(po.getDataType() == null)
+		   {
+		    	  JOptionPane.showMessageDialog(CreateGui.getApp(), 
+		    			  "This transition is not ready to specify, please define place:"+po.getName()+"'s place type!", 
+		    			  "Unable To Specify Violation", JOptionPane.ERROR_MESSAGE);
+		    	  return false;
+		   }
+	   }
+	   
+	   return isReady;
+   }
    
 }

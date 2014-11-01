@@ -54,53 +54,12 @@ public class EditFormulaAction
    
    public void actionPerformed(ActionEvent e){
 	   
-      
+      if(!myTransition.checkIsReadyToDefine())
+      {
+    	  return;
+      }
       m_dlg = new FormulaDialog(myTransition);
       m_dlg.setVisible(true);
-//      this.setSize(scrollPane.getWidth() + scrollPane.getX() + 20,
-//                   closeBut.getY() + closeBut.getHeight() + 45);
-//      setModal(true);
-//      m_dlg.m_Panel.m_textField.setText(currentFormula);
-//      String input = m_dlg.m_Panel.m_textField.getText();
-      
-//      String input = JOptionPane.showInputDialog(
-//               "Add/Edit Formula:", currentFormula);
-      
-//      if ( input == null ) {
-//         return;		// do nothing if the user clicks "Cancel"
-//      }
-//      
-//      String newFormula = input;
-//      
-//      if(newFormula != currentFormula){
-//    	  CreateGui.getView().getUndoManager().addNewEdit(myTransition.setFormula(newFormula));
-    	  
-//      }
-//      m_guardEdit  = new TransitionGuardEdit(myTransition);
-//      if(newFormula != currentFormula){
-//    	  CreateGui.getView().getUndoManager().addNewEdit(myTransition.setFormula(newFormula));
-//    	  //   	  myTransition.setFormula(newFormula);
-//      }
-      
-//      try {
-//         int newWeighting = Integer.parseInt(input);
-//         if (newWeighting < 1) {
-//            JOptionPane.showMessageDialog(
-//                    contentPane, "Weighting cannot be less than 1. Please re-enter");
-//         } else if (newWeighting != currentWeighting){
-//            CreateGui.getView().getUndoManager().addNewEdit(
-//                    myTransition.setWeight(newWeighting));
-//         }      
-//      } catch (NumberFormatException nfe) {
-//         JOptionPane.showMessageDialog(contentPane, 
-//                 "Please enter a positive integer greater than 0.", 
-//                 "Invalid entry", JOptionPane.ERROR_MESSAGE);
-//      } catch (Exception exc) {
-//         exc.printStackTrace();
-//         JOptionPane.showMessageDialog(contentPane, 
-//                 "Please enter a positive integer greater than 0.", 
-//                 "Invalid entry", JOptionPane.ERROR_MESSAGE);
-//      }
    }
    
 }

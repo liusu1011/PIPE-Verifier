@@ -80,14 +80,16 @@ public class TransitionHandler
       menuItem.setText("Add/Edit Formula");
       popup.insert(menuItem, index++);
       
-      
-      menuItem = new JMenuItem(new ShowHideInfoAction((Transition)myObject));
-      if (((Transition)myObject).getAttributesVisible() == true){
-         menuItem.setText("Hide Attributes");
-      } else {
-         menuItem.setText("Show Attributes");
-      }
-      popup.insert(menuItem, index++);      
+      /**
+       * comment out since not using in PIPE+Verifier
+       */
+//      menuItem = new JMenuItem(new ShowHideInfoAction((Transition)myObject));
+//      if (((Transition)myObject).getAttributesVisible() == true){
+//         menuItem.setText("Hide Attributes");
+//      } else {
+//         menuItem.setText("Show Attributes");
+//      }
+//      popup.insert(menuItem, index++);      
       popup.insert(new JPopupMenu.Separator(), index);
 
       return popup;

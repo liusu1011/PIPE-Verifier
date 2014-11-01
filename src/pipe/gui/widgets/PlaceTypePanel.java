@@ -53,9 +53,6 @@ public class PlaceTypePanel extends JPanel {
 	      dml = new DefaultListModel();
 	      
 	      initComponents();
-//	      if(dataType != null)
-//	    	  SetValue(dataType.getName());
-//	      showdefine(dataType);
 	      rootPane.setDefaultButton(okButton);
 	   }
 	   
@@ -127,43 +124,6 @@ public class PlaceTypePanel extends JPanel {
 				  }
 			  }
 	   }
-//	   private void SetValue1(String name)
-//	   {
-//		   for(int i = 0; i < group.size(); i ++)
-//			  {
-//				  if(group.get(i).getName().equals(name))
-//				  {
-//					  Vector<String> types = group.get(i).getTypes();
-//					  String s;
-//					  if(group.get(i).getPow())
-//						  s = "P(< ";
-//					  else s = "< ";
-//					  for(int j = 0; j < types.size(); j ++)
-//					  {
-//						  s += types.get(j);
-//						  if(j < types.size() - 1)
-//						  {
-//							  s += " ,";
-//						  }
-//					  }
-//					  if(group.get(i).getPow())
-//						  s += " >)";
-//					  else s += " >";
-//					  showMessage(s);
-//					  nameTextField.setText(group.get(i).getName());
-//					  if(dataType != null)
-//						  if(name.equals(dataType.getName()))
-//							  	isTypeCheckBox.setSelected(true);
-//					  powcheckbox.setSelected(group.get(i).getPow());
-//					  this.isTypeCheckBox.setSelected(false);
-//					  if(dataType != null)
-//						  if(dataType.getName().equals(name.trim()))
-//							  this.isTypeCheckBox.setSelected(true);
-//					  showdefine(group.get(i));
-//					  break;
-//				  }
-//			  }
-//	   }
 	   
 	   /** This method is called from within the constructor to
 	    * initialize the form.
@@ -677,6 +637,10 @@ public class PlaceTypePanel extends JPanel {
 			   if(this.isTypeCheckBox.isSelected())
 			   {
 				   place.setDataType(dt);
+				   if(!powcheckbox.isSelected())
+				   {
+					   place.setCapacity(1);
+				   }
 				   this.dataType = dt;
 			   }
 			   this.nameTextField.setText("");
