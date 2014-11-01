@@ -318,7 +318,7 @@ public class PlaceTypePanel extends JPanel {
 	      TypeTextField.setMinimumSize(new java.awt.Dimension(230, 150));
 	      TypeTextField.setPreferredSize(new java.awt.Dimension(230, 150));
 	      if(dataType != null){
-	    	  this.SetValue(dataType.getName());
+	    	  this.showdefine(dataType);;
 	      }
 	      gridBagConstraints = new java.awt.GridBagConstraints();
 	      gridBagConstraints.gridx = 0;
@@ -441,9 +441,7 @@ public class PlaceTypePanel extends JPanel {
 	    						   TypeTextField.append(", " + sele);
 	    					   }
 	    				   }
-	    	          }
-	    		  
-	    		  
+	    	          }	    		  
 	    	  }
 	      });
 	      
