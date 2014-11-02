@@ -608,12 +608,12 @@ public class PlaceTypePanel extends JPanel {
 			   showWarning("Name can not be empty");
 			   return;
 		   }
-		   if(!buildType(str))
+		   if(!buildType(str, false))
 			   return;
 	       exit();
 	   }
 	   
-	   private boolean buildType(String str)
+	   private boolean buildType(String str, boolean isCreateType)
 	   {
 		   String str1;
 		   DataType dt;
@@ -630,8 +630,7 @@ public class PlaceTypePanel extends JPanel {
 		   {
 			   if(dtPool.get(i).getName().equals(nameTextField.getText().trim()))
 			   {
-				   
-				   if(this.createButton.getText().equals("Create"))
+				   if(isCreateType)
 				   {
 					   showWarning("Name already contained");
 				  
@@ -640,10 +639,9 @@ public class PlaceTypePanel extends JPanel {
 				   index = i;
 			   }
 		   }
-		   
-		   if(this.createButton.getText().equals("Create"))
+		   dt = new DataType(nameTextField.getText().trim(), str2, powcheckbox.isSelected(),group);
+		   if(isCreateType)
 		   {
-			   dt = new DataType(nameTextField.getText().trim(), str2, powcheckbox.isSelected(),group);
 //			   Vector<String> v = dt.getTypes();
 //			   for(int i = 0; i < v.size(); i++)
 //				   System.out.print(v.get(i) + " ");
@@ -668,27 +666,18 @@ public class PlaceTypePanel extends JPanel {
 		   }
 		   else
 		   {
-			   if(index < 0)
-			   {
-				   showWarning("Element not in list");
-				   return false;
-				}
-			   dt = dtPool.get(index);
-//			   dt.setName(nameTextField.getText().trim());
-//			   dt.setGroup(group);
 			   dt.setPow(powcheckbox.isSelected());
-//			   dt.defineType(str2);
 			   if(this.isTypeCheckBox.isSelected())
 			   {
 				   place.setDataType(dt);
 				   dataType = dt;
+				}else{
+					showWarning("Check Set Type box to set place type!");
+					return false;
 				}
 			   
 			   showMessage("Type Modified");
 			}
-		   //if(!isModify)
-			
-		   
 		   return true;
 	   }
 	   
@@ -816,7 +805,7 @@ public class PlaceTypePanel extends JPanel {
 			   showWarning("Name can not be empty");
 			   return;
 		   }
-		   if(!buildType(str))
+		   if(!buildType(str, true))
 			   return;
 		   
 		}

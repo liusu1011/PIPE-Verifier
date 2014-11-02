@@ -6,6 +6,8 @@ import java.awt.geom.Point2D;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
+
 import pipe.gui.CreateGui;
 import pipe.gui.Pipe;
 import pipe.gui.GuiView;
@@ -471,14 +473,59 @@ public abstract class  Arc
       return (Arc) super.clone();
    }   
    
-   public void setVar(String _Var)
+   public boolean setVar(String _Var)
    {
 	   Var = _Var;
+	   //simple place can only have one var per arc
+	   if(this.getSource() instanceof Place)
+	   {
+		   if(((Place) this.getSource()).getDataType() == null)
+		   {
+			   JOptionPane.showMessageDialog(CreateGui.getApp(), 
+					   "Connected Place type undefined!", "Type Undefined Violation", JOptionPane.ERROR_MESSAGE);
+			   return false;
+		   }
+		   if(!((Place)this.getSource()).getDataType().getPow())
+		   {
+			   if(this.getVarCount()>1)
+			   {
+				   JOptionPane.showMessageDialog(CreateGui.getApp(), 
+						   "Arc Variables cannot be more than one for simple place!", "Specification Violation", JOptionPane.ERROR_MESSAGE);
+				   Var = "";
+				   return false;
+			   }
+		   }
+	   }
+	   if(this.getTarget() instanceof Place)
+	   {
+		   if(!((Place)this.getTarget()).getDataType().getPow())
+		   {
+			   if(this.getVarCount()>1)
+			   {
+				   JOptionPane.showMessageDialog(CreateGui.getApp(), 
+						   "Arc Variables cannot be more than one for simple place!", "Specification Violation", JOptionPane.ERROR_MESSAGE);
+				   Var = "";
+				   return false;
+			   }
+		   }
+	   }
+	   return true;
    }
    
    public String getVar()
    {
 	   return Var;
+   }
+   
+   public String[] getVars()
+   {
+	   return this.Var.trim().split(",");
+   }
+   
+   public int getVarCount()
+   {
+	   String[] vars = this.Var.trim().split(",");
+	   return vars.length;
    }
    
    public void setDataType(DataType d)

@@ -1037,104 +1037,130 @@ public class Transition
 	   return arcOutVarList;
    }
    
-   public boolean getToken(boolean mode, int[] tokCombs){
-	  int pNum = 0;
-	   for(Arc ai : getArcInList()){
-		   Place pi = (Place)(ai.getSource());
-		   /**
-		    * if it is simple place, then get first token;
-		    * else get the specific token from tokenlist
-		    */
-		   if(!pi.getToken().getDataType().getPow()){
-			   symTable.insert(ai.getVar(), pi.getToken().listToken.firstElement());
-			   if(mode){
-				   pi.getToken().listToken.clear();
-			   }
-		   }else{
-			   symTable.insert(ai.getVar(), pi.getToken().listToken.get(tokCombs[pNum]));
-			   if(mode){
-				   pi.getToken().listToken.remove(pi.getToken().listToken.get(tokCombs[pNum]));
+   public void getAndRemoveTokenFromPlaceForCurSymbolTable()
+   {
+	   for(Symbol sym:symTable.table)
+	   {
+		   ArrayList<Arc> arcs = new ArrayList<Arc>(this.getArcInList());
+		   for(int i =0;i<arcs.size();i++)
+		   {
+			   String[] arcVars = arcs.get(i).getVars();
+			   for(int j=0;j<arcVars.length;j++)
+			   {
+				   if(arcVars[j].equals(sym.getKey()))
+				   {
+					   if(arcs.get(i).getSource() instanceof Place)
+					   {
+						   Place tp = (Place)(arcs.get(i).getSource());
+						   tp.getToken().listToken.remove((Token)(sym.getBinder()));
+						   break;
+					   }
+				   }
 			   }
 		   }
-		   pNum++;
 	   }
-	   
+   }
+   
+   public void addOutputPlaceTokenToSymbolTable()
+   {
 	   for(Arc ao : getArcOutList()){
 		   Place po = (Place)(ao.getTarget());
-		   Token tok = new Token(po.getDataType());
-		   tok.defineTlist(po.getDataType());
-		   symTable.insert(ao.getVar(), tok);
-	   }
-	   return true;  
-   }
-   
-   /**
-    * if transition is not enabled after check
-    * we will put the checked token in the end of arcInPlaces' vector.
-    */
-   
-   public void tailToken(){
-	   for(Arc a : getArcInList()){
-		   Place p = (Place)(a.getSource());
-		   
-		   if(p.getToken().listToken.firstElement().getTokentype().getPow()){
-			   //do nothing because it is abToken, do have to tail it.
+		   if(!po.getToken().getDataType().getPow())
+		   {
+			   Token tok = new Token(po.getDataType());
+			   tok.defineTlist(po.getDataType());
+			   symTable.insert(ao.getVar(), tok);
 		   }else{
-			   Token ft = p.getToken().listToken.firstElement();
-			   if(ft!=null){
-				   p.getToken().listToken.remove(ft);
-				   p.getToken().listToken.add(ft);
-			  }
+			   String[] vars = ao.getVars();
+			   for(int i=0;i<vars.length;i++)
+			   {
+				   Token tok = new Token(po.getDataType());
+				   tok.defineTlist(po.getDataType());
+				   symTable.insert(vars[i], tok);
+			   }
 		   }
 		   
 	   }
    }
+
    
    /**
     * update transition out variables to transition out places
     * @return
     */
-   public void sendToken(){
-	   if(getArcOutList() != null){
-	   for(Arc a : getArcOutList()){
-		   Place p = (Place)(a.getTarget());
-		   for(Symbol s : symTable.table){
-			   if(s.getKey().equals(a.getVar())){
-				   if(s.getBinder() instanceof Token){
-					   p.getToken().listToken.add((Token)s.getBinder());
+   public void sendTokenFromCurSymbolTable()
+   {
+	   if(getArcOutList() != null)
+	   {
+		   for(Arc a : getArcOutList())
+		   {
+			   Place p = (Place)(a.getTarget());
+			   for(Symbol s : symTable.table)
+			   {
+				   String[] vars = a.getVars();
+				   for(int j=0;j<vars.length;j++)
+				   {
+					   if(s.getKey().equals(vars[j]))
+					   {
+						   if(s.getBinder() instanceof Token)
+						   {
+							   p.getToken().listToken.add((Token)s.getBinder());
+						   }
+					   }
 				   }
 			   }
-		   }
-	   	}
+	   		}
 	   }
    }
    
-   public void tokCombinations(ArrayList<Place> placeList, ArrayList tokCombs, int loopCount, int[] tokens){
-	   if(loopCount == placeList.size()){
-		   int[] pTok = new int[placeList.size()];
-		   System.arraycopy(tokens, 0, pTok, 0, placeList.size());
-		   tokCombs.add(pTok);
-	   }else{
-		   int numOfTok = placeList.get(loopCount).getToken().listToken.size();
-		   boolean powerset = placeList.get(loopCount).getToken().getDataType().getPow();
-		   for(int i=0;i<numOfTok;i++){
-			   if(powerset){
-				   tokens[loopCount] = 1;
-			   }else tokens[loopCount] = i;
-			   
-			   tokCombinations(placeList,tokCombs,loopCount+1,tokens);
+   public void tokCombinationsInSymbleTable(ArrayList<SymbolTable> tokCombs, SymbolTable solution, ArrayList<Arc> arcList, int curArcNo)
+   {
+	   
+	   if(curArcNo == arcList.size())
+	   {
+		   tokCombs.add(new SymbolTable(solution));
+		   return;
+	   }
+	   
+		   ArrayList<SymbolTable> onePlaceCombs = new ArrayList<SymbolTable>();
+		   tokCombsForFromPlace(onePlaceCombs, new SymbolTable(), arcList.get(curArcNo), 0);
+		   for(int j=0;j<onePlaceCombs.size();j++)
+		   {
+			   solution.addSymbolTable(onePlaceCombs.get(j));
+			   tokCombinationsInSymbleTable(tokCombs, solution, arcList, curArcNo+1);
+			   solution.removeSymbolTable(onePlaceCombs.get(j));
 		   }
-	   } 
+   }
+   
+   public void tokCombsForFromPlace(ArrayList<SymbolTable> results, SymbolTable solution, Arc arc, int k)
+   {
+	   int varCount = arc.getVarCount();
+	   if(k == varCount)
+	   {
+		   results.add(new SymbolTable(solution));
+		   return;
+	   }
+	   
+	   Place place = (Place)(arc.getSource());
+	   for(int i=0;i<place.getToken().getTokenCount();i++)
+	   {
+		   if(solution.containsToken(place.getToken().getTokenbyIndex(i)))
+		   {
+			   continue;
+		   }
+		   solution.insert((arc.getVars())[k], place.getToken().getTokenbyIndex(i));
+		   tokCombsForFromPlace(results, solution, arc, k+1);
+		   solution.delete((arc.getVars())[k]);
+	   }
    }
    
    public boolean checkStatusAndFireWhenEnabled(){
 	   boolean status = false;
 	   
-	   int numOfPlaces = this.getPlaceInList().size();
-	   int loopCount = 0;
+//	   int numOfPlaces = this.getPlaceInList().size();
 	   
-	   int[] tokens = new int[numOfPlaces];
-	   ArrayList tokCombs = new ArrayList();
+//	   int[] tokens = new int[numOfPlaces];
+	   ArrayList<SymbolTable> tokCombs = new ArrayList<SymbolTable>();
 	   
 	   //check if all input places emptyness
 	   for(Place p : getPlaceInList()){
@@ -1154,39 +1180,36 @@ public class Transition
 	   }
 	   
 	   //calculate combinations
-	   tokCombinations(getPlaceInList(),tokCombs,loopCount,tokens);
-	   
+	   tokCombinationsInSymbleTable(tokCombs, new SymbolTable(), new ArrayList<Arc>(this.getArcInList()), 0);
+	   for(SymbolTable table: tokCombs){
+		   table.printSymTable();
+	   }
 	   //check
-	   int[] comb = new int[numOfPlaces];
-	   
 	   Iterator iTokCombs = tokCombs.iterator();
 	   while(iTokCombs.hasNext() && !status){
+		   this.symTable = (SymbolTable) iTokCombs.next();
+		   symTable.printSymTable();
+		   addOutputPlaceTokenToSymbolTable();
 		   
-		   comb = (int[])iTokCombs.next();
-		   
-		   boolean getTokBool = this.getToken(false, comb);
-		   if(getTokBool){
 		   String formula = this.getFormula();
 		   ErrorMsg errorMsg = new ErrorMsg(formula);	   
 		   Parse p = new Parse(formula, errorMsg);
 		   Sentence s = p.absyn;
 		   s.accept(new Interpreter(errorMsg, this, 0));
 		   status = s.bool_val;
-		   this.getTransSymbolTable().cleanTable();
-		   }
 	   }
 	   
 	   //fire
 	   if(status){
-		   this.getToken(true, comb);
+		   getAndRemoveTokenFromPlaceForCurSymbolTable();
+		   addOutputPlaceTokenToSymbolTable();
 		   String formula = this.getFormula();
 		   ErrorMsg errorMsg = new ErrorMsg(formula);	   
 		   Parse p = new Parse(formula, errorMsg);
 		   Sentence s = p.absyn;
 		   s.accept(new Interpreter(errorMsg, this, 1));
-		   
-		   this.sendToken();
-		   this.getTransSymbolTable().cleanTable();
+		   sendTokenFromCurSymbolTable();
+		   getTransSymbolTable().cleanTable();
 	   }
 	   
 	   return status;
@@ -1213,7 +1236,7 @@ public class Transition
 	   return dependentTrans;
    }
    
-   public boolean checkIsReadyToDefine()
+   public boolean checkTransitionIsReadyToDefine()
    {
 	   boolean isReady = true;
 	   //check connnected arcs

@@ -8,13 +8,49 @@ import pipe.dataLayer.abToken;
 
 public class SymbolTable {
 
-	public ArrayList<Symbol> table = new ArrayList<Symbol>();
+	public ArrayList<Symbol> table;
 	public String isAvailable;
 	
 	public SymbolTable(){
+		 table = new ArrayList<Symbol>();
 		//this.insert(isAvailable, Boolean.TRUE);
 	}
 	
+	public SymbolTable(SymbolTable _table)
+	{
+		table = new ArrayList<Symbol>(_table.table);
+	}
+	
+	//only print when value is singleton type
+	public void printSymTable()
+	{
+		System.out.println("-----"+table.size()+"-----");
+		System.out.println("Key   Value");
+		for(Symbol sym:table)
+		{
+			String value = "";
+			if(((Token)sym.getBinder()).Tlist.get(0).kind == 0)
+			{
+				value = Integer.toString(((Token)sym.getBinder()).Tlist.get(0).Tint);
+			}else{
+				value = ((Token)sym.getBinder()).Tlist.get(0).Tstring;
+			}
+			System.out.println(sym.getKey()+"   "+value);
+		}
+	}
+	
+	public void addSymbolTable(SymbolTable _table)
+	{
+		table.addAll(_table.table);
+	}
+	
+	public void removeSymbolTable(SymbolTable _table)
+	{
+		for(Symbol sym:_table.table)
+		{
+			this.table.remove(sym);
+		}
+	}
 	public void insert(String key, Object b){
 		Symbol symbol = new Symbol(key,b);
 		table.add(symbol);
@@ -79,6 +115,16 @@ public class SymbolTable {
 			if(key.equals(s.key)){
 				return true;
 			}
+		}
+		return false;
+	}
+	
+	public boolean containsToken(Object b)
+	{
+		for(Symbol s:table)
+		{
+			if(s.binder.equals(b))
+				return true;
 		}
 		return false;
 	}

@@ -8,14 +8,15 @@ import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 //import edu.fiu.cis.cadse.lib.folparser.folabsyntree.LogicSentence;
 import javax.swing.border.EtchedBorder;
-
 import javax.swing.JDialog;
-
 import javax.swing.JOptionPane;
 
 import pipe.dataLayer.Transition;
 import pipe.dataLayer.DataLayer;
 import pipe.gui.CreateGui;
+import formulaParser.Interpreter;
+import formulaParser.Parse;
+import formulaParser.SyntaxTreeCrawler;
 import formulaParser.parser;
 import formulaParser.ErrorMsg;
 import pipe.gui.widgets.FormulaPanel;
@@ -23,12 +24,14 @@ import formulaParser.FontUtil;
 import formulaParser.Yylex;
 //import edu.fiu.cis.cadse.lib.folutil.StringToXML;
 //import edu.fiu.cis.cadse.lib.folutil.XMLToString;
+import formulaParser.formulaAbsyntree.Sentence;
 
 public class FormulaDialog extends JDialog{
     public FormulaPanel m_Panel;
     private String m_xmlString = "";
     private FormulaDialogInterface m_dlgInterface;
     private Transition myTransition;
+    private SyntaxTreeCrawler syntree;
 
     public FormulaDialog(Transition transition){
     	super();
@@ -124,45 +127,54 @@ public class FormulaDialog extends JDialog{
     private void okPressed(){
     	ErrorMsg errorMsg = null;
     	try{
-    	String strtoParse = new String(m_Panel.m_textField.getText());
-    	if(strtoParse == null){
-    		JOptionPane.showMessageDialog(this,"Errors found in formula.","Please type formula",JOptionPane.ERROR_MESSAGE);
-    		return;
-    	}
-    	
-    	/**
-    	 * Check formula grammar;
-    	 */
-    	java.io.Reader inp = (java.io.Reader) (new java.io.StringReader(strtoParse));    
-    	errorMsg = new ErrorMsg(strtoParse);
-//    	parser p = new parser(new Yylex(inp,errorMsg));
-    	parser p = new parser(new Yylex(inp,errorMsg), errorMsg);
-        p.parse();
-        
-        //store new formula to transition object
-        String currentFormula = myTransition.getFormula();
-        if(strtoParse == null)return;
-        String newFormula = strtoParse;
-        if(currentFormula != newFormula){
-        	CreateGui.getView().getUndoManager().addNewEdit(myTransition.setFormula(newFormula));
-            //store new formula as XML
-//            myTransition.setXMLFormula();
-            //update transition variable list
-//            myTransition.setTranVarList();
-        }
-    	/**
-    	 * Check variable consistency;
-    	 */
-    	
-//    	CheckVar ckvar = new CheckVar(myTransition);
-//    	boolean b = ckvar.check();
-//    	if(!b){
-//    		JOptionPane.showMessageDialog(this,"Variable inconsistency found!","Variable Error",JOptionPane.ERROR_MESSAGE);
-//    		return;
-//    	}
+	    	String strtoParse = new String(m_Panel.m_textField.getText());
+	    	if(strtoParse.equals("")){
+	    		JOptionPane.showMessageDialog(this,"Formula is empty!.","Null Error",JOptionPane.ERROR_MESSAGE);
+	    		return;
+	    	}
+	    	/**
+	    	 * Check formula grammar;
+	    	 */
+	//    	java.io.Reader inp = (java.io.Reader) (new java.io.StringReader(strtoParse));    
+	//    	errorMsg = new ErrorMsg(strtoParse);
+	//    	parser p = new parser(new Yylex(inp,errorMsg), errorMsg);
+	    	Parse p = new Parse(strtoParse, errorMsg);
+	//        p.parse();
+	    	Sentence s = p.absyn;
+	    	syntree = new SyntaxTreeCrawler(myTransition);
+	    	s.accept(syntree);
+	    	if(syntree.undefVars.size()!=0)
+	    	{
+	    		String udefvar = "";
+	    		for(String u:syntree.undefVars)
+	    		{
+	    			udefvar += " "+u;
+	    		}
+	    		JOptionPane.showMessageDialog(this,"Please Define Variables:"+udefvar+" in this Formula!","Variable Undefined Error",JOptionPane.ERROR_MESSAGE);
+	    		return;
+	    	}
+	//		   status = s.bool_val;
+	    	myTransition.getTransSymbolTable().cleanTable();
+	        //store new formula to transition object
+	        String currentFormula = myTransition.getFormula();
+	        String newFormula = strtoParse;
+	        if(currentFormula != newFormula)
+	        {
+	        	CreateGui.getView().getUndoManager().addNewEdit(myTransition.setFormula(newFormula));
+	        }
+
     	}catch(Exception e){
+    		if(syntree.undefVars.size()!=0)
+	    	{
+	    		String udefvar = "";
+	    		for(String u:syntree.undefVars)
+	    		{
+	    			udefvar += " "+u;
+	    		}
+	    		JOptionPane.showMessageDialog(this,"Please Define Variables:"+udefvar+" in this Formula!","Variable Undefined Error",JOptionPane.ERROR_MESSAGE);
+	    	}
     		System.err.println("Exception:Syntax Error Found!");
-    		JOptionPane.showMessageDialog(this,"Errors found in formula.","Formula Error",JOptionPane.ERROR_MESSAGE);
+    		JOptionPane.showMessageDialog(this,"Syntax Errors found in formula.","Formula Syntax Error",JOptionPane.ERROR_MESSAGE);
     		return;
     	}
     	

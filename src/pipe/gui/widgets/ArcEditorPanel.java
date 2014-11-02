@@ -1,6 +1,7 @@
 package pipe.gui.widgets;
 
 import java.awt.Color;
+import java.awt.event.FocusEvent;
 import java.util.Vector;
 
 import javax.swing.JPanel;
@@ -11,7 +12,6 @@ import javax.swing.event.ChangeListener;
 import pipe.dataLayer.Arc;
 import pipe.dataLayer.DataLayer;
 import pipe.dataLayer.DataType;
-
 import pipe.gui.GuiView;
 
 public class ArcEditorPanel extends JPanel 
@@ -137,8 +137,29 @@ public class ArcEditorPanel extends JPanel
 	      gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
 	      gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
 	      ArcEditorPanel.add(varLabel, gridBagConstraints);
-
-	      varTextField.setText(arc.getVar());
+	      
+	      if(arc.getVar().equals(""))
+	      {
+	    	  this.varTextField.setForeground(Color.gray);
+	    	  varTextField.setText("Input Format: var1,var2,...");
+	    	  
+	    	  varTextField.addFocusListener(new java.awt.event.FocusListener(){
+		    	  public void focusGained(FocusEvent e) {
+	    		  		if(varTextField.getText().startsWith("Input"))
+	    		  			varTextField.setText("");
+	    		  		varTextField.setForeground(Color.black);
+	    	      }
+	    	      public void focusLost(FocusEvent e) {
+	    	    	  	if(varTextField.getText().trim().equals(""))
+	    	    	  	{
+	    	    	  		varTextField.setForeground(Color.gray);
+	    	    	  		varTextField.setText("Input Format: var1,var2,...");
+	    	    	  	}
+	    	      }
+	      });
+	      }else{
+	    	  varTextField.setText(arc.getVar());
+	      }
 	      gridBagConstraints = new java.awt.GridBagConstraints();
 	      gridBagConstraints.gridx = 1;
 	      gridBagConstraints.gridy = 2;
@@ -223,8 +244,14 @@ public class ArcEditorPanel extends JPanel
 	   private void doOK(){
 	
 		  arc.setName(nameTextField.getText());
-		  arc.setVar(varTextField.getText());
-		  arc.setVar();
+		  if(!varTextField.getText().startsWith("Input"))
+		  {
+			  if(!arc.setVar(varTextField.getText()))
+			  {
+				  return;
+			  }
+			  arc.setVar();
+		  }
 	      arc.repaint();
 	      exit();
 	   }

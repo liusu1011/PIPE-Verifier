@@ -54,7 +54,7 @@ public class EditFormulaAction
    
    public void actionPerformed(ActionEvent e){
 	   
-      if(!myTransition.checkIsReadyToDefine())
+      if(!myTransition.checkTransitionIsReadyToDefine())
       {
     	  return;
       }

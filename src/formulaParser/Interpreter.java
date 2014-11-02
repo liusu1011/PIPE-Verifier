@@ -1,13 +1,25 @@
 package formulaParser;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
+import javax.swing.JOptionPane;
+
+import pipe.dataLayer.Arc;
 import pipe.dataLayer.BasicType;
 import pipe.dataLayer.DataType;
 import pipe.dataLayer.Token;
 import pipe.dataLayer.Transition;
 import pipe.dataLayer.abToken;
+import pipe.gui.CreateGui;
 import formulaParser.formulaAbsyntree.*;
 import formulaParser.ErrorMsg;
 
+/**
+ * Simulation Interpreter
+ * @author su-home
+ *
+ */
 public class Interpreter implements Visitor{
 
 	ErrorMsg errorMsg;
@@ -15,13 +27,34 @@ public class Interpreter implements Visitor{
 	Transition iTransition;
 	int mode = 0;//when mode is 0, means interpreter just check pre-condition(Check Enable)
 				//when mode is 1, means interpreter is processing post-condition(Fire)
-	boolean debug = true;
+	public ArrayList<String> undefVars; //record all vars in formula that has not yet defined in arc var
+	private HashSet<String> definedVars;
+	boolean debug = false;
 	public Interpreter(ErrorMsg errorMsg, Transition transition, int mode){
 		this.errorMsg = errorMsg;
 		iTransition = transition;
 		this.symTable = iTransition.getTransSymbolTable();
 		this.mode = mode;
+		undefVars = new ArrayList<String>();
+		definedVars = new HashSet<String>();
+		searchDefinedVars();
 	}
+	
+	/**
+	 * add defined vars to definedVars set for checking whether vars in formula are defined by arc vars
+	 */
+	private void searchDefinedVars()
+	{
+		for(Arc a:this.iTransition.getArcList())
+		{
+			String[] vars = a.getVars();
+			for(int i=0;i<vars.length;i++)
+			{
+				definedVars.add(vars[i]);
+			}
+		}
+	}
+	
 	@Override
 	public void visit(AndFormula elem) {
 		if(debug)System.out.println("AndFormula");
@@ -345,7 +378,6 @@ public class Interpreter implements Visitor{
 		if(debug)System.out.println("EqRel");
 		elem.t1.accept(this);
 		elem.t2.accept(this);
-		
 		int Ltype = 0;//1 is bool;2 is int; 3 is string;;;LHS type
 		int Rtype = 0;//1 is bool;2 is int; 3 is string; 4 is empty;;RHS type
 		
@@ -1758,7 +1790,11 @@ public class Interpreter implements Visitor{
 			elem.index = ((IndexVariable)elem.v).index;
 			elem.kind = 1;
 		}else errorMsg.error(elem.pos, "Variable can only be instance of IdVariable or IndexVariable");
-
+		
+		if(!definedVars.contains(elem.var_key))
+		{
+			this.undefVars.add(elem.var_key);
+		}
 	}
 	
 	@Override
@@ -1893,5 +1929,4 @@ public class Interpreter implements Visitor{
 		elem.e.accept(this);
 		
 	}
-
 }

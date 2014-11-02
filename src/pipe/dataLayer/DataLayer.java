@@ -3059,14 +3059,6 @@ public class DataLayer
 	   return (Place)pArray.get(pPlacesIdx);
    }
    
-   public void setDataTypePool(Vector<DataType> _dtPool){
-	   Iterator idt = _dtPool.iterator();
-	   while(idt.hasNext()){
-		   DataType dt = (DataType) idt.next();
-		   this.dtPool.add(dt);
-	   }
-   }
-   
    public void setPropertyFormula(String formula){
 	   this.propertyFormula = formula;
    }

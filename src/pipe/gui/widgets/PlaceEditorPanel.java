@@ -195,8 +195,12 @@ public class PlaceEditorPanel
       capacityTextField.setText(Integer.toString(place.getCapacity()));
       if(!place.getDataType().getPow())
       {
+    	  capacityTextField.setText("1");
     	  capacityTextField.setEditable(false);
     	  capacityTextField.setBackground(java.awt.Color.GRAY);
+      }else{
+    	  place.setCapacity(place.getToken().getTokenCount());
+    	  capacityTextField.setText(Integer.toString(place.getCapacity()));
       }
       gridBagConstraints = new java.awt.GridBagConstraints();
       gridBagConstraints.gridwidth = 1;
@@ -454,9 +458,10 @@ public class PlaceEditorPanel
 	   doadd();
 	   if(place.getDataType().getPow())
 	   {
-		   this.capacity++;
+		   int cap = place.getCapacity();
+		   place.setCapacity(cap+1);
 	   }
-	   capacityTextField.setText(Integer.toString(capacity));
+	   capacityTextField.setText(Integer.toString(place.getCapacity()));
 	   dml.clear();
 	   inittype();
 	   initToken();
