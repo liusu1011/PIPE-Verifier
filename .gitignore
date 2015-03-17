@@ -5,10 +5,8 @@
 *.[oa]
 bin/
 doc/
-lib*
 *.txt
 *.c
-*.jar
 *.pml
 *.pml.trail
 *.exe
