@@ -1,5 +1,4 @@
 .DS_Store
-.classpath
 .nullChecker.c.swp
 *.[oa]
 bin/
