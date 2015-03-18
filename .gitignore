@@ -1,7 +1,6 @@
 .DS_Store
 .classpath
 .nullChecker.c.swp
-.project
 *.[oa]
 bin/
 doc/
