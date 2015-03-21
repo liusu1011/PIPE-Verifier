@@ -18,12 +18,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 
+
 import pipe.dataLayer.DataLayer;
 import pipe.gui.CreateGui;
 import pipe.gui.widgets.ButtonBar;
 import pipe.gui.widgets.PetriNetChooserPanel;
 import pipe.gui.widgets.ResultsTxtPane;
 import pipe.gui.widgets.EscapableDialog;
+import analysis.hlpn2maude;
 //import sam_model.SamModel;
 //import sam_model.analysis.ElementaryNetComposition;
 import analysis.myPromela;
@@ -105,7 +107,7 @@ public class AnalysisModuleHandler extends AbstractAction {
 //	    	 sourceDataLayer = eleCompNet.getNetCompositionModel();
 //	    	 propertyFormula = sourceSamModel.getPropertyFormula();
 	    	 
-	    	 myPromela promela = null;
+	    	 hlpn2maude promela = null;
 	    	 String s = "";
 	    	 
 	    	 if(sourceDataLayer == null){
@@ -116,7 +118,7 @@ public class AnalysisModuleHandler extends AbstractAction {
 	    	 if (!sourceDataLayer.hasPlaceTransitionObjects()) {
 	    		 s += "No Petri net objects defined!";
 	    	 }else{
-	    		 promela = new myPromela(sourceDataLayer, propertyFormula);
+	    		 promela = new hlpn2maude(sourceDataLayer, propertyFormula);
 	               s += promela.getPromela();
 	               results.setEnabled(true);
 	    	 }
