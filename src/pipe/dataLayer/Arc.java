@@ -519,7 +519,12 @@ public abstract class  Arc
    
    public String[] getVars()
    {
-	   return this.Var.trim().split(",");
+	   String tempVars = this.Var.trim();
+	   if(tempVars.startsWith("{"))
+	   {
+		   tempVars = tempVars.substring(1, tempVars.length()-1);
+	   }
+	   return tempVars.split(",");
    }
    
    public int getVarCount()
