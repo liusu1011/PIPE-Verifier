@@ -24,7 +24,7 @@ public class SymbolTable {
 	//only print when value is singleton type
 	public void printSymTable()
 	{
-		System.out.println("-----"+table.size()+"-----");
+		System.out.println("----- symbol table size = "+table.size()+"-----");
 		System.out.println("Key   Value");
 		for(Symbol sym:table)
 		{

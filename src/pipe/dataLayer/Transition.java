@@ -1202,7 +1202,7 @@ public class Transition
 	   //fire
 	   if(status){
 		   getAndRemoveTokenFromPlaceForCurSymbolTable();
-		   addOutputPlaceTokenToSymbolTable();
+		   symTable.printSymTable();
 		   String formula = this.getFormula();
 		   ErrorMsg errorMsg = new ErrorMsg(formula);	   
 		   Parse p = new Parse(formula, errorMsg);
