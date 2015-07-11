@@ -5,5 +5,6 @@ public abstract class Term {
 	public String str = "";
 	public boolean firstField = false;
 	public String placeName; //in case firstField is true
+	public String maude = "";
 	public abstract void accept(Visitor v);
 }

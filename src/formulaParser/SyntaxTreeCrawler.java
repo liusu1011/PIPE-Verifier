@@ -86,7 +86,7 @@ public class SyntaxTreeCrawler implements Visitor{
 			String[] vars = a.getVars();
 			for(int i=0;i<vars.length;i++)
 			{
-				definedVars.add(vars[i]);
+				definedVars.add(vars[i].trim());
 			}
 		}
 	}

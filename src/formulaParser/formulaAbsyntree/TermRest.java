@@ -11,6 +11,8 @@ public class TermRest {
 	public String placeName = "";
 	public boolean isPostCond;
 	
+	public String maude = "";
+	
 	public TermRest(int p, Term t){
 		this.pos = p;
 		this.t = t;

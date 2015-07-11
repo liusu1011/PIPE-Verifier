@@ -15,7 +15,7 @@ public class Terms {
 	//z3
 	public ArrayList<String> z3TermList = new ArrayList<String>();
 	
-	
+	public String maude = "";
 	public Terms(int p, Term t, TermRestList tr){
 		this.pos = p;
 		this.t = t;

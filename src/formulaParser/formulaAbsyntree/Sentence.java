@@ -10,6 +10,8 @@ public class Sentence {
 	//z3
 	public String z3str = "";
 	
+	public String maude = "";
+	
 	public Sentence(int p, Formula f){
 		this.pos = p;
 		this.f = f;

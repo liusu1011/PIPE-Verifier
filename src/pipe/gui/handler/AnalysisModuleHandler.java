@@ -107,7 +107,7 @@ public class AnalysisModuleHandler extends AbstractAction {
 //	    	 sourceDataLayer = eleCompNet.getNetCompositionModel();
 //	    	 propertyFormula = sourceSamModel.getPropertyFormula();
 	    	 
-	    	 hlpn2maude promela = null;
+	    	 hlpn2maude maude = null;
 	    	 String s = "";
 	    	 
 	    	 if(sourceDataLayer == null){
@@ -118,8 +118,8 @@ public class AnalysisModuleHandler extends AbstractAction {
 	    	 if (!sourceDataLayer.hasPlaceTransitionObjects()) {
 	    		 s += "No Petri net objects defined!";
 	    	 }else{
-	    		 promela = new hlpn2maude(sourceDataLayer, propertyFormula);
-	               s += promela.getPromela();
+	    		 maude = new hlpn2maude(sourceDataLayer, propertyFormula);
+	               s += maude.getMaude();
 	               results.setEnabled(true);
 	    	 }
 	    	 
