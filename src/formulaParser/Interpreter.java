@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import pipe.dataLayer.Arc;
 import pipe.dataLayer.BasicType;
 import pipe.dataLayer.DataType;
+import pipe.dataLayer.Place;
 import pipe.dataLayer.Token;
 import pipe.dataLayer.Transition;
 import pipe.dataLayer.abToken;
@@ -115,7 +116,7 @@ public class Interpreter implements Visitor{
 				}
 			}
 		}
-		//allcate space to a temp abToken to store result
+		//allocate space to a temp abToken to store result
 		abToken resultTok = new abToken(resultType);
 		
 		if(((VariableTerm)(elem.t)).v instanceof IdVariable){
@@ -260,7 +261,7 @@ public class Interpreter implements Visitor{
 			resultType = ((SExp)((ExpTerm)(elem.t1)).e).abTok.getDataType();
 		}else errorMsg.error(elem.pos, "Union::Tree type mismatch!"); 
 		
-		//allcate space to a temp abToken to store result
+		//allocate space to a temp abToken to store result
 		abToken resultTok = new abToken(resultType);
 		
 		//add left term to result token
@@ -333,7 +334,6 @@ public class Interpreter implements Visitor{
 		
 		int Lint_val = 0;
 		int Rint_val = 0;
-		
 		//deal with LHS term
 		if(elem.t1 instanceof ConstantTerm){			
 			if(((ConstantTerm)(elem.t1)).c instanceof NumConstant){
@@ -381,7 +381,7 @@ public class Interpreter implements Visitor{
 		int Ltype = 0;//1 is bool;2 is int; 3 is string;;;LHS type
 		int Rtype = 0;//1 is bool;2 is int; 3 is string; 4 is empty;;RHS type
 		
-		boolean Lbool_val=false;
+		boolean Lbool_val = false;
 		boolean Rbool_val = false;
 		
 		int Lint_val = 0;
@@ -390,27 +390,92 @@ public class Interpreter implements Visitor{
 		String Rstr_val = "";
 
 		
-		//whether the LHS variable is belongs to arcOutVarList
+		//whether the LHS variable belongs to arcOutVarList
 		boolean isInArcOutVarList = false;
-		if(elem.t1 instanceof VariableTerm){
+		if(elem.t1 instanceof VariableTerm)
+		{
 			if(((VariableTerm)(elem.t1)).v instanceof IdVariable){
 				String var_key = ((IdVariable)((VariableTerm)(elem.t1)).v).key;
-				
-				for(String s : iTransition.getArcOutVarList()){
-					if(s.equals(var_key))isInArcOutVarList = true;
-				}				
+				for(Arc ao : iTransition.getArcOutList()){
+					   Place po = (Place)(ao.getTarget());
+					   if(!po.getToken().getDataType().getPow())
+					   {
+						   String svar = ao.getVar();
+						   if(svar.equals(var_key))isInArcOutVarList = true;
+					   }else{
+						   String[] vars = ao.getVars();
+						   for(int i=0;i<vars.length;i++)
+						   {
+							   if(vars[i].equals(var_key))isInArcOutVarList = true;
+						   }
+					   }			   
+				   }
 			}
 			
 			if(((VariableTerm)(elem.t1)).v instanceof IndexVariable){
 				String var_key = ((IndexVariable)((VariableTerm)(elem.t1)).v).key;
-				for(String s : iTransition.getArcOutVarList()){
-					if(s.equals(var_key))isInArcOutVarList = true;
+				for(Arc ao : iTransition.getArcOutList()){
+					   Place po = (Place)(ao.getTarget());
+					   if(!po.getToken().getDataType().getPow())
+					   {
+						   String svar = ao.getVar();
+						   if(svar.equals(var_key))isInArcOutVarList = true;
+					   }else{
+						   String[] vars = ao.getVars();
+						   for(int i=0;i<vars.length;i++)
+						   {
+							   if(vars[i].equals(var_key))isInArcOutVarList = true;
+						   }
+					   }   
+				   }
 				}
 			}
-		}
+		
+		//added by He 7/30/15
+		boolean isInArcInVarList = false;
+		if(elem.t1 instanceof VariableTerm)
+		{
+			if(((VariableTerm)(elem.t1)).v instanceof IdVariable){
+				String var_key = ((IdVariable)((VariableTerm)(elem.t1)).v).key;
+				for(Arc ai : iTransition.getArcInList()){
+					   Place pi = (Place)(ai.getSource());
+					   if(!pi.getToken().getDataType().getPow())
+					   {
+						   String svar = ai.getVar();
+						   if(svar.equals(var_key))isInArcInVarList = true;
+					   }else{
+						   String[] vars = ai.getVars();
+						   for(int i=0;i<vars.length;i++)
+						   {
+							   if(vars[i].equals(var_key))isInArcInVarList = true;
+						   }
+					   }			   
+				   }
+			}
+			
+			if(((VariableTerm)(elem.t1)).v instanceof IndexVariable){
+				String var_key = ((IndexVariable)((VariableTerm)(elem.t1)).v).key;
+				for(Arc ai : iTransition.getArcInList()){
+					   Place pi = (Place)(ai.getSource());
+					   if(!pi.getToken().getDataType().getPow())
+					   {
+						   String svar = ai.getVar();
+						   if(svar.equals(var_key))isInArcInVarList = true;
+					   }else{
+						   String[] vars = ai.getVars();
+						   for(int i=0;i<vars.length;i++)
+						   {
+							   if(vars[i].equals(var_key))isInArcInVarList = true;
+						   }
+					   }   
+				   }
+				}
+			}
+
 		
 		//newly modified to deal with the condition when isInArcOutVarList is true and mode is 1;
-		if(isInArcOutVarList && mode == 1){
+		if(isInArcOutVarList && mode == 1)
+		{
 			if(elem.t1 instanceof VariableTerm){
 				if(((VariableTerm)(elem.t1)).v instanceof IdVariable){
 					if(elem.t2 instanceof VariableTerm){
@@ -432,12 +497,13 @@ public class Interpreter implements Visitor{
 						}
 					}
 					}else if(elem.t2 instanceof ExpTerm){//only t2 can be ExpTerm
-						if(((ExpTerm)(elem.t2)).e instanceof AExp){//arith_exp
-							//to be finish;
-							System.out.println("expTem arith_exp to be finish!!!!!");
-						}else if(((ExpTerm)(elem.t2)).e instanceof RExp){//rel_exp
-							//to be finish;
-							System.out.println("expTem rel_exp to be finish!!!!!");
+						if(((ExpTerm)(elem.t2)).e instanceof AExp){  //added by He - 7/25/2015
+							Token tempTok = (Token) symTable.lookup(((IdVariable)((VariableTerm)(elem.t1)).v).key);
+							tempTok.Tlist.firstElement().Tint = ((AExp) ((ExpTerm)(elem.t2)).e).int_val;
+							symTable.update(((IdVariable)((VariableTerm)(elem.t1)).v).key,  tempTok);
+						}else if(((ExpTerm)(elem.t2)).e instanceof RExp){//added by He - 7/25/2015
+							 Rbool_val = ((RExp) ((ExpTerm)(elem.t2)).e).bool_val;
+							 System.out.println("Boolean valued token is not supported, token is default to 0");
 						}else if((((ExpTerm)(elem.t2)).e instanceof SExp)){//set_exp
 							if(symTable.lookup(((IdVariable)((VariableTerm)(elem.t1)).v).key) instanceof abToken){
 								symTable.update(((IdVariable)((VariableTerm)(elem.t1)).v).key, ((SExp)((ExpTerm)(elem.t2)).e).abTok);
@@ -448,13 +514,12 @@ public class Interpreter implements Visitor{
 					}else if(elem.t2 instanceof ConstantTerm){
 						if(((ConstantTerm)(elem.t2)).c instanceof True){
 							Rbool_val = true;
-							//to be finish
+							System.out.println("Boolean valued token is not supported, token is default to 0"); //added by He - 7/25/2015
 						}else if(((ConstantTerm)(elem.t2)).c instanceof False){
 							Rbool_val = false;
-							//to be finish
+							 System.out.println("Boolean valued token is not supported, token is default to 0"); //added by He - 7/25/2015
 						}else if(((ConstantTerm)(elem.t2)).c instanceof NumConstant){
 							Rint_val = ((ConstantTerm)(elem.t2)).int_val;
-							
 							Token tempTok = (Token) symTable.lookup(((IdVariable)((VariableTerm)(elem.t1)).v).key);
 							tempTok.Tlist.firstElement().Tint = Rint_val;
 							symTable.update(((IdVariable)((VariableTerm)(elem.t1)).v).key,  tempTok);
@@ -497,12 +562,13 @@ public class Interpreter implements Visitor{
 						}
 					}
 				}else if(elem.t2 instanceof ExpTerm){//only t2 can be ExpTerm
-					if(((ExpTerm)(elem.t2)).e instanceof AExp){//arith_exp
-						//to be finish;
-						System.out.println("expTem arith_exp to be finish!!!!!");
-					}else if(((ExpTerm)(elem.t2)).e instanceof RExp){//rel_exp
-						//to be finish;
-						System.out.println("expTem rel_exp to be finish!!!!!");
+					if(((ExpTerm)(elem.t2)).e instanceof AExp){//added by He - 7/25/2015
+						Token tempTok = (Token) symTable.lookup(((IndexVariable)((VariableTerm)(elem.t1)).v).key);
+						tempTok.Tlist.elementAt(((VariableTerm)elem.t1).index - 1).Tint = ((AExp) ((ExpTerm)(elem.t2)).e).int_val;
+						symTable.update(((IndexVariable)((VariableTerm)(elem.t1)).v).key,  tempTok);
+					}else if(((ExpTerm)(elem.t2)).e instanceof RExp){//added by He - 7/25/2015
+						Rbool_val = ((RExp) ((ExpTerm)(elem.t2)).e).bool_val;
+						System.out.println("Boolean valued token is not supported, token is default to 0");
 					}else if((((ExpTerm)(elem.t2)).e instanceof SExp)){//set_exp
 						if(symTable.lookup(((IdVariable)((VariableTerm)(elem.t1)).v).key) instanceof abToken){
 							symTable.update(((IdVariable)((VariableTerm)(elem.t1)).v).key, ((SExp)((ExpTerm)(elem.t2)).e).abTok);
@@ -513,10 +579,10 @@ public class Interpreter implements Visitor{
 				}else if(elem.t2 instanceof ConstantTerm){
 					if(((ConstantTerm)(elem.t2)).c instanceof True){
 						Rbool_val = true;
-						//to be finish
+						System.out.println("Boolean valued token is not supported, token is default to 0");
 					}else if(((ConstantTerm)(elem.t2)).c instanceof False){
 						Rbool_val = false;
-						//to be finish
+						System.out.println("Boolean valued token is not supported, token is default to 0");
 					}else if(((ConstantTerm)(elem.t2)).c instanceof NumConstant){
 						Rint_val = ((ConstantTerm)(elem.t2)).int_val;
 						Token tempTok = (Token) symTable.lookup(((IndexVariable)((VariableTerm)(elem.t1)).v).key);
@@ -533,29 +599,11 @@ public class Interpreter implements Visitor{
 			}
 		}
 		
-		//Deal with the condition when isInArcOutVarList is true and mode is 1;
-//		if(isInArcOutVarList && mode == 1){
-//			if(((VariableTerm)(elem.t2)).v instanceof IdVariable){
-//				symTable.update(((IdVariable)((VariableTerm)(elem.t1)).v).key, symTable.lookup(((IdVariable)((VariableTerm)(elem.t2)).v).key));
-//			}else if(((VariableTerm)(elem.t2)).v instanceof IndexVariable){
-//				
-//				
-//				((Token)symTable.lookup(((IdVariable)((VariableTerm)(elem.t1)).v).key)).Tlist.firstElement().Tstring = 
-//					((Token)(symTable.lookup(((IndexVariable)((VariableTerm)(elem.t2)).v).key))).Tlist.elementAt(((VariableTerm)elem.t2).index - 1).Tstring;	
-////				symTable.update(((IdVariable)((VariableTerm)(elem.t1)).v).key, 
-//						((Token)(symTable.lookup(((IndexVariable)((VariableTerm)(elem.t2)).v).key))).Tlist.elementAt(((VariableTerm)elem.t2).index - 1).Tstring);	
-//			}
-//		}
-		
-		//Deal with the condition when isInArcOutVarList is true and mode is 1;
-//		if(isInArcOutVarList && mode == 1){
-//			
-//		}
-		
-		
-		if(!isInArcOutVarList){
+		if(!isInArcOutVarList || isInArcInVarList)       
+		{
 		//deal with LHS term
-		if(elem.t1 instanceof ConstantTerm){
+		if(elem.t1 instanceof ConstantTerm)
+		{
 			if(((ConstantTerm)(elem.t1)).c instanceof True){
 				Lbool_val = true;
 				Ltype = 1;
@@ -569,7 +617,7 @@ public class Interpreter implements Visitor{
 				Lstr_val = ((ConstantTerm)(elem.t1)).str_val;
 				Ltype = 3;
 			}
-		}else if(elem.t1 instanceof VariableTerm){
+		} else if(elem.t1 instanceof VariableTerm){
 			if(((VariableTerm)(elem.t1)).v instanceof IdVariable){
 				if(((Token)(symTable.lookup(((IdVariable)((VariableTerm)(elem.t1)).v).key))).Tlist.firstElement().kind == 0){
 					Lint_val = ((Token)(symTable.lookup(((IdVariable)((VariableTerm)(elem.t1)).v).key))).Tlist.firstElement().Tint;
@@ -641,10 +689,11 @@ public class Interpreter implements Visitor{
 		}else if(elem.t2 instanceof EmptyTerm){
 			 Rtype = 4;
 		}else errorMsg.error(elem.pos, "EqRel::Tree type mismatch!");
-		}
+		}   
 
 		//Compare LHS and RHS
-		if(!isInArcOutVarList){
+		if(!isInArcOutVarList || isInArcInVarList)
+		{
 		if(Ltype == 1 && Rtype == 1){
 			if(Lbool_val == Rbool_val){
 				elem.bool_val = true;
@@ -1665,7 +1714,7 @@ public class Interpreter implements Visitor{
 			resultType = ((SExp)((ExpTerm)(elem.t1)).e).abTok.getDataType();
 		}else errorMsg.error(elem.pos, "Union::Tree type mismatch!"); 
 		
-		//allcate space to a temp abToken to store result
+		//allocate space to a temp abToken to store result
 		abToken resultTok = new abToken(resultType);
 		
 		//union left term
@@ -1816,6 +1865,8 @@ public class Interpreter implements Visitor{
 			elem.int_val = ((Mod)(elem.ae)).int_val;
 		}else if(elem.ae instanceof NegExp){
 			elem.int_val = ((NegExp)(elem.ae)).int_val;
+		}else if(elem.ae instanceof Div){    //added by He - 7/25/2015
+			elem.int_val = ((Div)(elem.ae)).int_val;
 		}else errorMsg.error(elem.pos, "AExp::tree type mismatch!");
 	}
 	

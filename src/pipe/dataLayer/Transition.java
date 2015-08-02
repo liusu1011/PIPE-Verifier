@@ -1037,7 +1037,8 @@ public class Transition
 	   return arcOutVarList;
    }
    
-   public void getAndRemoveTokenFromPlaceForCurSymbolTable()
+   
+  public void getAndRemoveTokenFromPlaceForCurSymbolTable()
    {
 	   for(Symbol sym:symTable.table)
 	   {
@@ -1060,7 +1061,7 @@ public class Transition
 		   }
 	   }
    }
-   
+  
    public void addOutputPlaceTokenToSymbolTable()
    {
 	   for(Arc ao : getArcOutList()){
@@ -1085,7 +1086,7 @@ public class Transition
 
    
    /**
-    * update transition out variables to transition out places
+    * update transition out variables to transition output places
     * @return
     */
    public void sendTokenFromCurSymbolTable()
@@ -1095,16 +1096,17 @@ public class Transition
 		   for(Arc a : getArcOutList())
 		   {
 			   Place p = (Place)(a.getTarget());
-			   for(Symbol s : symTable.table)
-			   {
-				   String[] vars = a.getVars();
-				   for(int j=0;j<vars.length;j++)
+			   String[] vars = a.getVars();
+			   for(int j=0;j<vars.length;j++)
+			   {   
+				   for(Symbol s : symTable.table)  //changed by He - 7/30/15
 				   {
 					   if(s.getKey().equals(vars[j]))
 					   {
 						   if(s.getBinder() instanceof Token)
 						   {
 							   p.getToken().listToken.add((Token)s.getBinder());
+							   break;
 						   }
 					   }
 				   }
@@ -1113,45 +1115,107 @@ public class Transition
 	   }
    }
    
-   public void tokCombinationsInSymbleTable(ArrayList<SymbolTable> tokCombs, SymbolTable solution, ArrayList<Arc> arcList, int curArcNo)
+   public void tokCombinationsInSymbolTable(ArrayList<SymbolTable> tokCombs, SymbolTable solution, ArrayList<Arc> arcList, int curArcNo)
    {
 	   
 	   if(curArcNo == arcList.size())
 	   {
 		   tokCombs.add(new SymbolTable(solution));
+		   CleanSymbolTable(tokCombs, arcList);  //added by He 7/31/15
 		   return;
 	   }
 	   
-		   ArrayList<SymbolTable> onePlaceCombs = new ArrayList<SymbolTable>();
-		   tokCombsForFromPlace(onePlaceCombs, new SymbolTable(), arcList.get(curArcNo), 0);
-		   for(int j=0;j<onePlaceCombs.size();j++)
-		   {
-			   solution.addSymbolTable(onePlaceCombs.get(j));
-			   tokCombinationsInSymbleTable(tokCombs, solution, arcList, curArcNo+1);
-			   solution.removeSymbolTable(onePlaceCombs.get(j));
-		   }
+	   ArrayList<SymbolTable> onePlaceCombs = new ArrayList<SymbolTable>();
+	   tokCombsForFromPlace(onePlaceCombs, new SymbolTable(), arcList.get(curArcNo), 0);
+	   for(int j=0;j<onePlaceCombs.size();j++)
+	   {
+		   solution.addSymbolTable(onePlaceCombs.get(j));
+		   tokCombinationsInSymbolTable(tokCombs, solution, arcList, curArcNo+1);
+		   solution.removeSymbolTable(onePlaceCombs.get(j));
+	   }
    }
    
    public void tokCombsForFromPlace(ArrayList<SymbolTable> results, SymbolTable solution, Arc arc, int k)
    {
-	   int varCount = arc.getVarCount();
-	   if(k == varCount)
-	   {
-		   results.add(new SymbolTable(solution));
-		   return;
-	   }
-	   
 	   Place place = (Place)(arc.getSource());
-	   for(int i=0;i<place.getToken().getTokenCount();i++)
+	   int varCount = arc.getVarCount();
+	   if (!(arc.getSetVar()))    //changed by He to handle set variable - 8/2/15
 	   {
-		   if(solution.containsToken(place.getToken().getTokenbyIndex(i)))
+		   if(k == varCount)
 		   {
-			   continue;
+			   results.add(new SymbolTable(solution));
+			   return;
 		   }
-		   solution.insert((arc.getVars())[k], place.getToken().getTokenbyIndex(i));
-		   tokCombsForFromPlace(results, solution, arc, k+1);
-		   solution.delete((arc.getVars())[k]);
+		   for(int i=0;i<place.getToken().getTokenCount();i++)
+		   {
+			   if(solution.containsToken(place.getToken().getTokenbyIndex(i)))
+			   {
+				   continue;
+			   }
+			   solution.insert((arc.getVars())[k], place.getToken().getTokenbyIndex(i));
+			   tokCombsForFromPlace(results, solution, arc, k+1);
+			   solution.delete((arc.getVars())[k]);
+		   }
+	   } else
+	   {
+		   for(int i=0;i<place.getToken().getTokenCount();i++)
+		   {
+			   if(solution.containsToken(place.getToken().getTokenbyIndex(i)))
+			   {
+				   continue;
+			   }
+			   solution.insert(arc.getVar(), place.getToken().getTokenbyIndex(i));
+			   tokCombsForFromPlace(results, solution, arc, 0);
+			   solution.delete(arc.getVar());
+		   }
+		   
 	   }
+   }
+	   
+	   
+	  
+  
+   //added by He - 7/31/2015  This method checks whether a variable name appears in multiple
+   //arc labels, and removes all impossible token combinations
+   public void CleanSymbolTable(ArrayList<SymbolTable> tokCombs, ArrayList<Arc> arcList)
+   {
+	   int combNo = tokCombs.size();
+	   for (int k = 0; k < combNo; k++)
+	   {
+			   SymbolTable next = (SymbolTable) tokCombs.get(k);
+			   int noToken = next.table.size();
+			   for (int i=0; i<noToken-1; i++)
+			   {
+				   for (int j=i+1;j<noToken; j++)
+				   {
+					   if (next.table.get(i).getKey().equals(next.table.get(j).getKey()))
+					   {   
+						   if (((Token)(next.table.get(i).getBinder())).Tlist.firstElement().kind==0 &&
+						   (((Token)(next.table.get(j).getBinder())).Tlist.firstElement().kind==0))
+						   {
+							   if (((Token)(next.table.get(i).getBinder())).Tlist.firstElement().Tint !=
+									   (((Token)(next.table.get(j).getBinder())).Tlist.firstElement().Tint))
+							   {
+								   tokCombs.remove(next);
+							   }
+							   
+						   } else if (((Token)(next.table.get(i).getBinder())).Tlist.firstElement().kind==1 &&
+								   (((Token)(next.table.get(j).getBinder())).Tlist.firstElement().kind==1))
+								   {
+									   if (!((Token)(next.table.get(i).getBinder())).Tlist.firstElement().Tstring.equals(
+											   (((Token)(next.table.get(j).getBinder())).Tlist.firstElement().Tstring)))
+									   {
+										   tokCombs.remove(next);
+									   }
+								   } else
+								   {
+									   System.out.println("Modeling error - the same variable name used in different arcs connected to the same transition must be of the same type");
+								   }
+					   }
+				   }
+			   }
+			   
+		   }
    }
    
    public boolean checkStatusAndFireWhenEnabled(){
@@ -1162,14 +1226,14 @@ public class Transition
 //	   int[] tokens = new int[numOfPlaces];
 	   ArrayList<SymbolTable> tokCombs = new ArrayList<SymbolTable>();
 	   
-	   //check if all input places emptyness
+	   //check if any input place is empty
 	   for(Place p : getPlaceInList()){
 		   if(p.getToken().listToken.isEmpty()){
-			   System.out.println("Transition.checkStatusAndFire: input place lack of token.");
+			   System.out.println("Transition.checkStatusAndFire: input place lacks of token.");
 			   return false;
 		   }
 	   }
-	   //check if all output places has room since simple place may be already full
+	   //check if all output places have room since simple place can only hold at most one token
 	   for(Place p: this.getPlaceOutList())
 	   {
 		   if(!p.getDataType().getPow())
@@ -1180,7 +1244,7 @@ public class Transition
 	   }
 	   
 	   //calculate combinations
-	   tokCombinationsInSymbleTable(tokCombs, new SymbolTable(), new ArrayList<Arc>(this.getArcInList()), 0);
+	   tokCombinationsInSymbolTable(tokCombs, new SymbolTable(), new ArrayList<Arc>(this.getArcInList()), 0);
 	   for(SymbolTable table: tokCombs){
 		   table.printSymTable();
 	   }
@@ -1188,8 +1252,8 @@ public class Transition
 	   Iterator iTokCombs = tokCombs.iterator();
 	   while(iTokCombs.hasNext() && !status){
 		   this.symTable = (SymbolTable) iTokCombs.next();
-		   symTable.printSymTable();
-		   addOutputPlaceTokenToSymbolTable();
+		   //symTable.printSymTable();
+		   //addOutputPlaceTokenToSymbolTable();  //Modified He -7/29/2015
 		   
 		   String formula = this.getFormula();
 		   ErrorMsg errorMsg = new ErrorMsg(formula);	   
@@ -1198,11 +1262,11 @@ public class Transition
 		   s.accept(new Interpreter(errorMsg, this, 0));
 		   status = s.bool_val;
 	   }
-	   
 	   //fire
 	   if(status){
 		   getAndRemoveTokenFromPlaceForCurSymbolTable();
-		   symTable.printSymTable();
+		   addOutputPlaceTokenToSymbolTable();  //added by He - 7/29/15
+		   //symTable.printSymTable();
 		   String formula = this.getFormula();
 		   ErrorMsg errorMsg = new ErrorMsg(formula);	   
 		   Parse p = new Parse(formula, errorMsg);
@@ -1239,7 +1303,7 @@ public class Transition
    public boolean checkTransitionIsReadyToDefine()
    {
 	   boolean isReady = true;
-	   //check connnected arcs
+	   //check connected arcs
 	   for(Arc a:this.getArcList())
 	   {
 		   if(a.getVar().equals(""))

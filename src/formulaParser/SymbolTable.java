@@ -27,15 +27,16 @@ public class SymbolTable {
 		System.out.println("----- symbol table size = "+table.size()+"-----");
 		System.out.println("Key   Value");
 		for(Symbol sym:table)
-		{
-			String value = "";
+		{   //Modified by He - July 24, 2015
+			/*String value = "";
 			if(((Token)sym.getBinder()).Tlist.get(0).kind == 0)
 			{
 				value = Integer.toString(((Token)sym.getBinder()).Tlist.get(0).Tint);
 			}else{
 				value = ((Token)sym.getBinder()).Tlist.get(0).Tstring;
 			}
-			System.out.println(sym.getKey()+"   "+value);
+			System.out.println(sym.getKey()+"   "+value); */
+			System.out.println(sym.getKey()+"   "+ ((Token) sym.getBinder()).displayToken());
 		}
 	}
 	

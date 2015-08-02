@@ -113,10 +113,10 @@ public class DataLayer
    /** ArrayList for net-level label objects (as opposed to element-level labels).*/
    private ArrayList labelsArray = null;
    
-   /** ArrayList for marking Parmameters objects.*/
+   /** ArrayList for marking Parameters objects.*/
    private ArrayList markingParametersArray = null;   
    
-/** ArrayList for rate Parmameters objects.*/
+/** ArrayList for rate Parameters objects.*/
    private ArrayList rateParametersArray = null;      
    
    /** An ArrayList used to point to either the Arc, Place or Transition 
@@ -185,7 +185,7 @@ public class DataLayer
    
    public Vector<DataType> dtPool;
    
-   public ArrayList<Transition> unkowns = null;
+   public ArrayList<Transition> unknown = null;
    public ArrayList<Transition> disabled = null;
    public ArrayList<Transition> dependents = null;
    
@@ -282,11 +282,11 @@ public class DataLayer
       backwardsIncidenceMatrix = null;
       incidenceMatrix = null;
       inhibitionMatrix = null;
-      unkowns = new ArrayList<Transition>();
+      unknown = new ArrayList<Transition>();
       disabled = new ArrayList<Transition>();
       dependents = new ArrayList<Transition>();
       
-      // may as well do the hashtable here as well
+      // may as well do the hash table here 
       arcsMap = new Hashtable();
       PortinMap = new Hashtable();
       inhibitorsMap = new Hashtable();
@@ -432,7 +432,7 @@ public class DataLayer
             }
          }
          transitionsArray.add(transitionInput);
-         unkowns.add(transitionInput);
+         unknown.add(transitionInput);
          
          setChanged();
          setMatrixChanged();
@@ -557,7 +557,7 @@ public class DataLayer
       ArrayList newList = null;
       
       if (source != null) {
-// Pete: Place/Transitions now always moveable
+// Pete: Place/Transitions now always movable
 //      source.setMovable(false);
          if (arcsMap.get(source)!=null) {
 //            System.out.println("adding arc to existing list");
@@ -571,7 +571,7 @@ public class DataLayer
       }
       
       if (target != null) {
-// Pete: Place/Transitions now always moveable
+// Pete: Place/Transitions now always movable
 //      target.setMovable(false);
          if (arcsMap.get(target)!=null) {
 //            System.out.println("adding arc to existing list2");
@@ -2249,7 +2249,7 @@ public class DataLayer
       inhibitionMatrix = null;
       arcsMap = null;
       PortinMap = null;
-      unkowns = null;
+      unknown = null;
       disabled = null;
       dependents = null;
       initializeMatrices();

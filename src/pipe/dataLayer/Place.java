@@ -651,7 +651,7 @@ public class Place
    {
 	   int size = token.listToken.size();
 	   for(int i=0;i<size;i++){
-		   token.listToken.remove(0);
+		   token.listToken.remove(0);    
 		   System.out.println("the size now!!!!: "+size);
 	   }
    }

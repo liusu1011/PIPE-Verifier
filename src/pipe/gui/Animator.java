@@ -187,29 +187,30 @@ public class Animator {
    
    public void doHighLevelRandomFiring(){
 	   DataLayer data = CreateGui.currentPNMLData();
-	   if(data.unkowns.isEmpty()) {
-		   JOptionPane.showMessageDialog(CreateGui.getApp(), "None of the transtions are enabled!");
+	   if(data.unknown.isEmpty()) {
+		   JOptionPane.showMessageDialog(CreateGui.getApp(), "None of the transtions is enabled!");
 	   }
-	   while(!data.unkowns.isEmpty()){
-		   Transition tCandidate = data.randomPickTransition(data.unkowns);
-		   data.unkowns.remove(tCandidate);
+	   while(!data.unknown.isEmpty()){
+		   Transition tCandidate = data.randomPickTransition(data.unknown);
+		   System.out.println("transition selected"+tCandidate.getName());  //Test He 7/29/15
+		   data.unknown.remove(tCandidate); 
 		   if(!tCandidate.checkStatusAndFireWhenEnabled()){
 			   data.disabled.add(tCandidate);
 			   System.out.println("Animator.doHighLevelRandomFiring Transition: "+tCandidate.getName()+" is not enabled");
 		   }else{
 			   fireHighLevelTransitionInGUI(tCandidate);
 			   System.out.println("Animator.doHighLevelRandomFiring Transition: "+tCandidate.getName()+" is fired");
-			   data.unkowns.add(tCandidate);
+			   data.unknown.add(tCandidate);
 			   
 			   Iterator<Transition> iDepTrans = tCandidate.getDependentTrans().iterator();
 			   while(iDepTrans.hasNext()){
 				   Transition thisDepTrans = iDepTrans.next();
 				   if(data.disabled.contains(thisDepTrans)){
 					   data.disabled.remove(thisDepTrans);
-					   data.unkowns.add(thisDepTrans);
+					   data.unknown.add(thisDepTrans);
 				   }
 			   }
-			   break;
+			  break;  //Needed for stepwise execution He - 7/29/2015 
 		   }
 		   
 	   }	   
