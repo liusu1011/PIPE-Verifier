@@ -6,14 +6,15 @@ import pipe.dataLayer.abToken;
 public class Symbol {
 
 	String key;
-	int type;
+	int type;    //used to indicate a set variable
 	Object binder;
 //	Token binding = null;
 //	abToken abBinding = null;
 	
-	public Symbol(String key, Object b){
+	public Symbol(String key, Object b, int tp){
 		this.key = key;
 		this.binder = b;
+		this.type =tp;
 	}
 	
 	public String getKey(){
@@ -24,6 +25,11 @@ public class Symbol {
 		return this.binder;
 	}
 	
+	//added by He - 8/2/15
+	public int getType()
+	{
+		return type;
+	}
 //	public Symbol(String key, Token b){
 //		type = 0;
 //		this.key = key;

@@ -159,7 +159,7 @@ public class Simulation
       
       int i,j;
       
-      // Initialise arrays
+      // Initialize arrays
       for (i = 0; i < marking.length; i++) {
          averageTokens[i] = 0;
          totalTokens[i] = 0;
@@ -167,7 +167,7 @@ public class Simulation
          errorResult[i] = 0;
       }
       
-      //Initialise matrices
+      //Initialize matrices
       for (i = 0; i < cycles; i++){
          for (j = 0; j < marking.length; j++){
             overallAverages[i][j] = 0;
@@ -175,14 +175,14 @@ public class Simulation
       }
       
       for (i = 0; i < cycles; i++) {
-         //Need to initialise the transition count again
+         //Need to initialize the transition count again
          int transCount = 0;
          
          //Get initial marking
          marking = data.getInitialMarkingVector();
          data.restoreState();
          
-         //Initialise matrices for each new cycle
+         //Initialize matrices for each new cycle
          for (j = 0; j < marking.length; j++) {
             averageTokens[j] = 0;
             totalTokens[j] = 0;

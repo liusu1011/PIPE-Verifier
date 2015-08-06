@@ -373,7 +373,7 @@ public class PlaceTypePanel extends JPanel {
 	        	 String sele = Typelist.getSelectedValue().toString();
 	        	 if(nameTextField.getText().trim().equals(sele.trim()))
 	             {
-	            	 showWarning("Can not include itself");
+	            	 showWarning("Cannot include itself");
 	            	 return;
 	             }
 	        	 
@@ -383,7 +383,7 @@ public class PlaceTypePanel extends JPanel {
 	            	 {
 	            		 if(group.get(i).getPow())
 	            		 {
-	            			 showWarning("Power Set can not be include");
+	            			 showWarning("Power Set cannot be included");
 	            			 return;
 	            		 }
 	            	 }
@@ -433,7 +433,7 @@ public class PlaceTypePanel extends JPanel {
 	    	             String sele = Typelist.getSelectedValue().toString();
 	    	             if(nameTextField.getText().trim().equals(sele.trim()))
 	    	             {
-	    	            	 showWarning("Can not include itself");
+	    	            	 showWarning("Cannot include itself");
 	    	            	 return;
 	    	             }
 	    	             for(int i = 0; i < group.size(); i ++)
@@ -442,7 +442,7 @@ public class PlaceTypePanel extends JPanel {
 	    	            	 {
 	    	            		 if(group.get(i).getPow())
 	    	            		 {
-	    	            			 showWarning("Power Set can not be include");
+	    	            			 showWarning("Power Set cannot be included");
 	    	            			 return;
 	    	            		 }
 	    	            	 }
@@ -605,7 +605,7 @@ public class PlaceTypePanel extends JPanel {
 		   }
 		   if(nameTextField.getText().trim().equals(""))
 		   {
-			   showWarning("Name can not be empty");
+			   showWarning("Name cannot be empty");
 			   return;
 		   }
 		   if(!buildType(str, false))
@@ -802,7 +802,7 @@ public class PlaceTypePanel extends JPanel {
 		   }
 		   if(nameTextField.getText().trim().equals(""))
 		   {
-			   showWarning("Name can not be empty");
+			   showWarning("Name cannot be empty");
 			   return;
 		   }
 		   if(!buildType(str, true))

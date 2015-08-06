@@ -473,6 +473,32 @@ public abstract class  Arc
       return (Arc) super.clone();
    }   
    
+   //added by He - 7/26/2015
+   public boolean Abtoken() {
+	   if(this.getSource() instanceof Place)
+	   {
+		   if(((Place) this.getSource()).getDataType() == null)
+		   {
+			   JOptionPane.showMessageDialog(CreateGui.getApp(), 
+					   "Connected Place type undefined!", "Type Undefined Violation", JOptionPane.ERROR_MESSAGE);
+			   return false;
+		   }
+		   if(!((Place)this.getSource()).getDataType().getPow())
+		   {
+			   return false;
+		   }
+	   }
+	   if(this.getTarget() instanceof Place)
+	   {
+		   if(!((Place)this.getTarget()).getDataType().getPow())
+		   {
+			   return false;
+		   }
+	   }
+	   return true;
+   }
+	   
+   
    public boolean setVar(String _Var)
    {
 	   Var = _Var;
@@ -490,7 +516,7 @@ public abstract class  Arc
 			   if(this.getVarCount()>1)
 			   {
 				   JOptionPane.showMessageDialog(CreateGui.getApp(), 
-						   "Arc Variables cannot be more than one for simple place!", "Specification Violation", JOptionPane.ERROR_MESSAGE);
+						   "Arc label cannot have more than one variable for simple place!", "Specification Violation", JOptionPane.ERROR_MESSAGE);
 				   Var = "";
 				   return false;
 			   }
@@ -503,7 +529,7 @@ public abstract class  Arc
 			   if(this.getVarCount()>1)
 			   {
 				   JOptionPane.showMessageDialog(CreateGui.getApp(), 
-						   "Arc Variables cannot be more than one for simple place!", "Specification Violation", JOptionPane.ERROR_MESSAGE);
+						   "Arc label cannot have more than one variable for simple place!", "Specification Violation", JOptionPane.ERROR_MESSAGE);
 				   Var = "";
 				   return false;
 			   }
@@ -542,5 +568,29 @@ public abstract class  Arc
    {
 	   return dataType;
    }
+   
+   
+   public boolean isSetVar()
+   {
+	   if(!this.Var.startsWith("{"))
+	   {
+		   if(this.getSource() instanceof Place)
+		   { 
+			   if(((Place)this.getSource()).getDataType().getPow())
+			   {
+				   return true;
+			   }
+		   }
+		   if(this.getTarget() instanceof Place)
+		   { 
+			   if(((Place)this.getTarget()).getDataType().getPow())
+			   {
+				   return true;
+			   }
+		   }
+	   }
+	   return false;
+   }
+   
 
 }

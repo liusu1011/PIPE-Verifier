@@ -8,7 +8,7 @@ public class ConstantTerm extends Term{
 	public int int_val;
 	public String str_val;
 	public String var_key;
-//	public int kind;//0 is boo_val, 1 is int_val, 2 is str_val;
+	public int kind;//0 is boo_val, 1 is int_val, 2 is str_val;
 	
 	//z3
 	public String z3str = "";

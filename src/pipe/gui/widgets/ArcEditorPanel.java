@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.JSpinner;
@@ -12,6 +13,7 @@ import javax.swing.event.ChangeListener;
 import pipe.dataLayer.Arc;
 import pipe.dataLayer.DataLayer;
 import pipe.dataLayer.DataType;
+import pipe.gui.CreateGui;
 import pipe.gui.GuiView;
 
 public class ArcEditorPanel extends JPanel 
@@ -242,15 +244,55 @@ public class ArcEditorPanel extends JPanel
 	   }//GEN-LAST:event_okButtonKeyPressed
 
 	   private void doOK(){
-	
-		  arc.setName(nameTextField.getText());
+		  
+		  setName(nameTextField.getText());
 		  if(!varTextField.getText().startsWith("Input"))
-		  {
-			  if(!arc.setVar(varTextField.getText()))
+		  {   			//added by He - 7/26/2015
+			  boolean settype = arc.Abtoken();
+			  //System.out.println("Set type" + settype);
+			  String arcname = varTextField.getText();
+			  //System.out.println("Arc variable name" + arcname);
+			  if (!settype)
 			  {
-				  return;
-			  }
-			  arc.setVar();
+				  if(!arcname.matches("[a-zA-Z][0-9a-zA-Z]*"))  
+				  {   
+					  JOptionPane.showMessageDialog(CreateGui.getApp(), "Arc variable name must start with a letter and followed by letters and digits", "", JOptionPane.ERROR_MESSAGE);
+					  return;
+				  } 
+				  if(!arc.setVar(varTextField.getText()))
+				  {   
+					  return;
+				  }
+				  arc.setVar();
+			  } else 
+			  {   if (!arcname.substring(0,1).equals("{"))
+				  {
+				  	if(!arcname.matches("[a-zA-Z][0-9a-zA-Z]*"))  
+				  	{   
+					  JOptionPane.showMessageDialog(CreateGui.getApp(), "Single set variable name must start with a letter and followed by letters and digits", "", JOptionPane.ERROR_MESSAGE);
+				  	  return;
+				  	} 
+				  } else 
+				  	{ 	int arcln = arcname.length();
+				  		String vname = arcname.substring(1, arcln-1);
+				  		String[] vars = vname.trim().split(",");
+				  		boolean validname = true;
+				  		for(int j = 0; j < vars.length; j++)
+				  		{
+				  			validname = validname && vars[j].matches("[a-zA-Z][a-zA-Z0-9]*");
+				  		}
+				  		if (!arcname.substring(0,1).equals("{") ||!validname || !arcname.substring(arcln-1).equals("}"))
+				  		{   
+				  			JOptionPane.showMessageDialog(CreateGui.getApp(), "Multiple variables for power set must start with { separated by , and end with} ", "", JOptionPane.ERROR_MESSAGE);
+				  			return;
+				  		} 
+				  	}
+				  if(!arc.setVar(varTextField.getText()))
+				  {   
+					  return;
+				  }
+				  arc.setVar();
+			 }		  
 		  }
 	      arc.repaint();
 	      exit();

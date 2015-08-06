@@ -377,48 +377,71 @@ public class PlaceEditorPanel
    }//GEN-LAST:event_okButtonKeyPressed
    
    private void doadd()
-   {
-	  String[] tokens = newtoken.getText().trim().split("]");
-	  DataType dt = place.getDataType();
-	  for(int i = 0; i < tokens.length; i++)
-	  {
-		  String temptoken = tokens[i].substring(1);
-		  String[] ele = temptoken.split(",");
-		  
-		  BasicType[] bt = new BasicType[ele.length];
-		  for(int j = 0; j < ele.length; j++)
-		  {
-			  bt[j] = new BasicType();
-			  if(dt.getTypebyIndex(j) == 0)
-			  {
-				  bt[j].kind = 0;
-				  try{
-					  bt[j].Tint = Integer.parseInt(ele[j].trim());
-			      }
-				  catch(Exception e)
-				  {
-					 //show message
-				  }
-			  }
-			  if(dt.getTypebyIndex(j) == 1)
-			  {
-				  bt[j].kind = 1;
-				  try{
-					  bt[j].Tstring = ele[j].trim();
-			      }
-				  catch(Exception e)
-				  {
-					  //show message
-				  }
-			  }
-		  }
-		  if(!place.addToken(bt))
-		  {
-			  //show message
-		  }
-		  
-	  }
-   }
+	{
+	    String[] tokens = newtoken.getText().trim().split("]");
+		DataType dt = place.getDataType();
+		int vsize = dt.getTypes().size();    //He - added on July 22, 2015
+		if(!tokens[0].startsWith("["))  //He - added on July 23, 2015
+		{   
+			JOptionPane.showMessageDialog(CreateGui.getApp(), "Please type left bracket [ before entering token values ", "", JOptionPane.ERROR_MESSAGE);
+			return;
+		}		
+		for(int i = 0; i < tokens.length; i++)
+		{
+			String temptoken = tokens[i].substring(1);
+			String[] ele = temptoken.split(",");
+			BasicType[] bt = new BasicType[ele.length];
+			if (vsize == ele.length)    //He - added on July 22, 2015
+			{	for(int j = 0; j < vsize; j++)
+				{
+					bt[j] = new BasicType();
+					if(dt.getTypebyIndex(j) == 0)
+					{
+						bt[j].kind = 0;
+						// START MIHAINUAN/ABHINAV - MODIFIED 7/2/15- Validation check for integer token.
+						//Abhinav and He - Modified 7/21/15
+						if(!ele[j].matches("[0-9]+") )  
+						{   
+							JOptionPane.showMessageDialog(CreateGui.getApp(), "Enter valid integer token in position "+(j+1), "", JOptionPane.ERROR_MESSAGE);
+							return;
+						}				
+	
+						try{
+							bt[j].Tint = Integer.parseInt(ele[j].trim());
+						}
+						catch(Exception e)
+						{
+							//show message
+						}
+					}
+					if(dt.getTypebyIndex(j) == 1)
+					{
+						bt[j].kind = 1;
+						
+						try{
+							bt[j].Tstring = ele[j].trim();
+						}
+						catch(Exception e)
+						{
+							//show message
+						}
+					}
+				}
+			}
+			else 
+			{
+				JOptionPane.showMessageDialog(CreateGui.getApp(), "Token format does not match data type", "", JOptionPane.ERROR_MESSAGE);
+				return;
+			}     //He -Added July 22, 2015
+
+			if(!place.addToken(bt))
+			{
+				//show message
+			}
+
+		}
+	} 
+
    
    private void doDel(){
 	   int index = newtokenlist.getSelectedIndex();

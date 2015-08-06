@@ -21,21 +21,32 @@ public class SymbolTable {
 		table = new ArrayList<Symbol>(_table.table);
 	}
 	
-	//only print when value is singleton type
+
 	public void printSymTable()
 	{
 		System.out.println("----- symbol table size = "+table.size()+"-----");
 		System.out.println("Key   Value");
 		for(Symbol sym:table)
-		{
-			String value = "";
+		{   //Modified by He - July 24, 2015
+			/*String value = "";
 			if(((Token)sym.getBinder()).Tlist.get(0).kind == 0)
 			{
 				value = Integer.toString(((Token)sym.getBinder()).Tlist.get(0).Tint);
 			}else{
 				value = ((Token)sym.getBinder()).Tlist.get(0).Tstring;
 			}
-			System.out.println(sym.getKey()+"   "+value);
+			System.out.println(sym.getKey()+"   "+value); */
+			//Modified by He - 8/5/15
+			if (sym.getType() !=1) {
+				System.out.println(sym.getKey()+"   "+ ((Token) sym.getBinder()).displayToken());
+			} else 
+			{
+				int nooftok = ((abToken) sym.getBinder()).getTokenCount();
+				for (int k = 0; k < nooftok; k++)
+				{
+					System.out.println(sym.getKey()+"   "+ ((Token) ((abToken) sym.getBinder()).getTokenbyIndex(k)).displayToken());
+				}
+			}
 		}
 	}
 	
@@ -51,8 +62,8 @@ public class SymbolTable {
 			this.table.remove(sym);
 		}
 	}
-	public void insert(String key, Object b){
-		Symbol symbol = new Symbol(key,b);
+	public void insert(String key, Object b, int tp){
+		Symbol symbol = new Symbol(key,b, tp);
 		table.add(symbol);
 	}
 	
@@ -76,8 +87,17 @@ public class SymbolTable {
 		return null;
 	}
 	
-	public void update(String key, Object b){
-		Symbol symbol = new Symbol(key,b);
+	//added by He - 8/2/15
+	public int getType(String key)
+	{
+		for(Symbol s : table){
+			if(key.equals(s.key))return s.type;
+		}
+		return 0;
+	}
+	
+	public void update(String key, Object b, int tp){
+		Symbol symbol = new Symbol(key,b, tp);
 //		for(Symbol s: table){
 //			if(key.equals(s.key)){
 //				table.remove(s);

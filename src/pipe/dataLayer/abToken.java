@@ -50,7 +50,8 @@ public class abToken
 	{
 //		if(!isDef)
 //			return false;
-		listToken.add( t);
+			
+		listToken.add(t);
 		NumofToken ++;
 		return true;
 	}
