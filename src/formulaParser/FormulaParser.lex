@@ -74,6 +74,7 @@ public Yylex(java.io.Reader s, ErrorMsg e) {
 <YYINITIAL>"\u2209"		{return tok(sym.NIN,null);}
 <YYINITIAL>"\u222A"		{return tok(sym.UNION,null);}
 <YYINITIAL>"\u2216"		{return tok(sym.DIFF,null);}
+<YYINITIAL>"|"			{return tok(sym.SETDEF,null);}
 <YYINITIAL>"]"			{return tok(sym.RBRACK,null);}
 <YYINITIAL>"["			{return tok(sym.LBRACK,null);}
 <YYINITIAL>")"			{return tok(sym.RPAREN,null);}

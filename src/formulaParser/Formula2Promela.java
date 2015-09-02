@@ -1284,4 +1284,7 @@ public class Formula2Promela implements Visitor{
 		return placeName;
 	}
 
+	public void visit(Setdef setdef) {
+		//added stub 8/17/15
+	}
 }

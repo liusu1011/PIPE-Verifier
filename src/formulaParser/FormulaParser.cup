@@ -25,7 +25,7 @@ parser code {:
 terminal AND, OR, NOT, IMP, EQUIV, EQ, NEQ, GT, LT, GEQ, LEQ,
 		 PLUS, MINUS, UMINUS, MUL, MOD, DIV,
 		FORALL, EXISTS, NEXISTS,
-		IN, NIN, UNION, DIFF,
+		IN, NIN, UNION, DIFF, SETDEF,
 		RBRACK, LBRACK,	RPAREN, LPAREN, LBRACE, RBRACE, 
 		DOT, COMMA;
 terminal TRUE, FALSE, EMPTY;
@@ -181,6 +181,8 @@ set_exp ::= term:t1 UNION:u term:t2
 			{: RESULT = new BraceTerm(lleft, t); :}
 		| LBRACE:l LBRACK terms:ts RBRACK RBRACE
 			{: RESULT = new BraceTerms(lleft, ts); :}
+		| LBRACE:l userVariable:u SETDEF:s formula:f RBRACE
+			{: RESULT = new Setdef(lleft,u,f); :}
 		;		
 
 		

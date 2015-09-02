@@ -93,7 +93,10 @@ public class Interpreter implements Visitor{
 		if(debug)System.out.println("BraceTerm");
 		elem.t.accept(this);
 		
+		System.out.println("Brace Term Visited"); //debug
+		
 		DataType resultType = null;
+		//allocate space to a temp abToken to store result
 		abToken resultTok = new abToken(resultType);
 		if(elem.t instanceof VariableTerm)
 		{   
@@ -145,8 +148,8 @@ public class Interpreter implements Visitor{
 						}
 						break;
 			}
-		} 
-		
+		}
+
 		//changed by He - 8/5/15
 		//if(((VariableTerm)(elem.t)).v instanceof IdVariable){
 		//	if(symTable.lookup(((IdVariable)((VariableTerm)(elem.t)).v).key) instanceof Token){
@@ -205,6 +208,7 @@ public class Interpreter implements Visitor{
 						elem.bool_val = false;
 					}
 				}
+				//if (!elem.bool_val)   //Modified 8/7/15
 				symTable.delete(elem.uv.s);
 			}	
 		}else if(elem.q instanceof Exists)
@@ -273,8 +277,6 @@ public class Interpreter implements Visitor{
 		elem.t2.accept(this);
 
 		DataType resultType = null;
-		//allocate space to a temp abToken to store result
-		abToken resultTok = new abToken(resultType);
 				
 		//find datatype of the result token;
 		if(elem.t1 instanceof VariableTerm){
@@ -299,7 +301,9 @@ public class Interpreter implements Visitor{
 			resultType = ((SExp)((ExpTerm)(elem.t1)).e).abTok.getDataType();
 		}else errorMsg.error(elem.pos, "Union::Tree type mismatch!"); 
 		
-	
+		//allocate space to a temp abToken to store result
+			abToken resultTok = new abToken(resultType);
+				
 		//add left term to result token
 		if(elem.t1 instanceof VariableTerm){
 		if(((VariableTerm)(elem.t1)).v instanceof IdVariable){
@@ -361,6 +365,58 @@ public class Interpreter implements Visitor{
 		elem.abTok = resultTok;
 	}
 
+	//added He 8/17/15
+	public void visit(Setdef elem){
+		if(debug)System.out.println("Set Definition");
+		elem.u.accept(this);
+		elem.sf.accept(this);	
+		
+		DataType resultType = null;
+				
+		//find the datatype of the result token;
+		if(((ComplexFormula) ((CpxFormula) elem.sf).cpf).v instanceof IdVariable){
+			if(symTable.lookup(((IdVariable) ((ComplexFormula) ((CpxFormula) (elem.sf)).cpf).v).key) instanceof abToken){
+				resultType = ((abToken) symTable.lookup(((IdVariable) ((ComplexFormula) ((CpxFormula) (elem.sf)).cpf).v).key)).getDataType();
+			}else errorMsg.error(elem.pos, "SetDef::Tree type mismatch!"); 
+		}
+		
+		//allocate space to a temp abToken to store result
+			abToken resultTok = new abToken(resultType);
+		//find and add tokens
+		if(elem.sf instanceof CpxFormula){
+			//if (elem.u.s.equals(((ComplexFormula) ((CpxFormula) elem.sf).cpf).uv.s)) {
+				if(((ComplexFormula) ((CpxFormula) elem.sf).cpf).v instanceof IdVariable){
+					if(symTable.lookup(((IdVariable) ((ComplexFormula) ((CpxFormula) (elem.sf)).cpf).v).key) instanceof abToken){
+						for(Token t : ((abToken)(symTable.lookup(((IdVariable)((ComplexFormula)((CpxFormula)(elem.sf)).cpf).v).key))).listToken)
+						{
+							symTable.update(elem.u.s, t, 0);
+							//symTable.update(((ComplexFormula)((CpxFormula) elem.sf).cpf).uv.s, t, 0);
+							((ComplexFormula) ((CpxFormula) elem.sf).cpf).f.accept(this);
+							if(((ComplexFormula) ((CpxFormula) elem.sf).cpf).f instanceof AtFormula)
+							{
+								if(((AtFormula)((ComplexFormula)((CpxFormula) elem.sf).cpf).f).bool_val == true)
+									resultTok.addToken(t);
+							}else if(elem.sf instanceof CpFormula)
+							{
+								if(((CpFormula)((ComplexFormula)((CpxFormula) elem.sf).cpf).f).bool_val == true)
+									resultTok.addToken(t);
+							}else if(elem.sf instanceof CpxFormula)
+							{
+								if(((CpxFormula)((ComplexFormula)((CpxFormula) elem.sf).cpf).f).bool_val == true)
+									resultTok.addToken(t);
+							}
+							symTable.delete(elem.u.s);
+							//symTable.delete(((ComplexFormula) ((CpxFormula) elem.sf).cpf).uv.s);
+						}	
+						
+					}
+				}
+			} else errorMsg.error(elem.pos, "SetDef::Incorrect Set Definition!"); 
+		//}
+		//assign the result token to absyntree
+		elem.abTok = resultTok;
+	}
+	
 	@Override
 	public void visit(Div elem) {
 		if(debug)System.out.println("Div");
@@ -522,15 +578,15 @@ public class Interpreter implements Visitor{
 						
 					}else if(((VariableTerm)(elem.t2)).v instanceof IndexVariable)
 					{
-						if(((Token)(symTable.lookup(((IndexVariable)((VariableTerm)(elem.t2)).v).key))).Tlist.elementAt(((VariableTerm)elem.t2).index - 1).kind == 0){
+						if(((Token)(symTable.lookup(((IndexVariable)((VariableTerm)(elem.t2)).v).key))).Tlist.elementAt(((VariableTerm)elem.t2).index - 1).kind == 0)
+						{
 							Rint_val = ((Token)(symTable.lookup(((IndexVariable)((VariableTerm)(elem.t2)).v).key))).Tlist.elementAt(((VariableTerm)elem.t2).index - 1).Tint;
-							
 							Token tempTok = (Token) symTable.lookup(((IdVariable)((VariableTerm)(elem.t1)).v).key);
 							tempTok.Tlist.firstElement().Tint = Rint_val;
 							symTable.update(((IdVariable)((VariableTerm)(elem.t1)).v).key, tempTok, 0);
-						}else if(((Token)(symTable.lookup(((IndexVariable)((VariableTerm)(elem.t2)).v).key))).Tlist.elementAt(((VariableTerm)elem.t2).index - 1).kind == 1){
+						}else if(((Token)(symTable.lookup(((IndexVariable)((VariableTerm)(elem.t2)).v).key))).Tlist.elementAt(((VariableTerm)elem.t2).index - 1).kind == 1)
+						{
 							Rstr_val = ((Token)(symTable.lookup(((IndexVariable)((VariableTerm)(elem.t2)).v).key))).Tlist.elementAt(((VariableTerm)elem.t2).index - 1).Tstring;
-							
 							Token tempTok = (Token) symTable.lookup(((IdVariable)((VariableTerm)(elem.t1)).v).key);
 							tempTok.Tlist.firstElement().Tstring = Rstr_val;
 							symTable.update(((IdVariable)((VariableTerm)(elem.t1)).v).key,  tempTok, 0);
@@ -546,7 +602,9 @@ public class Interpreter implements Visitor{
 							 System.out.println("Boolean valued token is not supported, token is default to 0");
 						}else if((((ExpTerm)(elem.t2)).e instanceof SExp)){//set_exp     //changed by He - 8/4/15
 								symTable.update(((IdVariable)((VariableTerm)(elem.t1)).v).key, ((SExp)((ExpTerm)(elem.t2)).e).abTok, 1);
-								}				
+					       
+								//System.out.println("No of Tokens" + ((abToken) ((SExp)((ExpTerm)(elem.t2)).e).abTok).getTokenCount());
+						}
 					}else if(elem.t2 instanceof ConstantTerm){
 						if(((ConstantTerm)(elem.t2)).c instanceof True){
 							Rbool_val = true;
@@ -635,7 +693,6 @@ public class Interpreter implements Visitor{
 				}
 			}
 		}
-		
 		if(!isInArcOutVarList || isInArcInVarList)       
 		{
 		//deal with LHS term
@@ -750,8 +807,8 @@ public class Interpreter implements Visitor{
 			if(Lstr_val.isEmpty())elem.bool_val = true;
 			else elem.bool_val = false;
 		}
-		else errorMsg.error(elem.pos, "EqRel::LHS type cannot compare with RHS!"); 
-		}else elem.bool_val = true;
+		else errorMsg.error(elem.pos, "EqRel::LHS type does not match the type of RHS!"); 
+		} else elem.bool_val = true;
 	}
 
 	@Override
@@ -1940,6 +1997,8 @@ public class Interpreter implements Visitor{
 			elem.abTok = ((BraceTerm)(elem.se)).abTok;
 		}else if(elem.se instanceof BraceTerms){
 			elem.abTok = ((BraceTerms)(elem.se)).abTok;
+		}else if (elem.se instanceof Setdef){       //added by He - 8/19/15
+			elem.abTok = ((Setdef) (elem.se)).abTok;
 		}
 	}
 

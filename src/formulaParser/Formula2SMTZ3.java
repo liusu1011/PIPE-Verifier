@@ -55,6 +55,7 @@ import formulaParser.formulaAbsyntree.Plus;
 import formulaParser.formulaAbsyntree.RExp;
 import formulaParser.formulaAbsyntree.SExp;
 import formulaParser.formulaAbsyntree.Sentence;
+import formulaParser.formulaAbsyntree.Setdef;
 import formulaParser.formulaAbsyntree.StrConstant;
 import formulaParser.formulaAbsyntree.TermRest;
 import formulaParser.formulaAbsyntree.Terms;
@@ -1318,6 +1319,10 @@ public class Formula2SMTZ3 implements Visitor{
 	public void visit(EmptyTerm elem) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void visit(Setdef setdef) {
+		//added stub 8/17/15
 	}
 
 }

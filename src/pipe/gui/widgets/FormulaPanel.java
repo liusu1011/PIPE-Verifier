@@ -160,6 +160,12 @@ public class FormulaPanel extends JPanel{
         curX += btSetParenL.getWidth();
         JButton btSetParenR = createButton(')',curX,curY);
         curX += btSetParenL.getWidth();
+        JButton btSetBraceL = createButton('{',curX,curY);
+        curX += btSetBraceL.getWidth();
+        JButton btSetBraceR = createButton('}',curX,curY);
+        curX += btSetBraceR.getWidth();
+        JButton btSetDef = createButton('|',curX,curY);
+        curX += btSetDef.getWidth();
 //        JButton btSetEmpty = createButton('\u2205',curX,curY);
     }
     private JButton createButton(char code, int x, int y){

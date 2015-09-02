@@ -57,5 +57,6 @@ public interface Visitor {
 	public void visit(Sentence elem);
 	public void visit(Empty elem);
 	public void visit(EmptyTerm elem);
+	public void visit(Setdef setdef);
 	
 }

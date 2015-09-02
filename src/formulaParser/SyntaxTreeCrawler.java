@@ -50,6 +50,7 @@ import formulaParser.formulaAbsyntree.Plus;
 import formulaParser.formulaAbsyntree.RExp;
 import formulaParser.formulaAbsyntree.SExp;
 import formulaParser.formulaAbsyntree.Sentence;
+import formulaParser.formulaAbsyntree.Setdef;
 import formulaParser.formulaAbsyntree.StrConstant;
 import formulaParser.formulaAbsyntree.TermRest;
 import formulaParser.formulaAbsyntree.Terms;
@@ -515,5 +516,9 @@ public class SyntaxTreeCrawler implements Visitor{
 		if(debug)System.out.println("EmptyTerm");
 		elem.e.accept(this);
 		
+	}
+	
+	public void visit(Setdef setdef) {
+		//added stub 8/17/15
 	}
 }
