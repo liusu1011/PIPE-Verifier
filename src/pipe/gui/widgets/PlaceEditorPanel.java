@@ -392,6 +392,7 @@ public class PlaceEditorPanel
 			String[] ele = temptoken.split(",");
 			BasicType[] bt = new BasicType[ele.length];
 			if (vsize == ele.length)    //He - added on July 22, 2015
+
 			{	for(int j = 0; j < vsize; j++)
 				{
 					bt[j] = new BasicType();

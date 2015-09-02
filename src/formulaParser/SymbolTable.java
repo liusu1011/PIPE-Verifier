@@ -36,6 +36,7 @@ public class SymbolTable {
 				value = ((Token)sym.getBinder()).Tlist.get(0).Tstring;
 			}
 			System.out.println(sym.getKey()+"   "+value); */
+
 			//Modified by He - 8/5/15
 			if (sym.getType() !=1) {
 				System.out.println(sym.getKey()+"   "+ ((Token) sym.getBinder()).displayToken());

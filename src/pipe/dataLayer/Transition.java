@@ -1093,7 +1093,9 @@ public class Transition
 	   }
    }
   
+
   //revised by He to handle a variable appear on both an input and an out arc - 8/3/15
+
    public void addOutputPlaceTokenToSymbolTable()
    {
 	   for(Arc ao : getArcOutList()){
@@ -1142,6 +1144,7 @@ public class Transition
 		   {
 			   Place p = (Place)(a.getTarget());
 			   String[] vars = a.getVars();
+
 			   int symTsize = symTable.table.size();
 			   for(int j=0;j<vars.length;j++)
 			   {   
@@ -1177,10 +1180,13 @@ public class Transition
 						   if(s.getBinder() instanceof Token)
 						   {
 							   p.getToken().listToken.add((Token)s.getBinder());
+
 							   if (s.getType() != 1)
 							   {
 								  break;
 							   }
+
+							   break;
 						   }
 					   }
 				   }  */
@@ -1213,6 +1219,7 @@ public class Transition
    {
 	   Place place = (Place)(arc.getSource());
 	   int varCount = arc.getVarCount();
+
 	   if (!(arc.isSetVar()))    //changed by He to handle set variable - 8/2/15
 	   {
 		   if(k == varCount)
@@ -1226,11 +1233,14 @@ public class Transition
 			   {
 				   continue;
 			   }
+
 			   solution.insert((arc.getVars())[k], place.getToken().getTokenbyIndex(i), 0);
+
 			   tokCombsForFromPlace(results, solution, arc, k+1);
 			   solution.delete((arc.getVars())[k]);
 		   }
 	   } else
+
 	   {   //changed by He - 8/5/15
 		   abToken aTok = new abToken(place.getDataType());
 		   for(int i=0;i<place.getToken().getTokenCount();i++)
@@ -1250,9 +1260,7 @@ public class Transition
 //		   return;
 //	   }
    }
-	   
-	   
-	  
+	     
   
    //added by He - 7/31/2015  This method checks whether a variable name appears in multiple
    //arc labels, and removes all impossible token combinations
@@ -1267,7 +1275,7 @@ public class Transition
 			   {
 				   for (int j=i+1;j<noToken; j++)
 				   {
-					   if (next.table.get(i).getKey().equals(next.table.get(j).getKey())&& next.table.get(i).getType()!=1)
+					   if (next.table.get(i).getKey().equals(next.table.get(j).getKey()))
 					   {   
 						   if (((Token)(next.table.get(i).getBinder())).Tlist.firstElement().kind==0 &&
 						   (((Token)(next.table.get(j).getBinder())).Tlist.firstElement().kind==0))
@@ -1360,7 +1368,7 @@ public class Transition
 		   Parse p = new Parse(formula, errorMsg);
 		   Sentence s = p.absyn;
 		   s.accept(new Interpreter(errorMsg, this, 1));
-		   symTable.printSymTable();  //test
+		   //symTable.printSymTable();  //debug
 		   sendTokenFromCurSymbolTable();
 		   getTransSymbolTable().cleanTable();
 	   }
