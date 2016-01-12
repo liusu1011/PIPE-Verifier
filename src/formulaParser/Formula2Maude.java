@@ -361,7 +361,7 @@ public class Formula2Maude implements Visitor{
 		if (elem.v instanceof IndexVariable) {
 			var_key = ((IndexVariable) elem.v).key;
 			for (String s : iTransition.getArcOutVarList()) {
-				if (s.replace('{', ' ').replace('}', ' ').trim().equals(var_key))
+				if ((s.replace('{', ' ').replace('}', ' ').trim()+",").contains(var_key+","))
 					isInArcOutVarList = true;
 			}
 		}
