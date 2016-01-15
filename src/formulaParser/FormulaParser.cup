@@ -84,6 +84,8 @@ formula ::= atomicFormula:af
 			{: RESULT = new CpFormula(cfleft, cf); :}
 		|	complexFormula:cpf
 			{: RESULT = new CpxFormula(cpfleft, cpf); :}
+		|   LPAREN formula:f RPAREN
+			{: RESULT = f; :}	
 		;
 		
 atomicFormula  ::= NOT:n formula:f
