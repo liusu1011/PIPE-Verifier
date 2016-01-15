@@ -1,0 +1,131 @@
+fmod MARKING is
+  including INT .
+  including STRING .
+  sort Marking .
+  op empty : -> Marking [ctor] .
+  op __ : Marking Marking -> Marking [ctor assoc comm id: empty] .
+endfm
+
+fmod THINKING-SET is
+  including MARKING .
+  sort Thinking .
+  op OP-Thinking :   Int -> Thinking [ctor] .
+
+  var T : Thinking .   vars TS US : ThinkingSet .
+
+  sort ThinkingSet .
+  subsort ThinkingSet < Marking .
+  subsort Thinking < ThinkingSet .
+  op emptyThinking : -> ThinkingSet [ctor] .
+  op _;_ : ThinkingSet ThinkingSet -> ThinkingSet [ctor assoc comm id: emptyThinking] .
+  eq T ; T = T .
+
+  op _\_ : ThinkingSet ThinkingSet -> ThinkingSet .
+  eq (T ; TS) \ (T ; US) = TS \ US .
+  eq TS \ US = TS [owise] .
+endfm
+
+
+
+fmod CHOPSTICKS-SET is
+  including MARKING .
+  sort Chopsticks .
+  op OP-Chopsticks :   Int -> Chopsticks [ctor] .
+
+  var C : Chopsticks .   vars CS DS : ChopsticksSet .
+
+  sort ChopsticksSet .
+  subsort ChopsticksSet < Marking .
+  subsort Chopsticks < ChopsticksSet .
+  op emptyChopsticks : -> ChopsticksSet [ctor] .
+  op _;_ : ChopsticksSet ChopsticksSet -> ChopsticksSet [ctor assoc comm id: emptyChopsticks] .
+  eq C ; C = C .
+
+  op _\_ : ChopsticksSet ChopsticksSet -> ChopsticksSet .
+  eq (C ; CS) \ (C ; DS) = CS \ DS .
+  eq CS \ DS = CS [owise] .
+
+  sort ChopsticksPowerSet .
+  op OP-ChopsticksPowerSet : ChopsticksSet -> ChopsticksPowerSet [ctor] .
+  subsort ChopsticksPowerSet < Marking .
+endfm
+
+
+
+fmod EATING-SET is
+  including MARKING .
+  sort Eating .
+  op OP-Eating :   Int -> Eating [ctor] .
+
+  var E : Eating .   vars ES FS : EatingSet .
+
+  sort EatingSet .
+  subsort EatingSet < Marking .
+  subsort Eating < EatingSet .
+  op emptyEating : -> EatingSet [ctor] .
+  op _;_ : EatingSet EatingSet -> EatingSet [ctor assoc comm id: emptyEating] .
+  eq E ; E = E .
+
+  op _\_ : EatingSet EatingSet -> EatingSet .
+  eq (E ; ES) \ (E ; FS) = ES \ FS .
+  eq ES \ FS = ES [owise] .
+endfm
+
+
+
+mod MainMod is
+  including THINKING-SET .
+  including CHOPSTICKS-SET .
+  including EATING-SET .
+var ChopsticksS : ChopsticksSet .
+vars l_f1 p_f1 l'_f1 rp_f1 e1_f1 e_f1 r'_f1 r_f1 : Int .
+vars r' l l' r : Chopsticks .
+
+crl [Pickup]:
+OP-Thinking(p_f1)
+OP-ChopsticksPowerSet(l ;  r ; ChopsticksS)  => OP-ChopsticksPowerSet(ChopsticksS) OP-Eating(e_f1)
+if OP-Chopsticks(l_f1) := l /\ 
+OP-Chopsticks(r_f1) := r /\ 
+p_f1 = l_f1 /\ ((p_f1 + 1) rem 25) = r_f1 /\ e_f1 := p_f1 . 
+
+crl [Release]:
+OP-Eating(e1_f1)
+OP-ChopsticksPowerSet(ChopsticksS)  => OP-Thinking(rp_f1)
+OP-ChopsticksPowerSet(l' ;  r' ; ChopsticksS) if rp_f1 := e1_f1 /\ l'_f1 := e1_f1 /\ r'_f1 := ((e1_f1 + 1) rem 25)
+/\ l' := OP-Chopsticks(l'_f1) /\ 
+r' := OP-Chopsticks(r'_f1) . 
+
+endm
+
+
+load model-checker
+
+mod PHILO-CHECK is
+  including MainMod .
+  including MODEL-CHECKER .
+
+  vars X Y N : Nat . var REST : Marking .
+
+  op mutex : -> Prop [ctor] .
+  op <_> : Marking -> State .
+
+---  op init : -> State .
+---  eq init = < OP-Thinking(1) OP-Thinking(2) OP-Thinking(3) OP-Thinking(4) OP-Thinking(5)  OP-Thinking(6) OP-Thinking(7) OP-Thinking(8) OP-Thinking(9) OP-Thinking(10) OP-ChopsticksPowerSet(OP-Chopsticks(1); OP-Chopsticks(2); OP-Chopsticks(3); OP-Chopsticks(4); OP-Chopsticks(5); OP-Chopsticks(6); OP-Chopsticks(7); OP-Chopsticks(8); OP-Chopsticks(9); OP-Chopsticks(10)) > .
+
+  ceq < OP-Eating(X) OP-Eating(Y) REST >  |= mutex = false if Y = (X + 1) rem 20 .
+  eq < REST > |= mutex = true [owise] .
+
+  op init : -> Marking .
+  eq init = OP-Thinking(1) OP-Thinking(2) OP-Thinking(3) OP-Thinking(4) OP-Thinking(5)  OP-Thinking(6) OP-Thinking(7) OP-Thinking(8) OP-Thinking(9) OP-Thinking(10) OP-Thinking(11) OP-Thinking(12) OP-Thinking(13) OP-Thinking(14) OP-Thinking(15)  OP-Thinking(16) OP-Thinking(17) OP-Thinking(18) OP-Thinking(19) OP-Thinking(20) OP-Thinking(21) OP-Thinking(22) OP-Thinking(23) OP-Thinking(24) OP-Thinking(25) OP-ChopsticksPowerSet(OP-Chopsticks(1); OP-Chopsticks(2); OP-Chopsticks(3); OP-Chopsticks(4); OP-Chopsticks(5); OP-Chopsticks(6); OP-Chopsticks(7); OP-Chopsticks(8); OP-Chopsticks(9); OP-Chopsticks(10); OP-Chopsticks(11); OP-Chopsticks(12); OP-Chopsticks(13); OP-Chopsticks(14); OP-Chopsticks(15); OP-Chopsticks(16); OP-Chopsticks(17); OP-Chopsticks(18); OP-Chopsticks(19); OP-Chopsticks(20); OP-Chopsticks(21); OP-Chopsticks(22); OP-Chopsticks(23); OP-Chopsticks(24); OP-Chopsticks(25)) .
+
+  op cond1 : Marking -> Bool .
+  ceq cond1( OP-Eating(X) OP-Eating(Y) REST ) = false if Y = (X + 1) rem 25 .
+  eq cond1( REST ) = true [owise] .
+
+endm
+
+
+set verbose on .
+
+search init =>* M:Marking such that not cond1 (M:Marking) .
+--- red modelCheck(init, [] mutex) .

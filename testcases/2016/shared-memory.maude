@@ -1,0 +1,226 @@
+fmod MARKING is
+  including INT .
+  including STRING .
+  sort Marking .
+  op empty : -> Marking [ctor] .
+  op __ : Marking Marking -> Marking [ctor assoc comm id: empty] .
+endfm
+
+fmod OWNMEMACC-SET is
+  including MARKING .
+  sort OwnMemAcc .
+  op OP-OwnMemAcc :   Int -> OwnMemAcc [ctor] .
+
+  var O : OwnMemAcc .   vars OS PS : OwnMemAccSet .
+
+  sort OwnMemAccSet .
+  subsort OwnMemAccSet < Marking .
+  subsort OwnMemAcc < OwnMemAccSet .
+  op emptyOwnMemAcc : -> OwnMemAccSet [ctor] .
+  op _;_ : OwnMemAccSet OwnMemAccSet -> OwnMemAccSet [ctor assoc comm id: emptyOwnMemAcc] .
+  eq O ; O = O .
+
+  op _\_ : OwnMemAccSet OwnMemAccSet -> OwnMemAccSet .
+  eq (O ; OS) \ (O ; PS) = OS \ PS .
+  eq OS \ PS = OS [owise] .
+endfm
+
+
+
+fmod ACTIVE-SET is
+  including MARKING .
+  sort Active .
+  op OP-Active :   Int -> Active [ctor] .
+
+  var A : Active .   vars AS BS : ActiveSet .
+
+  sort ActiveSet .
+  subsort ActiveSet < Marking .
+  subsort Active < ActiveSet .
+  op emptyActive : -> ActiveSet [ctor] .
+  op _;_ : ActiveSet ActiveSet -> ActiveSet [ctor assoc comm id: emptyActive] .
+  eq A ; A = A .
+
+  op _\_ : ActiveSet ActiveSet -> ActiveSet .
+  eq (A ; AS) \ (A ; BS) = AS \ BS .
+  eq AS \ BS = AS [owise] .
+endfm
+
+
+
+fmod QUEUE-SET is
+  including MARKING .
+  sort Queue .
+  op OP-Queue :   Int -> Queue [ctor] .
+
+  var Q : Queue .   vars QS RS : QueueSet .
+
+  sort QueueSet .
+  subsort QueueSet < Marking .
+  subsort Queue < QueueSet .
+  op emptyQueue : -> QueueSet [ctor] .
+  op _;_ : QueueSet QueueSet -> QueueSet [ctor assoc comm id: emptyQueue] .
+  eq Q ; Q = Q .
+
+  op _\_ : QueueSet QueueSet -> QueueSet .
+  eq (Q ; QS) \ (Q ; RS) = QS \ RS .
+  eq QS \ RS = QS [owise] .
+endfm
+
+
+
+fmod EXT_MEM_ACC-SET is
+  including MARKING .
+  sort Ext_Mem_Acc .
+  op OP-Ext-Mem-Acc :   Int  Int -> Ext_Mem_Acc [ctor] .
+
+  var E : Ext_Mem_Acc .   vars ES FS : Ext_Mem_AccSet .
+
+  sort Ext_Mem_AccSet .
+  subsort Ext_Mem_AccSet < Marking .
+  subsort Ext_Mem_Acc < Ext_Mem_AccSet .
+  op emptyExt-Mem-Acc : -> Ext_Mem_AccSet [ctor] .
+  op _;_ : Ext_Mem_AccSet Ext_Mem_AccSet -> Ext_Mem_AccSet [ctor assoc comm id: emptyExt-Mem-Acc] .
+  eq E ; E = E .
+
+  op _\_ : Ext_Mem_AccSet Ext_Mem_AccSet -> Ext_Mem_AccSet .
+  eq (E ; ES) \ (E ; FS) = ES \ FS .
+  eq ES \ FS = ES [owise] .
+endfm
+
+
+
+fmod EXT_BUS-SET is
+  including MARKING .
+  sort Ext_Bus .
+  op OP-Ext-Bus :   Int -> Ext_Bus [ctor] .
+
+  var E : Ext_Bus .   vars ES FS : Ext_BusSet .
+
+  sort Ext_BusSet .
+  subsort Ext_BusSet < Marking .
+  subsort Ext_Bus < Ext_BusSet .
+  op emptyExt-Bus : -> Ext_BusSet [ctor] .
+  op _;_ : Ext_BusSet Ext_BusSet -> Ext_BusSet [ctor assoc comm id: emptyExt-Bus] .
+  eq E ; E = E .
+
+  op _\_ : Ext_BusSet Ext_BusSet -> Ext_BusSet .
+  eq (E ; ES) \ (E ; FS) = ES \ FS .
+  eq ES \ FS = ES [owise] .
+endfm
+
+
+
+fmod MEMORY-SET is
+  including MARKING .
+  sort Memory .
+  op OP-Memory :   Int -> Memory [ctor] .
+
+  var M : Memory .   vars MS NS : MemorySet .
+
+  sort MemorySet .
+  subsort MemorySet < Marking .
+  subsort Memory < MemorySet .
+  op emptyMemory : -> MemorySet [ctor] .
+  op _;_ : MemorySet MemorySet -> MemorySet [ctor assoc comm id: emptyMemory] .
+  eq M ; M = M .
+
+  op _\_ : MemorySet MemorySet -> MemorySet .
+  eq (M ; MS) \ (M ; NS) = MS \ NS .
+  eq MS \ NS = MS [owise] .
+endfm
+
+
+
+mod MainMod is
+  including OWNMEMACC-SET .
+  including ACTIVE-SET .
+  including QUEUE-SET .
+  including EXT_MEM_ACC-SET .
+  including EXT_BUS-SET .
+  including MEMORY-SET .
+vars x1_f1 x2_f1 b1_f1 b2_f1 m1_f1 xm_f2 x5_f1 x6_f1 xy_f2 x4_f1 xy_f1 m4_f1 xm_f1 x3_f1 m3_f1 m2_f1 x7_f1 x8_f1 : Int .
+
+crl [Begin_Own_Acc]:
+OP-Active(x1_f1)
+ => OP-OwnMemAcc(x2_f1)
+if x2_f1 := x1_f1 . 
+
+crl [End_Own_Acc]:
+OP-OwnMemAcc(x3_f1)
+OP-Memory(m1_f1)
+ => OP-Active(x4_f1)
+OP-Memory(m2_f1)
+if x3_f1 = m1_f1 /\ x4_f1 := x3_f1 /\ m2_f1 := m1_f1 . 
+
+crl [Req_Ext_Acc]:
+OP-Active(x5_f1)
+ => OP-Queue(x6_f1)
+if x6_f1 := x5_f1 . 
+
+crl [Begin_Ext_Acc]:
+OP-Queue(x7_f1)
+OP-Ext-Bus(b1_f1)
+OP-Memory(m3_f1)
+ => OP-Ext-Mem-Acc(xm_f1, xm_f2)
+if x7_f1 =/= m3_f1 /\ b1_f1 = 1 /\ xm_f1 := x7_f1 /\ xm_f2 := m3_f1 . 
+
+crl [End_Ext_Acc]:
+OP-Ext-Mem-Acc(xy_f1, xy_f2)
+ => OP-Active(x8_f1)
+OP-Ext-Bus(b2_f1)
+OP-Memory(m4_f1)
+if x8_f1 := xy_f1 /\ m4_f1 := xy_f2 /\ b2_f1 := 1 . 
+
+endm
+
+
+load model-checker
+
+mod SharedMemory-CHECK is
+  including MainMod .
+  including MODEL-CHECKER .
+
+  op init : -> Marking .
+  eq init 
+   = OP-Memory(1)
+     OP-Memory(2)
+     OP-Memory(3)
+     OP-Memory(4)
+     OP-Memory(5)
+     OP-Active(1)
+     OP-Active(2)
+     OP-Active(3)
+     OP-Active(4)
+     OP-Active(5)
+     OP-Ext-Bus(1) .
+
+  var CF REST : Marking .
+  vars I1 I2 I3 : Nat .  
+
+  subsort Marking < State .
+
+--- search
+---  op cond1 : Marking -> Prop [ctor] .
+
+---  ceq OP-Ext-Mem-Acc( I1, I2 ) REST |=  cond1( = false if ((I1 == 1) and (I2 == 5)) .
+---  eq REST |=  cond1 = true [owise] .
+
+  op condProp : -> Prop [ctor] .
+  ceq OP-Ext-Mem-Acc( I1, I2 ) REST |=  condProp = false if ((I1 == 1) and (I2 == 5)) .
+  eq REST |=  condProp = true [owise] .
+  op cond1 : -> Formula .
+  eq cond1 = [] condProp .
+
+  op cond1 : Marking -> Bool .
+---  eq cond1(CF) = CF == OP-Ext-Mem-Acc(1, 5) REST .
+  eq cond1(CF) = exists(CF) .
+
+  op exists : Marking -> Bool .
+  eq exists(OP-Ext-Mem-Acc(1, 5) OP-Ext-Bus(1) CF) = true .
+
+
+endm
+
+search init =>* M:Marking such that not cond1(M:Marking) .
+---red modelCheck(init, [] cond1) .

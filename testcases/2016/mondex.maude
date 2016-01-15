@@ -1,0 +1,190 @@
+fmod MARKING is
+  including INT .
+  including STRING .
+  sort Marking .
+  op empty : -> Marking [ctor] .
+  op __ : Marking Marking -> Marking [ctor assoc comm id: empty] .
+endfm
+
+fmod CONPURSE-SET is
+  including MARKING .
+  sort ConPurse .
+  op OP-ConPurse :   String  Int  String  Int  String  String  Int  Int  Int  String  String  String  Int  Int  Int -> ConPurse [ctor] .
+
+  var C : ConPurse .   vars CS DS : ConPurseSet .
+
+  sort ConPurseSet .
+  subsort ConPurseSet < Marking .
+  subsort ConPurse < ConPurseSet .
+  op emptyConPurse : -> ConPurseSet [ctor] .
+  op _;_ : ConPurseSet ConPurseSet -> ConPurseSet [ctor assoc comm id: emptyConPurse] .
+  eq C ; C = C .
+
+  op _\_ : ConPurseSet ConPurseSet -> ConPurseSet .
+  eq (C ; CS) \ (C ; DS) = CS \ DS .
+  eq CS \ DS = CS [owise] .
+
+  sort ConPursePowerSet .
+  op OP-ConPursePowerSet : ConPurseSet -> ConPursePowerSet [ctor] .
+  subsort ConPursePowerSet < Marking .
+endfm
+
+
+
+fmod LOGBOOK-SET is
+  including MARKING .
+  sort LogBook .
+  op OP-LogBook :   String  String  String  Int  Int  Int -> LogBook [ctor] .
+
+  var L : LogBook .   vars LS MS : LogBookSet .
+
+  sort LogBookSet .
+  subsort LogBookSet < Marking .
+  subsort LogBook < LogBookSet .
+  op emptyLogBook : -> LogBookSet [ctor] .
+  op _;_ : LogBookSet LogBookSet -> LogBookSet [ctor assoc comm id: emptyLogBook] .
+  eq L ; L = L .
+
+  op _\_ : LogBookSet LogBookSet -> LogBookSet .
+  eq (L ; LS) \ (L ; MS) = LS \ MS .
+  eq LS \ MS = LS [owise] .
+
+  sort LogBookPowerSet .
+  op OP-LogBookPowerSet : LogBookSet -> LogBookPowerSet [ctor] .
+  subsort LogBookPowerSet < Marking .
+endfm
+
+
+
+fmod MSG_IN-SET is
+  including MARKING .
+  sort msg_in .
+  op OP-msg-in :   String  String  Int  Int  String  String  Int  Int  Int  String -> msg_in [ctor] .
+  subsort msg_in < Marking .
+endfm
+
+
+
+mod MainMod is
+  including CONPURSE-SET .
+  including LOGBOOK-SET .
+  including MSG_IN-SET .
+var ConPurseS : ConPurseSet .
+vars lb_f2 lb_f1 abpurse'_f1 lb_f3 abpurse'_f3 abpurse'_f5 abpurse'_f6 cepurse'_f1 msg_read_f_f10 cepurse'_f3 vlpurse'_f5 cepurse'_f6 vlpurse'_f6 cepurse'_f5 cepurse_f11 vlpurse'_f1 cepurse_f12 vlpurse'_f3 msg_val_f1 cepurse_f10 msg_abort_f10 msg_val_f2 msg_val_f5 msg_val_f6 msg_to_f10 msg_from_f10 stpurse'_f5 msg_ack_f10 abpurse'_f10 stpurse'_f6 stpurse'_f1 epurse'_f3 stpurse'_f3 epurse'_f1 fpurse_f10 akpurse_f12 rqpurse_f1 akpurse_f11 rqpurse_f5 sfpurse'_f11 rqpurse_f6 sfpurse'_f12 akpurse_f10 rqpurse_f3 sfpurse'_f10 msg_abort_f1 msg_abort_f2 abpurse'_f11 msg_abort_f5 cepurse'_f12 abpurse'_f12 msg_abort_f6 cepurse'_f10 cepurse'_f11 msg_to_f1 epurse'_f10 msg_to_f2 msg_to_f5 epurse'_f12 msg_read_f10 epurse'_f11 msg_to_f6 fpurse_f11 fpurse_f1 fpurse_f12 msg_ack_f5 fpurse_f3 msg_ack_f2 fpurse_f5 abpurse_f5 msg_ack_f6 fpurse_f6 abpurse_f6 sfpurse_f5 abpurse_f3 sfpurse_f6 sfpurse_f3 abpurse_f1 akpurse'_f10 vlpurse'_f12 akpurse'_f11 vlpurse'_f11 akpurse'_f12 akpurse'_f6 vlpurse'_f10 akpurse'_f5 akpurse'_f3 akpurse'_f1 rqpurse'_f6 msg_from_f6 rqpurse'_f1 msg_from_f5 msg_from_f2 rqpurse'_f5 msg_from_f1 rqpurse'_f3 akpurse_f1 akpurse_f3 abpurse_f11 abpurse_f10 abpurse_f12 akpurse_f5 akpurse_f6 sfpurse'_f1 sfpurse_f1 rqpurse_f12 msg_val_f10 sfpurse'_f3 rqpurse_f11 msg_f10 rqpurse_f10 sfpurse'_f5 sfpurse'_f6 e_in_f10 e_in_f5 stpurse'_f12 e_in_f2 sfpurse_f12 stpurse'_f11 e_in_f1 sfpurse_f11 sfpurse_f10 msg_clr_f10 epurse_f12 vlpurse_f10 epurse_f11 epurse_f10 vlpurse_f11 vlpurse_f12 vlpurse_f5 vlpurse_f6 msg_ack_f1 vlpurse_f1 stpurse'_f10 e_in_f6 vlpurse_f3 msg_req_f10 fpurse'_f12 fpurse'_f11 fpurse'_f10 epurse_f6 epurse_f5 epurse_f1 epurse_f3 msg_req_f5 msg_req_f6 msg_clr_f1 e_out_f5 msg_req_f1 e_out_f6 msg_req_f2 epurse'_f5 msg_read_f5 epurse'_f6 msg_read_f6 e_out_f10 e_out_f1 e_out_f2 msg_read_f1 msg_read_f2 fpurse'_f3 rqpurse'_f10 fpurse'_f1 rqpurse'_f11 rqpurse'_f12 fpurse'_f6 msg_f1 fpurse'_f5 cepurse_f1 msg_f2 cepurse_f3 msg_f5 msg_f6 stpurse_f5 stpurse_f6 msg_clr_f6 msg_read_f_f6 msg_read_f_f5 stpurse_f12 msg_clr_f2 stpurse_f10 msg_clr_f5 msg_read_f_f2 stpurse_f11 msg_read_f_f1 stpurse_f1 stpurse_f3 cepurse_f5 cepurse_f6 : String .
+var LogBookS : LogBookSet .
+var lb : LogBook .
+vars cepurse_f13 cepurse_f14 cepurse_f15 stpurse'_f4 stpurse'_f7 epurse'_f2 stpurse'_f2 rqpurse_f9 rqpurse_f8 rqpurse_f7 stpurse'_f9 stpurse'_f8 rqpurse_f2 rqpurse_f4 fpurse_f9 fpurse_f8 msg_to_f3 msg_to_f4 epurse'_f14 msg_to_f7 epurse'_f13 msg_to_f9 epurse'_f15 msg_to_f8 abpurse_f9 fpurse_f2 abpurse_f7 abpurse_f8 fpurse_f4 fpurse_f7 abpurse_f4 abpurse_f2 akpurse'_f13 akpurse'_f14 akpurse'_f15 akpurse_f2 abpurse_f15 abpurse_f14 akpurse_f8 akpurse_f9 abpurse_f13 akpurse_f4 akpurse_f7 sfpurse_f2 stpurse'_f14 sfpurse_f15 stpurse'_f13 sfpurse_f14 sfpurse_f13 stpurse'_f15 rqpurse'_f14 rqpurse'_f13 rqpurse'_f15 epurse_f9 epurse_f8 epurse_f7 epurse_f2 epurse_f4 epurse'_f8 msg_read_f7 epurse'_f9 msg_read_f8 msg_read_f9 epurse'_f4 msg_read_f3 msg_read_f4 epurse'_f7 msg_abort_f9 cepurse_f2 stpurse_f14 msg_f3 stpurse_f15 msg_f4 msg_f7 stpurse_f7 stpurse_f8 stpurse_f9 stpurse_f13 stpurse_f2 akpurse_f15 stpurse_f4 cepurse_f9 msg_f8 cepurse_f8 msg_f9 cepurse_f4 cepurse_f7 cepurse'_f9 abpurse'_f2 lb_f4 abpurse'_f4 abpurse'_f7 cepurse'_f2 vlpurse'_f9 abpurse'_f8 abpurse'_f9 cepurse'_f4 lb_f6 lb_f5 cepurse'_f8 vlpurse'_f7 cepurse'_f7 vlpurse'_f8 vlpurse'_f2 vlpurse'_f4 msg_val_f3 msg_val_f4 msg_val_f7 msg_val_f8 msg_val_f9 sfpurse'_f15 sfpurse'_f13 akpurse_f14 sfpurse'_f14 akpurse_f13 abpurse'_f15 cepurse'_f14 msg_abort_f3 cepurse'_f15 msg_abort_f4 cepurse'_f13 msg_abort_f7 abpurse'_f13 msg_abort_f8 abpurse'_f14 msg_ack_f4 fpurse_f13 msg_ack_f3 fpurse_f14 msg_ack_f8 fpurse_f15 msg_ack_f9 msg_ack_f7 sfpurse_f4 sfpurse_f9 sfpurse_f7 vlpurse'_f15 sfpurse_f8 vlpurse'_f14 akpurse'_f8 vlpurse'_f13 akpurse'_f7 akpurse'_f4 akpurse'_f2 rqpurse'_f8 rqpurse'_f9 rqpurse'_f7 akpurse'_f9 msg_from_f9 msg_from_f8 msg_from_f7 msg_from_f4 msg_from_f3 rqpurse'_f4 rqpurse'_f2 rqpurse_f13 rqpurse_f15 rqpurse_f14 sfpurse'_f2 sfpurse'_f4 sfpurse'_f7 sfpurse'_f8 sfpurse'_f9 e_in_f4 e_in_f3 epurse_f13 epurse_f15 epurse_f14 vlpurse_f15 vlpurse_f8 vlpurse_f9 vlpurse_f13 vlpurse_f14 vlpurse_f4 vlpurse_f7 e_in_f8 e_in_f9 vlpurse_f2 e_in_f7 fpurse'_f13 fpurse'_f15 fpurse'_f14 msg_req_f9 msg_req_f8 msg_req_f7 e_out_f9 e_out_f7 msg_req_f3 e_out_f8 msg_req_f4 e_out_f3 e_out_f4 fpurse'_f4 fpurse'_f2 fpurse'_f8 fpurse'_f7 fpurse'_f9 msg_clr_f7 msg_read_f_f9 msg_read_f_f8 msg_clr_f9 msg_read_f_f7 msg_clr_f8 msg_clr_f3 msg_read_f_f4 msg_read_f_f3 msg_clr_f4 : Int .
+vars sfpurse' cepurse' fpurse' rqpurse cepurse sfpurse akpurse' epurse abpurse' fpurse vlpurse akpurse epurse' vlpurse' stpurse' stpurse abpurse rqpurse' : ConPurse .
+
+crl [startFrom]:
+OP-ConPursePowerSet(sfpurse ; ConPurseS) OP-msg-in(msg_from_f1, msg_from_f2, msg_from_f3, msg_from_f4, msg_from_f5, msg_from_f6, msg_from_f7, msg_from_f8, msg_from_f9, msg_from_f10)
+=> OP-ConPursePowerSet(sfpurse' ; ConPurseS) OP-msg-in(msg_f1, msg_f2, msg_f3, msg_f4, msg_f5, msg_f6, msg_f7, msg_f8, msg_f9, msg_f10)
+if OP-ConPurse(sfpurse_f1, sfpurse_f2, sfpurse_f3, sfpurse_f4, sfpurse_f5, sfpurse_f6, sfpurse_f7, sfpurse_f8, sfpurse_f9, sfpurse_f10, sfpurse_f11, sfpurse_f12, sfpurse_f13, sfpurse_f14, sfpurse_f15) := sfpurse /\ 
+msg_from_f1 = "startFrom" /\ sfpurse_f1 = msg_from_f10 /\ sfpurse_f1 =/= msg_from_f2 /\ sfpurse_f2 >= msg_from_f3 /\ sfpurse_f10 = "idle" /\ sfpurse'_f1 := sfpurse_f1 /\ sfpurse'_f2 := sfpurse_f2 /\ sfpurse'_f3 := sfpurse_f3 /\ sfpurse'_f4 := sfpurse_f4 + 1 /\ sfpurse'_f5 := sfpurse_f1 /\ sfpurse'_f6 := msg_from_f2 /\ sfpurse'_f7 := msg_from_f3 /\ sfpurse'_f8 := sfpurse_f4 /\ sfpurse'_f9 := msg_from_f4 /\ sfpurse'_f10 := "epr" /\ sfpurse'_f11 := sfpurse_f11 /\ sfpurse'_f12 := sfpurse_f12 /\ sfpurse'_f13 := sfpurse_f13 /\ sfpurse'_f14 := sfpurse_f14 /\ sfpurse'_f15 := sfpurse_f15 /\ msg_f1 := "forged" /\ msg_f2 := msg_from_f2 /\ msg_f3 := msg_from_f3 /\ msg_f4 := msg_from_f4 /\ msg_f5 := msg_from_f5 /\ msg_f6 := msg_from_f6 /\ msg_f7 := msg_from_f7 /\ msg_f8 := msg_from_f8 /\ msg_f9 := msg_from_f9 /\ msg_f10 := msg_from_f10
+/\ sfpurse' := OP-ConPurse(sfpurse'_f1, sfpurse'_f2, sfpurse'_f3, sfpurse'_f4, sfpurse'_f5, sfpurse'_f6, sfpurse'_f7, sfpurse'_f8, sfpurse'_f9, sfpurse'_f10, sfpurse'_f11, sfpurse'_f12, sfpurse'_f13, sfpurse'_f14, sfpurse'_f15) . 
+
+crl [req]:
+OP-ConPursePowerSet(rqpurse ; ConPurseS) OP-msg-in(msg_req_f1, msg_req_f2, msg_req_f3, msg_req_f4, msg_req_f5, msg_req_f6, msg_req_f7, msg_req_f8, msg_req_f9, msg_req_f10)
+=> OP-ConPursePowerSet(rqpurse' ; ConPurseS) OP-msg-in(msg_f1, msg_f2, msg_f3, msg_f4, msg_f5, msg_f6, msg_f7, msg_f8, msg_f9, msg_f10)
+if OP-ConPurse(rqpurse_f1, rqpurse_f2, rqpurse_f3, rqpurse_f4, rqpurse_f5, rqpurse_f6, rqpurse_f7, rqpurse_f8, rqpurse_f9, rqpurse_f10, rqpurse_f11, rqpurse_f12, rqpurse_f13, rqpurse_f14, rqpurse_f15) := rqpurse /\ 
+msg_req_f1 = "req" /\ rqpurse_f1 = msg_req_f10 /\ rqpurse_f10 = "epr" /\ rqpurse'_f1 := rqpurse_f1 /\ rqpurse'_f2 := rqpurse_f2 - msg_req_f7 /\ rqpurse'_f3 := rqpurse_f3 /\ rqpurse'_f4 := rqpurse_f4 /\ rqpurse'_f5 := rqpurse_f5 /\ rqpurse'_f6 := rqpurse_f6 /\ rqpurse'_f7 := rqpurse_f7 /\ rqpurse'_f8 := rqpurse_f8 /\ rqpurse'_f9 := rqpurse_f9 /\ rqpurse'_f10 := "epa" /\ rqpurse'_f11 := rqpurse_f11 /\ rqpurse'_f12 := rqpurse_f12 /\ rqpurse'_f13 := rqpurse_f13 /\ rqpurse'_f14 := rqpurse_f14 /\ rqpurse'_f15 := rqpurse_f15 /\ msg_f1 := "val" /\ msg_f2 := msg_req_f2 /\ msg_f3 := msg_req_f3 /\ msg_f4 := msg_req_f4 /\ msg_f5 := rqpurse_f5 /\ msg_f6 := rqpurse_f6 /\ msg_f7 := rqpurse_f7 /\ msg_f8 := rqpurse_f8 /\ msg_f9 := rqpurse_f9 /\ msg_f10 := msg_req_f6
+/\ rqpurse' := OP-ConPurse(rqpurse'_f1, rqpurse'_f2, rqpurse'_f3, rqpurse'_f4, rqpurse'_f5, rqpurse'_f6, rqpurse'_f7, rqpurse'_f8, rqpurse'_f9, rqpurse'_f10, rqpurse'_f11, rqpurse'_f12, rqpurse'_f13, rqpurse'_f14, rqpurse'_f15) . 
+
+crl [startTo]:
+OP-ConPursePowerSet(stpurse ; ConPurseS) OP-msg-in(msg_to_f1, msg_to_f2, msg_to_f3, msg_to_f4, msg_to_f5, msg_to_f6, msg_to_f7, msg_to_f8, msg_to_f9, msg_to_f10)
+=> OP-ConPursePowerSet(stpurse' ; ConPurseS) OP-msg-in(msg_f1, msg_f2, msg_f3, msg_f4, msg_f5, msg_f6, msg_f7, msg_f8, msg_f9, msg_f10)
+if OP-ConPurse(stpurse_f1, stpurse_f2, stpurse_f3, stpurse_f4, stpurse_f5, stpurse_f6, stpurse_f7, stpurse_f8, stpurse_f9, stpurse_f10, stpurse_f11, stpurse_f12, stpurse_f13, stpurse_f14, stpurse_f15) := stpurse /\ 
+msg_to_f1 = "startTo" /\ stpurse_f1 = msg_to_f10 /\ stpurse_f1 =/= msg_to_f2 /\ stpurse_f2 >= msg_to_f3 /\ stpurse_f10 = "idle" /\ stpurse'_f1 := stpurse_f1 /\ stpurse'_f2 := stpurse_f2 /\ stpurse'_f3 := stpurse_f3 /\ stpurse'_f4 := stpurse_f4 + 1 /\ stpurse'_f5 := stpurse_f1 /\ stpurse'_f6 := msg_to_f2 /\ stpurse'_f7 := msg_to_f3 /\ stpurse'_f8 := stpurse_f4 /\ stpurse'_f9 := msg_to_f4 /\ stpurse'_f10 := "epv" /\ stpurse'_f11 := stpurse_f11 /\ stpurse'_f12 := stpurse_f12 /\ stpurse'_f13 := stpurse_f13 /\ stpurse'_f14 := stpurse_f14 /\ stpurse'_f15 := stpurse_f15 /\ msg_f1 := "req" /\ msg_f2 := msg_to_f2 /\ msg_f3 := msg_to_f3 /\ msg_f4 := msg_to_f4 /\ msg_f5 := msg_to_f2 /\ msg_f6 := stpurse_f1 /\ msg_f7 := msg_to_f3 /\ msg_f8 := stpurse_f4 /\ msg_f9 := msg_to_f4 /\ msg_f10 := msg_to_f2
+/\ stpurse' := OP-ConPurse(stpurse'_f1, stpurse'_f2, stpurse'_f3, stpurse'_f4, stpurse'_f5, stpurse'_f6, stpurse'_f7, stpurse'_f8, stpurse'_f9, stpurse'_f10, stpurse'_f11, stpurse'_f12, stpurse'_f13, stpurse'_f14, stpurse'_f15) . 
+
+crl [readExceptionLog]:
+OP-ConPursePowerSet(epurse ; ConPurseS) OP-msg-in(msg_read_f1, msg_read_f2, msg_read_f3, msg_read_f4, msg_read_f5, msg_read_f6, msg_read_f7, msg_read_f8, msg_read_f9, msg_read_f10)
+=> OP-ConPursePowerSet(epurse' ; ConPurseS) OP-msg-in(msg_f1, msg_f2, msg_f3, msg_f4, msg_f5, msg_f6, msg_f7, msg_f8, msg_f9, msg_f10)
+if OP-ConPurse(epurse_f1, epurse_f2, epurse_f3, epurse_f4, epurse_f5, epurse_f6, epurse_f7, epurse_f8, epurse_f9, epurse_f10, epurse_f11, epurse_f12, epurse_f13, epurse_f14, epurse_f15) := epurse /\ 
+msg_read_f1 = "readExceptionLog" /\ epurse_f1 = msg_read_f10 /\ epurse_f10 = "idle" /\ epurse_f3 = "true" /\ epurse'_f1 := epurse_f1 /\ epurse'_f2 := epurse_f2 /\ epurse'_f3 := epurse_f3 /\ epurse'_f4 := epurse_f4 /\ epurse'_f5 := epurse_f5 /\ epurse'_f6 := epurse_f6 /\ epurse'_f7 := epurse_f7 /\ epurse'_f8 := epurse_f8 /\ epurse'_f9 := epurse_f9 /\ epurse'_f10 := epurse_f10 /\ epurse'_f11 := epurse_f11 /\ epurse'_f12 := epurse_f12 /\ epurse'_f13 := epurse_f13 /\ epurse'_f14 := epurse_f14 /\ epurse'_f15 := epurse_f15 /\ msg_f1 := "exceptionLogResult" /\ msg_f2 := msg_read_f2 /\ msg_f3 := msg_read_f3 /\ msg_f4 := msg_read_f4 /\ msg_f5 := epurse_f11 /\ msg_f6 := epurse_f12 /\ msg_f7 := epurse_f13 /\ msg_f8 := epurse_f14 /\ msg_f9 := epurse_f15 /\ msg_f10 := msg_read_f10
+/\ epurse' := OP-ConPurse(epurse'_f1, epurse'_f2, epurse'_f3, epurse'_f4, epurse'_f5, epurse'_f6, epurse'_f7, epurse'_f8, epurse'_f9, epurse'_f10, epurse'_f11, epurse'_f12, epurse'_f13, epurse'_f14, epurse'_f15) . 
+
+crl [clearExceptionLog]:
+OP-ConPursePowerSet(cepurse ; ConPurseS) OP-msg-in(msg_clr_f1, msg_clr_f2, msg_clr_f3, msg_clr_f4, msg_clr_f5, msg_clr_f6, msg_clr_f7, msg_clr_f8, msg_clr_f9, msg_clr_f10)
+=> OP-ConPursePowerSet(cepurse' ; ConPurseS) OP-msg-in(msg_f1, msg_f2, msg_f3, msg_f4, msg_f5, msg_f6, msg_f7, msg_f8, msg_f9, msg_f10)
+if OP-ConPurse(cepurse_f1, cepurse_f2, cepurse_f3, cepurse_f4, cepurse_f5, cepurse_f6, cepurse_f7, cepurse_f8, cepurse_f9, cepurse_f10, cepurse_f11, cepurse_f12, cepurse_f13, cepurse_f14, cepurse_f15) := cepurse /\ 
+msg_clr_f1 = "clearExceptionLog" /\ cepurse_f1 = msg_clr_f10 /\ cepurse_f10 = "idle" /\ cepurse_f3 = "true" /\ cepurse'_f1 := cepurse_f1 /\ cepurse'_f2 := cepurse_f2 /\ cepurse'_f3 := "false" /\ cepurse'_f4 := cepurse_f4 /\ cepurse'_f5 := cepurse_f5 /\ cepurse'_f6 := cepurse_f6 /\ cepurse'_f7 := cepurse_f7 /\ cepurse'_f8 := cepurse_f8 /\ cepurse'_f9 := cepurse_f9 /\ cepurse'_f10 := cepurse_f10 /\ cepurse'_f11 := cepurse_f11 /\ cepurse'_f12 := cepurse_f12 /\ cepurse'_f13 := cepurse_f13 /\ cepurse'_f14 := cepurse_f14 /\ cepurse'_f15 := cepurse_f15 /\ msg_f1 := "forged" /\ msg_f2 := msg_clr_f2 /\ msg_f3 := msg_clr_f3 /\ msg_f4 := msg_clr_f4 /\ msg_f5 := msg_clr_f5 /\ msg_f6 := msg_clr_f6 /\ msg_f7 := msg_clr_f7 /\ msg_f8 := msg_clr_f8 /\ msg_f9 := msg_clr_f9 /\ msg_f10 := msg_clr_f10
+/\ cepurse' := OP-ConPurse(cepurse'_f1, cepurse'_f2, cepurse'_f3, cepurse'_f4, cepurse'_f5, cepurse'_f6, cepurse'_f7, cepurse'_f8, cepurse'_f9, cepurse'_f10, cepurse'_f11, cepurse'_f12, cepurse'_f13, cepurse'_f14, cepurse'_f15) . 
+
+crl [ack]:
+OP-ConPursePowerSet(akpurse ; ConPurseS) OP-msg-in(msg_ack_f1, msg_ack_f2, msg_ack_f3, msg_ack_f4, msg_ack_f5, msg_ack_f6, msg_ack_f7, msg_ack_f8, msg_ack_f9, msg_ack_f10)
+=> OP-ConPursePowerSet(akpurse' ; ConPurseS) OP-msg-in(msg_f1, msg_f2, msg_f3, msg_f4, msg_f5, msg_f6, msg_f7, msg_f8, msg_f9, msg_f10)
+if OP-ConPurse(akpurse_f1, akpurse_f2, akpurse_f3, akpurse_f4, akpurse_f5, akpurse_f6, akpurse_f7, akpurse_f8, akpurse_f9, akpurse_f10, akpurse_f11, akpurse_f12, akpurse_f13, akpurse_f14, akpurse_f15) := akpurse /\ 
+msg_ack_f1 = "ack" /\ akpurse_f1 = msg_ack_f10 /\ akpurse_f10 = "epa" /\ akpurse'_f1 := akpurse_f1 /\ akpurse'_f2 := akpurse_f2 /\ akpurse'_f3 := akpurse_f3 /\ akpurse'_f4 := akpurse_f4 /\ akpurse'_f5 := akpurse_f5 /\ akpurse'_f6 := akpurse_f6 /\ akpurse'_f7 := akpurse_f7 /\ akpurse'_f8 := akpurse_f8 /\ akpurse'_f9 := akpurse_f9 /\ akpurse'_f10 := "idle" /\ akpurse'_f11 := akpurse_f11 /\ akpurse'_f12 := akpurse_f12 /\ akpurse'_f13 := akpurse_f13 /\ akpurse'_f14 := akpurse_f14 /\ akpurse'_f15 := akpurse_f15 /\ msg_f1 := "forged" /\ msg_f2 := msg_ack_f2 /\ msg_f3 := msg_ack_f3 /\ msg_f4 := msg_ack_f4 /\ msg_f5 := msg_ack_f5 /\ msg_f6 := msg_ack_f6 /\ msg_f7 := msg_ack_f7 /\ msg_f8 := msg_ack_f8 /\ msg_f9 := msg_ack_f9 /\ msg_f10 := msg_ack_f10
+/\ akpurse' := OP-ConPurse(akpurse'_f1, akpurse'_f2, akpurse'_f3, akpurse'_f4, akpurse'_f5, akpurse'_f6, akpurse'_f7, akpurse'_f8, akpurse'_f9, akpurse'_f10, akpurse'_f11, akpurse'_f12, akpurse'_f13, akpurse'_f14, akpurse'_f15) . 
+
+crl [val]:
+OP-ConPursePowerSet(vlpurse ; ConPurseS) OP-msg-in(msg_val_f1, msg_val_f2, msg_val_f3, msg_val_f4, msg_val_f5, msg_val_f6, msg_val_f7, msg_val_f8, msg_val_f9, msg_val_f10)
+=> OP-ConPursePowerSet(vlpurse' ; ConPurseS) OP-msg-in(msg_f1, msg_f2, msg_f3, msg_f4, msg_f5, msg_f6, msg_f7, msg_f8, msg_f9, msg_f10)
+if OP-ConPurse(vlpurse_f1, vlpurse_f2, vlpurse_f3, vlpurse_f4, vlpurse_f5, vlpurse_f6, vlpurse_f7, vlpurse_f8, vlpurse_f9, vlpurse_f10, vlpurse_f11, vlpurse_f12, vlpurse_f13, vlpurse_f14, vlpurse_f15) := vlpurse /\ 
+msg_val_f1 = "val" /\ vlpurse_f1 = msg_val_f10 /\ vlpurse_f10 = "epv" /\ vlpurse'_f1 := vlpurse_f1 /\ vlpurse'_f2 := vlpurse_f2 + msg_val_f7 /\ vlpurse'_f3 := vlpurse_f3 /\ vlpurse'_f4 := vlpurse_f4 /\ vlpurse'_f5 := vlpurse_f5 /\ vlpurse'_f6 := vlpurse_f6 /\ vlpurse'_f7 := vlpurse_f7 /\ vlpurse'_f8 := vlpurse_f8 /\ vlpurse'_f9 := vlpurse_f9 /\ vlpurse'_f10 := "idle" /\ vlpurse'_f11 := vlpurse_f11 /\ vlpurse'_f12 := vlpurse_f12 /\ vlpurse'_f13 := vlpurse_f13 /\ vlpurse'_f14 := vlpurse_f14 /\ vlpurse'_f15 := vlpurse_f15 /\ msg_f1 := "ack" /\ msg_f2 := msg_val_f2 /\ msg_f3 := msg_val_f3 /\ msg_f4 := msg_val_f4 /\ msg_f5 := vlpurse_f5 /\ msg_f6 := vlpurse_f6 /\ msg_f7 := vlpurse_f7 /\ msg_f8 := vlpurse_f8 /\ msg_f9 := vlpurse_f9 /\ msg_f10 := msg_val_f5
+/\ vlpurse' := OP-ConPurse(vlpurse'_f1, vlpurse'_f2, vlpurse'_f3, vlpurse'_f4, vlpurse'_f5, vlpurse'_f6, vlpurse'_f7, vlpurse'_f8, vlpurse'_f9, vlpurse'_f10, vlpurse'_f11, vlpurse'_f12, vlpurse'_f13, vlpurse'_f14, vlpurse'_f15) . 
+
+crl [readExceptionLogForged]:
+OP-ConPursePowerSet(fpurse ; ConPurseS) OP-msg-in(msg_read_f_f1, msg_read_f_f2, msg_read_f_f3, msg_read_f_f4, msg_read_f_f5, msg_read_f_f6, msg_read_f_f7, msg_read_f_f8, msg_read_f_f9, msg_read_f_f10)
+=> OP-ConPursePowerSet(fpurse' ; ConPurseS) OP-msg-in(msg_f1, msg_f2, msg_f3, msg_f4, msg_f5, msg_f6, msg_f7, msg_f8, msg_f9, msg_f10)
+if OP-ConPurse(fpurse_f1, fpurse_f2, fpurse_f3, fpurse_f4, fpurse_f5, fpurse_f6, fpurse_f7, fpurse_f8, fpurse_f9, fpurse_f10, fpurse_f11, fpurse_f12, fpurse_f13, fpurse_f14, fpurse_f15) := fpurse /\ 
+msg_read_f_f1 = "readExceptionLog" /\ fpurse_f1 = msg_read_f_f10 /\ fpurse_f10 = "idle" /\ fpurse_f3 = "false" /\ fpurse'_f1 := fpurse_f1 /\ fpurse'_f2 := fpurse_f2 /\ fpurse'_f3 := fpurse_f3 /\ fpurse'_f4 := fpurse_f4 /\ fpurse'_f5 := fpurse_f5 /\ fpurse'_f6 := fpurse_f6 /\ fpurse'_f7 := fpurse_f7 /\ fpurse'_f8 := fpurse_f8 /\ fpurse'_f9 := fpurse_f9 /\ fpurse'_f10 := fpurse_f10 /\ fpurse'_f11 := fpurse_f11 /\ fpurse'_f12 := fpurse_f12 /\ fpurse'_f13 := fpurse_f13 /\ fpurse'_f14 := fpurse_f14 /\ fpurse'_f15 := fpurse_f15 /\ msg_f1 := "forged" /\ msg_f2 := msg_read_f_f2 /\ msg_f3 := msg_read_f_f3 /\ msg_f4 := msg_read_f_f4 /\ msg_f5 := msg_read_f_f5 /\ msg_f6 := msg_read_f_f6 /\ msg_f7 := msg_read_f_f7 /\ msg_f8 := msg_read_f_f8 /\ msg_f9 := msg_read_f_f9 /\ msg_f10 := msg_read_f_f10
+/\ fpurse' := OP-ConPurse(fpurse'_f1, fpurse'_f2, fpurse'_f3, fpurse'_f4, fpurse'_f5, fpurse'_f6, fpurse'_f7, fpurse'_f8, fpurse'_f9, fpurse'_f10, fpurse'_f11, fpurse'_f12, fpurse'_f13, fpurse'_f14, fpurse'_f15) . 
+
+endm
+
+
+load model-checker
+
+mod Mondex-CHECK is
+  including MainMod .
+  including MODEL-CHECKER .
+
+  op init : -> Marking .
+  eq init 
+   = OP-ConPursePowerSet(OP-ConPurse("p1", 300, "true", 0,
+          "p8","p9",100,0,1, "idle", 
+          "p6","p7",0,0,1) ;
+     OP-ConPurse("p2", 150, "true", 2,
+          "p8","p9",101,0,1, "idle", 
+          "p6","p7",0,0,1)) 
+     OP-msg-in("startTo","p1",150,4,
+          "p1","p2",200,4,5,"p2")
+     OP-msg-in("startFrom","p2",150,4,
+          "p1","p2",200,4,5,"p1") .
+
+  var CF : Marking .
+  var PS : ConPurseSet .
+  vars I1 I2 I3 I4 I5 I6 I7 I8 : Nat .  
+  vars S1 S2 S3 S4 S5 S6 S7 : String .
+
+--- search
+  op cond1 : Marking -> Bool .
+  eq cond1(CF)
+   = balSum(CF) <= 450 .
+
+  op cond2 : Marking -> Bool .
+  eq cond2(CF)
+   = balSum(CF) + lostSum(CF) == 450 .
+
+--- functions
+
+  ops balSum lostSum : Marking -> Int .
+  eq balSum(OP-ConPursePowerSet(PS) CF) = balSum(PS) + balSum(CF) .
+  eq balSum(CF) = 0 [owise] .
+
+  eq lostSum(OP-ConPursePowerSet(PS) CF) = lostSum(PS) + lostSum(CF) .
+  eq lostSum(CF) = 0 [owise] .
+
+  ops balSum lostSum : ConPurseSet -> Int .
+  eq balSum(OP-ConPurse(S1, I1, S2, I2, S3, S4, I3, I4, I5, S5, S6, S7, I6, I7, I8) ; PS)
+   = I1 + balSum(PS) .
+  eq balSum(PS) = 0 [owise] .
+  
+  eq lostSum(OP-ConPurse(S1, I1, S2, I2, S3, S4, I3, I4, I5, S5, S6, S7, I6, I7, I8) ; PS)
+   = I3 + lostSum(PS) .
+  eq lostSum(PS) = 0 [owise] .
+endm
+
+search init =>* M:Marking such that not cond1(M:Marking) .

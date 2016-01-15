@@ -1,0 +1,2003 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><pnml>
+<net id="Net-One" type="P/T net">
+<place id="P0">
+<graphics>
+<position x="465.0" y="360.0"/>
+</graphics>
+<name>
+<value>ConPurse</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+</Datatype-group>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken>
+<token>
+<data>
+<value>arda</value>
+</data>
+<data>
+<value>100</value>
+</data>
+<data>
+<value>true</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>mike</value>
+</data>
+<data>
+<value>arda</value>
+</data>
+<data>
+<value>50</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>idle</value>
+</data>
+<data>
+<value>none</value>
+</data>
+<data>
+<value>none</value>
+</data>
+<data>
+<value>0</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>1</value>
+</data>
+</token>
+<token>
+<data>
+<value>bob</value>
+</data>
+<data>
+<value>200</value>
+</data>
+<data>
+<value>true</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>bob</value>
+</data>
+<data>
+<value>arda</value>
+</data>
+<data>
+<value>50</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>idle</value>
+</data>
+<data>
+<value>none</value>
+</data>
+<data>
+<value>none</value>
+</data>
+<data>
+<value>0</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>1</value>
+</data>
+</token>
+</listToken>
+</abtoken>
+</place>
+<place id="P2">
+<graphics>
+<position x="810.0" y="570.0"/>
+</graphics>
+<name>
+<value>LogBook</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>LogBook</value>
+</name>
+<Ntype>
+<value>56</value>
+</Ntype>
+<types>
+<value>string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>6</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group>
+<DataType>
+<name>
+<value>LogBook</value>
+</name>
+<Ntype>
+<value>56</value>
+</Ntype>
+<types>
+<value>string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>6</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+</Datatype-group>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<place id="P3">
+<graphics>
+<position x="465.0" y="225.0"/>
+</graphics>
+<name>
+<value>msg_out</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+</Datatype-group>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<place id="P4">
+<graphics>
+<position x="465.0" y="15.0"/>
+</graphics>
+<name>
+<value>msg_in</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+</Datatype-group>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken>
+<token>
+<data>
+<value>startFrom</value>
+</data>
+<data>
+<value>bob</value>
+</data>
+<data>
+<value>50</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>arda</value>
+</data>
+<data>
+<value>bob</value>
+</data>
+<data>
+<value>50</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>arda</value>
+</data>
+</token>
+<token>
+<data>
+<value>startTo</value>
+</data>
+<data>
+<value>arda</value>
+</data>
+<data>
+<value>50</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>arda</value>
+</data>
+<data>
+<value>bob</value>
+</data>
+<data>
+<value>50</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>1</value>
+</data>
+<data>
+<value>bob</value>
+</data>
+</token>
+</listToken>
+</abtoken>
+</place>
+<transition id="T0">
+<graphics>
+<position x="225.0" y="150.0"/>
+</graphics>
+<name>
+<value>startFrom</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>msg_from[1]="startFrom"&#8743;sfpurse[1]=msg_from[10]&#8743;sfpurse[1]&#8800;msg_from[2]&#8743;sfpurse[2]&#8805;msg_from[3]&#8743;sfpurse[10]="idle"&#8743;sfpurse'[1]=sfpurse[1]&#8743;sfpurse'[2]=sfpurse[2]&#8743;sfpurse'[3]=sfpurse[3]&#8743;sfpurse'[4]=sfpurse[4]+1&#8743;sfpurse'[5]=sfpurse[1]&#8743;sfpurse'[6]=msg_from[2]&#8743;sfpurse'[7]=msg_from[3]&#8743;sfpurse'[8]=sfpurse[4]&#8743;sfpurse'[9]=msg_from[4]&#8743;sfpurse'[10]="epr"&#8743;sfpurse'[11]=sfpurse[11]&#8743;sfpurse'[12]=sfpurse[12]&#8743;sfpurse'[13]=sfpurse[13]&#8743;sfpurse'[14]=sfpurse[14]&#8743;sfpurse'[15]=sfpurse[15]&#8743;msg[1]="forged"&#8743;msg[2]=msg_from[2]&#8743;msg[3]=msg_from[3]&#8743;msg[4]=msg_from[4]&#8743;msg[5]=msg_from[5]&#8743;msg[6]=msg_from[6]&#8743;msg[7]=msg_from[7]&#8743;msg[8]=msg_from[8]&#8743;msg[9]=msg_from[9]&#8743;msg[10]=msg_from[10]</value>
+</formula>
+</transition>
+<transition id="T1">
+<graphics>
+<position x="660.0" y="180.0"/>
+</graphics>
+<name>
+<value>req</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>msg_req[1]="req"&#8743;rqpurse[1]=msg_req[10]&#8743;rqpurse[10]="epr"&#8743;rqpurse'[1]=rqpurse[1]&#8743;rqpurse'[2]=rqpurse[2]-msg_req[7]&#8743;rqpurse'[3]=rqpurse[3]&#8743;rqpurse'[4]=rqpurse[4]&#8743;rqpurse'[5]=rqpurse[5]&#8743;rqpurse'[6]=rqpurse[6]&#8743;rqpurse'[7]=rqpurse[7]&#8743;rqpurse'[8]=rqpurse[8]&#8743;rqpurse'[9]=rqpurse[9]&#8743;rqpurse'[10]="epa"&#8743;rqpurse'[11]=rqpurse[11]&#8743;rqpurse'[12]=rqpurse[12]&#8743;rqpurse'[13]=rqpurse[13]&#8743;rqpurse'[14]=rqpurse[14]&#8743;rqpurse'[15]=rqpurse[15]&#8743;msg[1]="val"&#8743;msg[2]=msg_req[2]&#8743;msg[3]=msg_req[3]&#8743;msg[4]=msg_req[4]&#8743;msg[5]=rqpurse[5]&#8743;msg[6]=rqpurse[6]&#8743;msg[7]=rqpurse[7]&#8743;msg[8]=rqpurse[8]&#8743;msg[9]=rqpurse[9]&#8743;msg[10]=msg_req[6]</value>
+</formula>
+</transition>
+<transition id="T2">
+<graphics>
+<position x="150.0" y="450.0"/>
+</graphics>
+<name>
+<value>startTo</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>msg_to[1]="startTo"&#8743;stpurse[1]=msg_to[10]&#8743;stpurse[1]&#8800;msg_to[2]&#8743;stpurse[2]&#8805;msg_to[3]&#8743;stpurse[10]="idle"&#8743;stpurse'[1]=stpurse[1]&#8743;stpurse'[2]=stpurse[2]&#8743;stpurse'[3]=stpurse[3]&#8743;stpurse'[4]=stpurse[4]+1&#8743;stpurse'[5]=stpurse[1]&#8743;stpurse'[6]=msg_to[2]&#8743;stpurse'[7]=msg_to[3]&#8743;stpurse'[8]=stpurse[4]&#8743;stpurse'[9]=msg_to[4]&#8743;stpurse'[10]="epv"&#8743;stpurse'[11]=stpurse[11]&#8743;stpurse'[12]=stpurse[12]&#8743;stpurse'[13]=stpurse[13]&#8743;stpurse'[14]=stpurse[14]&#8743;stpurse'[15]=stpurse[15]&#8743;msg[1]="req"&#8743;msg[2]=msg_to[2]&#8743;msg[3]=msg_to[3]&#8743;msg[4]=msg_to[4]&#8743;msg[5]=msg_to[2]&#8743;msg[6]=stpurse[1]&#8743;msg[7]=msg_to[3]&#8743;msg[8]=stpurse[4]&#8743;msg[9]=msg_to[4]&#8743;msg[10]=msg_to[2]</value>
+</formula>
+</transition>
+<transition id="T3">
+<graphics>
+<position x="270.0" y="510.0"/>
+</graphics>
+<name>
+<value>readExceptionLog</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>msg_read[1]="readExceptionLog"&#8743;epurse[1]=msg_read[10]&#8743;epurse[10]="idle"&#8743;epurse[3]="true"&#8743;epurse'[1]=epurse[1]&#8743;epurse'[2]=epurse[2]&#8743;epurse'[3]=epurse[3]&#8743;epurse'[4]=epurse[4]&#8743;epurse'[5]=epurse[5]&#8743;epurse'[6]=epurse[6]&#8743;epurse'[7]=epurse[7]&#8743;epurse'[8]=epurse[8]&#8743;epurse'[9]=epurse[9]&#8743;epurse'[10]=epurse[10]&#8743;epurse'[11]=epurse[11]&#8743;epurse'[12]=epurse[12]&#8743;epurse'[13]=epurse[13]&#8743;epurse'[14]=epurse[14]&#8743;epurse'[15]=epurse[15]&#8743;msg[1]="exceptionLogResult"&#8743;msg[2]=msg_read[2]&#8743;msg[3]=msg_read[3]&#8743;msg[4]=msg_read[4]&#8743;msg[5]=epurse[11]&#8743;msg[6]=epurse[12]&#8743;msg[7]=epurse[13]&#8743;msg[8]=epurse[14]&#8743;msg[9]=epurse[15]&#8743;msg[10]=msg_read[10]</value>
+</formula>
+</transition>
+<transition id="T4">
+<graphics>
+<position x="555.0" y="600.0"/>
+</graphics>
+<name>
+<value>clearExceptionLog</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>msg_clr[1]="clearExceptionLog"&#8743;cepurse[1]=msg_clr[10]&#8743;cepurse[10]="idle"&#8743;cepurse[3]="true"&#8743;cepurse'[1]=cepurse[1]&#8743;cepurse'[2]=cepurse[2]&#8743;cepurse'[3]="false"&#8743;cepurse'[4]=cepurse[4]&#8743;cepurse'[5]=cepurse[5]&#8743;cepurse'[6]=cepurse[6]&#8743;cepurse'[7]=cepurse[7]&#8743;cepurse'[8]=cepurse[8]&#8743;cepurse'[9]=cepurse[9]&#8743;cepurse'[10]=cepurse[10]&#8743;cepurse'[11]=cepurse[11]&#8743;cepurse'[12]=cepurse[12]&#8743;cepurse'[13]=cepurse[13]&#8743;cepurse'[14]=cepurse[14]&#8743;cepurse'[15]=cepurse[15]&#8743;msg[1]="forged"&#8743;msg[2]=msg_clr[2]&#8743;msg[3]=msg_clr[3]&#8743;msg[4]=msg_clr[4]&#8743;msg[5]=msg_clr[5]&#8743;msg[6]=msg_clr[6]&#8743;msg[7]=msg_clr[7]&#8743;msg[8]=msg_clr[8]&#8743;msg[9]=msg_clr[9]&#8743;msg[10]=msg_clr[10]</value>
+</formula>
+</transition>
+<transition id="T5">
+<graphics>
+<position x="765.0" y="225.0"/>
+</graphics>
+<name>
+<value>ack</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>msg_ack[1]="ack"&#8743;akpurse[1]=msg_ack[10]&#8743;akpurse[10]="epa"&#8743;akpurse'[1]=akpurse[1]&#8743;akpurse'[2]=akpurse[2]&#8743;akpurse'[3]=akpurse[3]&#8743;akpurse'[4]=akpurse[4]&#8743;akpurse'[5]=akpurse[5]&#8743;akpurse'[6]=akpurse[6]&#8743;akpurse'[7]=akpurse[7]&#8743;akpurse'[8]=akpurse[8]&#8743;akpurse'[9]=akpurse[9]&#8743;akpurse'[10]="idle"&#8743;akpurse'[11]=akpurse[11]&#8743;akpurse'[12]=akpurse[12]&#8743;akpurse'[13]=akpurse[13]&#8743;akpurse'[14]=akpurse[14]&#8743;akpurse'[15]=akpurse[15]&#8743;msg[1]="forged"&#8743;msg[2]=msg_ack[2]&#8743;msg[3]=msg_ack[3]&#8743;msg[4]=msg_ack[4]&#8743;msg[5]=msg_ack[5]&#8743;msg[6]=msg_ack[6]&#8743;msg[7]=msg_ack[7]&#8743;msg[8]=msg_ack[8]&#8743;msg[9]=msg_ack[9]&#8743;msg[10]=msg_ack[10]</value>
+</formula>
+</transition>
+<transition id="T6">
+<graphics>
+<position x="810.0" y="420.0"/>
+</graphics>
+<name>
+<value>val</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>msg_val[1]="val"&#8743;vlpurse[1]=msg_val[10]&#8743;vlpurse[10]="epv"&#8743;vlpurse'[1]=vlpurse[1]&#8743;vlpurse'[2]=vlpurse[2]+msg_val[7]&#8743;vlpurse'[3]=vlpurse[3]&#8743;vlpurse'[4]=vlpurse[4]&#8743;vlpurse'[5]=vlpurse[5]&#8743;vlpurse'[6]=vlpurse[6]&#8743;vlpurse'[7]=vlpurse[7]&#8743;vlpurse'[8]=vlpurse[8]&#8743;vlpurse'[9]=vlpurse[9]&#8743;vlpurse'[10]="idle"&#8743;vlpurse'[11]=vlpurse[11]&#8743;vlpurse'[12]=vlpurse[12]&#8743;vlpurse'[13]=vlpurse[13]&#8743;vlpurse'[14]=vlpurse[14]&#8743;vlpurse'[15]=vlpurse[15]&#8743;msg[1]="ack"&#8743;msg[2]=msg_val[2]&#8743;msg[3]=msg_val[3]&#8743;msg[4]=msg_val[4]&#8743;msg[5]=vlpurse[5]&#8743;msg[6]=vlpurse[6]&#8743;msg[7]=vlpurse[7]&#8743;msg[8]=vlpurse[8]&#8743;msg[9]=vlpurse[9]&#8743;msg[10]=msg_val[5]</value>
+</formula>
+</transition>
+<transition id="T7">
+<graphics>
+<position x="660.0" y="495.0"/>
+</graphics>
+<name>
+<value>Abort</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>msg_abort[1]="startFrom"&#8744;msg_abort[1]="startTo"&#8744;msg_abort[1]="clearExceptionLog"&#8743;abpurse[1]=msg_abort[10]&#8743;abpurse[10]="epv"&#8744;abpurse[10]="epa"&#8743;abpurse'[1]=abpurse[1]&#8743;abpurse'[2]=abpurse[2]&#8743;abpurse'[3]="true"&#8743;abpurse'[4]=abpurse[4]&#8743;abpurse'[5]=abpurse[5]+1&#8743;abpurse'[6]=abpurse[6]&#8743;abpurse'[7]=abpurse[7]&#8743;abpurse'[8]=abpurse[8]&#8743;abpurse'[9]=abpurse[9]&#8743;abpurse'[10]="idle"&#8743;abpurse'[11]=abpurse[5]&#8743;abpurse'[12]=abpurse[6]&#8743;abpurse'[13]=abpurse[7]&#8743;abpurse'[14]=abpurse[8]&#8743;abpurse'[15]=abpurse[9]&#8743;lb[1]=abpurse[1]&#8743;lb[2]=abpurse[5]&#8743;lb[3]=abpurse[6]&#8743;lb[4]=abpurse[7]&#8743;lb[5]=abpurse[8]&#8743;lb[6]=abpurse[9]</value>
+</formula>
+</transition>
+<transition id="T8">
+<graphics>
+<position x="390.0" y="585.0"/>
+</graphics>
+<name>
+<value>readExceptionLogForged</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>msg_read_f[1]="readExceptionLog"&#8743;fpurse[1]=msg_read_f[10]&#8743;fpurse[10]="idle"&#8743;fpurse[3]="false"&#8743;fpurse'[1]=fpurse[1]&#8743;fpurse'[2]=fpurse[2]&#8743;fpurse'[3]=fpurse[3]&#8743;fpurse'[4]=fpurse[4]&#8743;fpurse'[5]=fpurse[5]&#8743;fpurse'[6]=fpurse[6]&#8743;fpurse'[7]=fpurse[7]&#8743;fpurse'[8]=fpurse[8]&#8743;fpurse'[9]=fpurse[9]&#8743;fpurse'[10]=fpurse[10]&#8743;fpurse'[11]=fpurse[11]&#8743;fpurse'[12]=fpurse[12]&#8743;fpurse'[13]=fpurse[13]&#8743;fpurse'[14]=fpurse[14]&#8743;fpurse'[15]=fpurse[15]&#8743;msg[1]="forged"&#8743;msg[2]=msg_read_f[2]&#8743;msg[3]=msg_read_f[3]&#8743;msg[4]=msg_read_f[4]&#8743;msg[5]=msg_read_f[5]&#8743;msg[6]=msg_read_f[6]&#8743;msg[7]=msg_read_f[7]&#8743;msg[8]=msg_read_f[8]&#8743;msg[9]=msg_read_f[9]&#8743;msg[10]=msg_read_f[10]</value>
+</formula>
+</transition>
+<transition id="T9">
+<graphics>
+<position x="450.0" y="135.0"/>
+</graphics>
+<name>
+<value>ether</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>e_in[1]&#8800;"forged"&#8743;e_out=e_in</value>
+</formula>
+</transition>
+<arc id="P0 to T0" source="P0" target="T0" variable="{sfpurse}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="464" y="363" curvePoint="false"/>
+<arcpath id="001" x="297" y="243" curvePoint="false"/>
+<arcpath id="002" x="241" y="171" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T1" source="P0" target="T1" variable="{rqpurse}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="487" y="361" curvePoint="false"/>
+<arcpath id="001" x="666" y="201" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T2" source="P0" target="T2" variable="{stpurse}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="462" y="376" curvePoint="false"/>
+<arcpath id="001" x="167" y="461" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T3" source="P0" target="T3" variable="{epurse}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="465" y="381" curvePoint="false"/>
+<arcpath id="001" x="286" y="528" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T4" source="P0" target="T4" variable="{cepurse}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="482" y="385" curvePoint="false"/>
+<arcpath id="001" x="567" y="597" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T5" source="P0" target="T5" variable="{akpurse}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="490" y="365" curvePoint="false"/>
+<arcpath id="001" x="517" y="351" curvePoint="false"/>
+<arcpath id="002" x="771" y="240" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T6" source="P0" target="T6" variable="{vlpurse}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="491" y="374" curvePoint="false"/>
+<arcpath id="001" x="816" y="440" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T7" source="P0" target="T7" variable="{abpurse}">
+<graphics/>
+<inscription>
+<value>3</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="486" y="383" curvePoint="false"/>
+<arcpath id="001" x="560" y="469" curvePoint="false"/>
+<arcpath id="002" x="666" y="512" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P0 to T8" source="P0" target="T8" variable="{fpurse}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="469" y="384" curvePoint="false"/>
+<arcpath id="001" x="351" y="578" curvePoint="false"/>
+<arcpath id="002" x="397" y="592" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P3 to T9" source="P3" target="T9" variable="e_in">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="474" y="222" curvePoint="false"/>
+<arcpath id="001" x="462" y="162" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T0" source="P4" target="T0" variable="msg_from">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="463" y="34" curvePoint="false"/>
+<arcpath id="001" x="242" y="153" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T1" source="P4" target="T1" variable="msg_req">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="488" y="36" curvePoint="false"/>
+<arcpath id="001" x="667" y="183" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T2" source="P4" target="T2" variable="msg_to">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="463" y="32" curvePoint="false"/>
+<arcpath id="001" x="161" y="162" curvePoint="false"/>
+<arcpath id="002" x="162" y="447" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T3" source="P4" target="T3" variable="msg_read">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="462" y="30" curvePoint="false"/>
+<arcpath id="001" x="127" y="110" curvePoint="false"/>
+<arcpath id="002" x="130" y="555" curvePoint="false"/>
+<arcpath id="003" x="276" y="522" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T4" source="P4" target="T4" variable="msg_clr">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="462" y="29" curvePoint="false"/>
+<arcpath id="001" x="58" y="94" curvePoint="false"/>
+<arcpath id="002" x="66" y="633" curvePoint="false"/>
+<arcpath id="003" x="561" y="612" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T5" source="P4" target="T5" variable="msg_ack">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="491" y="32" curvePoint="false"/>
+<arcpath id="001" x="699" y="108" curvePoint="false"/>
+<arcpath id="002" x="772" y="228" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T6" source="P4" target="T6" variable="msg_val">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="491" y="30" curvePoint="false"/>
+<arcpath id="001" x="782" y="100" curvePoint="false"/>
+<arcpath id="002" x="822" y="417" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T7" source="P4" target="T7" variable="msg_abort">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="491" y="29" curvePoint="false"/>
+<arcpath id="001" x="898" y="86" curvePoint="false"/>
+<arcpath id="002" x="902" y="522" curvePoint="false"/>
+<arcpath id="003" x="677" y="502" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T8" source="P4" target="T8" variable="msg_read_f">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="462" y="29" curvePoint="false"/>
+<arcpath id="001" x="90" y="101" curvePoint="false"/>
+<arcpath id="002" x="91" y="601" curvePoint="false"/>
+<arcpath id="003" x="396" y="602" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T0 to P0" source="T0" target="P0" variable="{sfpurse'}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="241" y="165" curvePoint="false"/>
+<arcpath id="001" x="335" y="251" curvePoint="false"/>
+<arcpath id="002" x="465" y="362" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T0 to P3" source="T0" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="242" y="159" curvePoint="false"/>
+<arcpath id="001" x="462" y="232" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T1 to P0" source="T1" target="P0" variable="{rqpurse'}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="666" y="195" curvePoint="false"/>
+<arcpath id="001" x="556" y="288" curvePoint="false"/>
+<arcpath id="002" x="487" y="361" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T1 to P3" source="T1" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="667" y="189" curvePoint="false"/>
+<arcpath id="001" x="491" y="233" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T2 to P0" source="T2" target="P0" variable="{stpurse'}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="166" y="468" curvePoint="false"/>
+<arcpath id="001" x="283" y="428" curvePoint="false"/>
+<arcpath id="002" x="462" y="376" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T2 to P3" source="T2" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="167" y="454" curvePoint="false"/>
+<arcpath id="001" x="464" y="245" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T3 to P0" source="T3" target="P0" variable="{epurse'}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="287" y="521" curvePoint="false"/>
+<arcpath id="001" x="375" y="438" curvePoint="false"/>
+<arcpath id="002" x="464" y="380" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T3 to P3" source="T3" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="287" y="514" curvePoint="false"/>
+<arcpath id="001" x="468" y="249" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T4 to P0" source="T4" target="P0" variable="{cepurse'}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="567" y="597" curvePoint="false"/>
+<arcpath id="001" x="507" y="499" curvePoint="false"/>
+<arcpath id="002" x="480" y="386" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T4 to P3" source="T4" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="567" y="597" curvePoint="false"/>
+<arcpath id="001" x="480" y="251" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T5 to P0" source="T5" target="P0" variable="{akpurse'}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="771" y="246" curvePoint="false"/>
+<arcpath id="001" x="490" y="366" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T5 to P3" source="T5" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="772" y="234" curvePoint="false"/>
+<arcpath id="001" x="491" y="236" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T6 to P0" source="T6" target="P0" variable="{vlpurse'}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="816" y="433" curvePoint="false"/>
+<arcpath id="001" x="621" y="370" curvePoint="false"/>
+<arcpath id="002" x="491" y="371" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T6 to P3" source="T6" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="817" y="426" curvePoint="false"/>
+<arcpath id="001" x="490" y="244" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T7 to P0" source="T7" target="P0" variable="{abpurse'}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="667" y="502" curvePoint="false"/>
+<arcpath id="001" x="489" y="380" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T7 to P2" source="T7" target="P2" variable="{lb}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>LogBook</value>
+</name>
+<Ntype>
+<value>56</value>
+</Ntype>
+<types>
+<value>string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>6</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="676" y="512" curvePoint="false"/>
+<arcpath id="001" x="783" y="563" curvePoint="false"/>
+<arcpath id="002" x="808" y="575" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T8 to P0" source="T8" target="P0" variable="{fpurse'}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>ConPurse</value>
+</name>
+<Ntype>
+<value>22072</value>
+</Ntype>
+<types>
+<value>string,int,string,int,string,string,int,int,int,string,string,string,int,int,int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>15</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="402" y="582" curvePoint="false"/>
+<arcpath id="001" x="385" y="567" curvePoint="false"/>
+<arcpath id="002" x="470" y="385" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T8 to P3" source="T8" target="P3" variable="msg">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_out</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="402" y="582" curvePoint="false"/>
+<arcpath id="001" x="473" y="251" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T9 to P4" source="T9" target="P4" variable="e_out">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>msg_in</value>
+</name>
+<Ntype>
+<value>817</value>
+</Ntype>
+<types>
+<value>string,string,int,int,string,string,int,int,int,string</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>10</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="462" y="132" curvePoint="false"/>
+<arcpath id="001" x="474" y="41" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+</net>
+</pnml>

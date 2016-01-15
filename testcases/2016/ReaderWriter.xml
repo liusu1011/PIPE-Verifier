@@ -1,0 +1,2145 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><pnml>
+<net id="Net-One" type="P/T net">
+<place id="P0">
+<graphics>
+<position x="150.0" y="30.0"/>
+</graphics>
+<name>
+<value>P1</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group/>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<place id="P10">
+<graphics>
+<position x="555.0" y="30.0"/>
+</graphics>
+<name>
+<value>P7</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group/>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<place id="P11">
+<graphics>
+<position x="555.0" y="300.0"/>
+</graphics>
+<name>
+<value>P8</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group/>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<place id="P2">
+<graphics>
+<position x="150.0" y="120.0"/>
+</graphics>
+<name>
+<value>P2</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group/>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<place id="P3">
+<graphics>
+<position x="150.0" y="225.0"/>
+</graphics>
+<name>
+<value>P3</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group/>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<place id="P4">
+<graphics>
+<position x="150.0" y="315.0"/>
+</graphics>
+<name>
+<value>P4</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group/>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<place id="P5">
+<graphics>
+<position x="150.0" y="405.0"/>
+</graphics>
+<name>
+<value>P5</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group/>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<place id="P6">
+<graphics>
+<position x="150.0" y="495.0"/>
+</graphics>
+<name>
+<value>P6</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group/>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<place id="P7">
+<graphics>
+<position x="360.0" y="30.0"/>
+</graphics>
+<name>
+<value>mutex-r</value>
+<graphics>
+<offset x="53.0" y="-5.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>0</value>
+</capacity>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group/>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<place id="P8">
+<graphics>
+<position x="360.0" y="255.0"/>
+</graphics>
+<name>
+<value>reader</value>
+<graphics>
+<offset x="63.0" y="7.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>1</value>
+</capacity>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group/>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<place id="P9">
+<graphics>
+<position x="360.0" y="405.0"/>
+</graphics>
+<name>
+<value>mutex-w</value>
+<graphics>
+<offset x="41.0" y="-2.0"/>
+</graphics>
+</name>
+<initialMarking>
+<value>0</value>
+<graphics>
+<offset x="0.0" y="0.0"/>
+</graphics>
+</initialMarking>
+<capacity>
+<value>1</value>
+</capacity>
+<DataType>
+<name>
+<value>B</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<Datatype-group/>
+<abtoken>
+<isDef>
+<value>T</value>
+</isDef>
+<listToken/>
+</abtoken>
+</place>
+<transition id="T0">
+<graphics>
+<position x="150.0" y="75.0"/>
+</graphics>
+<name>
+<value>T1</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>90</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>rc1'=rc1+1&#8743;x2=x1</value>
+</formula>
+</transition>
+<transition id="T1">
+<graphics>
+<position x="105.0" y="180.0"/>
+</graphics>
+<name>
+<value>T3</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>rc3&#8800;1&#8743;rc3'=rc3&#8743;x4=x3</value>
+</formula>
+</transition>
+<transition id="T2">
+<graphics>
+<position x="195.0" y="180.0"/>
+</graphics>
+<name>
+<value>T2</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>rc2=1&#8743;rc2'=1&#8743;x6=x5</value>
+</formula>
+</transition>
+<transition id="T3">
+<graphics>
+<position x="150.0" y="270.0"/>
+</graphics>
+<name>
+<value>T4</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>90</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>x8=x7&#8743;m2=1</value>
+</formula>
+</transition>
+<transition id="T4">
+<graphics>
+<position x="150.0" y="360.0"/>
+</graphics>
+<name>
+<value>T5</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>90</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>rc4'=rc4-1&#8743;x10=x9</value>
+</formula>
+</transition>
+<transition id="T5">
+<graphics>
+<position x="90.0" y="450.0"/>
+</graphics>
+<name>
+<value>T7</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>rc5&#8800;0&#8743;x12=x11&#8743;rc5'=rc5</value>
+</formula>
+</transition>
+<transition id="T6">
+<graphics>
+<position x="195.0" y="450.0"/>
+</graphics>
+<name>
+<value>T6</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>0</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>rc6=0&#8743;x14=x13&#8743;w1=1&#8743;rc6'=rc6</value>
+</formula>
+</transition>
+<transition id="T7">
+<graphics>
+<position x="150.0" y="540.0"/>
+</graphics>
+<name>
+<value>T8</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>90</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>x16=x15&#8743;m4=1</value>
+</formula>
+</transition>
+<transition id="T8">
+<graphics>
+<position x="555.0" y="165.0"/>
+</graphics>
+<name>
+<value>T9</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>90</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>x18=x17</value>
+</formula>
+</transition>
+<transition id="T9">
+<graphics>
+<position x="555.0" y="465.0"/>
+</graphics>
+<name>
+<value>T10</value>
+<graphics>
+<offset x="-5.0" y="35.0"/>
+</graphics>
+</name>
+<orientation>
+<value>90</value>
+</orientation>
+<rate>
+<value>1.0</value>
+</rate>
+<timed>
+<value>false</value>
+</timed>
+<infiniteServer>
+<value>false</value>
+</infiniteServer>
+<priority>
+<value>1</value>
+</priority>
+<formula>
+<value>x20=x19&#8743;w4=1</value>
+</formula>
+</transition>
+<arc id="P0 to T0" source="P0" target="T0" variable="{x1}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="161" y="56" curvePoint="false"/>
+<arcpath id="001" x="161" y="81" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P10 to T8" source="P10" target="T8" variable="{x17}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="566" y="56" curvePoint="false"/>
+<arcpath id="001" x="566" y="171" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P11 to T9" source="P11" target="T9" variable="{x19}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="566" y="326" curvePoint="false"/>
+<arcpath id="001" x="566" y="471" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P2 to T1" source="P2" target="T1" variable="{x3}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="153" y="144" curvePoint="false"/>
+<arcpath id="001" x="122" y="183" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P2 to T2" source="P2" target="T2" variable="{x5}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="170" y="144" curvePoint="false"/>
+<arcpath id="001" x="202" y="187" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P3 to T3" source="P3" target="T3" variable="{x7}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="159" y="251" curvePoint="false"/>
+<arcpath id="001" x="156" y="276" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P4 to T4" source="P4" target="T4" variable="{x9}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="159" y="341" curvePoint="false"/>
+<arcpath id="001" x="156" y="366" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P5 to T5" source="P5" target="T5" variable="{x11}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="149" y="425" curvePoint="false"/>
+<arcpath id="001" x="107" y="453" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P5 to T6" source="P5" target="T6" variable="{x13}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="172" y="427" curvePoint="false"/>
+<arcpath id="001" x="202" y="457" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P6 to T7" source="P6" target="T7" variable="{x15}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="161" y="521" curvePoint="false"/>
+<arcpath id="001" x="161" y="546" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P7 to T0" source="P7" target="T0" variable="m1">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="357" y="45" curvePoint="false"/>
+<arcpath id="001" x="176" y="87" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P7 to T4" source="P7" target="T4" variable="m3">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="363" y="54" curvePoint="false"/>
+<arcpath id="001" x="166" y="367" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P8 to T0" source="P8" target="T0" variable="rc1">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="360" y="257" curvePoint="false"/>
+<arcpath id="001" x="166" y="92" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P8 to T1" source="P8" target="T1" variable="rc3">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="357" y="262" curvePoint="false"/>
+<arcpath id="001" x="122" y="189" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P8 to T2" source="P8" target="T2" variable="rc2">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="358" y="260" curvePoint="false"/>
+<arcpath id="001" x="212" y="184" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P8 to T4" source="P8" target="T4" variable="rc4">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="358" y="274" curvePoint="false"/>
+<arcpath id="001" x="176" y="372" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P8 to T5" source="P8" target="T5" variable="rc5">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="361" y="277" curvePoint="false"/>
+<arcpath id="001" x="147" y="477" curvePoint="false"/>
+<arcpath id="002" x="106" y="465" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P8 to T6" source="P8" target="T6" variable="rc6">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="362" y="278" curvePoint="false"/>
+<arcpath id="001" x="212" y="454" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P9 to T2" source="P9" target="T2" variable="w2">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>B</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="363" y="404" curvePoint="false"/>
+<arcpath id="001" x="211" y="198" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="P9 to T8" source="P9" target="T8" variable="w3">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>B</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="381" y="405" curvePoint="false"/>
+<arcpath id="001" x="561" y="181" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T0 to P2" source="T0" target="P2" variable="{x2}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="156" y="91" curvePoint="false"/>
+<arcpath id="001" x="161" y="117" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T0 to P8" source="T0" target="P8" variable="rc1'">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="176" y="87" curvePoint="false"/>
+<arcpath id="001" x="252" y="132" curvePoint="false"/>
+<arcpath id="002" x="357" y="222" curvePoint="false"/>
+<arcpath id="003" x="367" y="252" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T1 to P3" source="T1" target="P3" variable="{x4}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="121" y="201" curvePoint="false"/>
+<arcpath id="001" x="150" y="227" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T1 to P8" source="T1" target="P8" variable="rc3'">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="121" y="195" curvePoint="false"/>
+<arcpath id="001" x="342" y="267" curvePoint="false"/>
+<arcpath id="002" x="357" y="267" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T2 to P3" source="T2" target="P3" variable="{x6}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="201" y="197" curvePoint="false"/>
+<arcpath id="001" x="172" y="226" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T2 to P8" source="T2" target="P8" variable="rc2'">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="212" y="191" curvePoint="false"/>
+<arcpath id="001" x="358" y="261" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T3 to P4" source="T3" target="P4" variable="{x8}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value/>
+</name>
+<Ntype>
+<value/>
+</Ntype>
+<types>
+<value/>
+</types>
+<ifPow>
+<value/>
+</ifPow>
+<NumofElement>
+<value/>
+</NumofElement>
+<isDef>
+<value/>
+</isDef>
+</DataType>
+<arcpath id="000" x="161" y="286" curvePoint="false"/>
+<arcpath id="001" x="161" y="312" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T3 to P7" source="T3" target="P7" variable="m2">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="166" y="277" curvePoint="false"/>
+<arcpath id="001" x="362" y="53" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T4 to P5" source="T4" target="P5" variable="{x10}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="161" y="376" curvePoint="false"/>
+<arcpath id="001" x="161" y="402" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T4 to P8" source="T4" target="P8" variable="rc4'">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="176" y="372" curvePoint="false"/>
+<arcpath id="001" x="207" y="372" curvePoint="false"/>
+<arcpath id="002" x="342" y="297" curvePoint="false"/>
+<arcpath id="003" x="361" y="277" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T5 to P6" source="T5" target="P6" variable="{x12}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="106" y="471" curvePoint="false"/>
+<arcpath id="001" x="149" y="498" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T5 to P8" source="T5" target="P8" variable="rc5'">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="107" y="459" curvePoint="false"/>
+<arcpath id="001" x="147" y="462" curvePoint="false"/>
+<arcpath id="002" x="360" y="276" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T6 to P6" source="T6" target="P6" variable="{x14}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="201" y="467" curvePoint="false"/>
+<arcpath id="001" x="172" y="496" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T6 to P8" source="T6" target="P8" variable="rc6'">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="211" y="468" curvePoint="false"/>
+<arcpath id="001" x="222" y="462" curvePoint="false"/>
+<arcpath id="002" x="357" y="297" curvePoint="false"/>
+<arcpath id="003" x="365" y="280" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T6 to P9" source="T6" target="P9" variable="w1">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>B</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="212" y="461" curvePoint="false"/>
+<arcpath id="001" x="357" y="421" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T7 to P0" source="T7" target="P0" variable="{x16}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="146" y="552" curvePoint="false"/>
+<arcpath id="001" x="42" y="507" curvePoint="false"/>
+<arcpath id="002" x="42" y="72" curvePoint="false"/>
+<arcpath id="003" x="147" y="45" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T7 to P7" source="T7" target="P7" variable="m4">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="176" y="552" curvePoint="false"/>
+<arcpath id="001" x="237" y="537" curvePoint="false"/>
+<arcpath id="002" x="368" y="56" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T8 to P11" source="T8" target="P11" variable="{x18}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="571" y="182" curvePoint="false"/>
+<arcpath id="001" x="566" y="297" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T9 to P10" source="T9" target="P10" variable="{x20}">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>Nat</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>T</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="581" y="477" curvePoint="false"/>
+<arcpath id="001" x="627" y="462" curvePoint="false"/>
+<arcpath id="002" x="627" y="102" curvePoint="false"/>
+<arcpath id="003" x="577" y="52" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+<arc id="T9 to P9" source="T9" target="P9" variable="w4">
+<graphics/>
+<inscription>
+<value>1</value>
+<graphics/>
+</inscription>
+<tagged>
+<value>false</value>
+</tagged>
+<DataType>
+<name>
+<value>B</value>
+</name>
+<Ntype>
+<value>0</value>
+</Ntype>
+<types>
+<value>int</value>
+</types>
+<ifPow>
+<value>F</value>
+</ifPow>
+<NumofElement>
+<value>1</value>
+</NumofElement>
+<isDef>
+<value>T</value>
+</isDef>
+</DataType>
+<arcpath id="000" x="551" y="477" curvePoint="false"/>
+<arcpath id="001" x="386" y="421" curvePoint="false"/>
+<type value="normal"/>
+</arc>
+</net>
+</pnml>

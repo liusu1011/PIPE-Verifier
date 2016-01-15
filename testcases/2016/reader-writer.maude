@@ -1,0 +1,423 @@
+fmod MARKING is
+  including INT .
+  including STRING .
+  sort Marking .
+  op empty : -> Marking [ctor] .
+  op __ : Marking Marking -> Marking [ctor assoc comm id: empty] .
+endfm
+
+fmod P1-SET is
+  including MARKING .
+  sort P1 .
+  op OP-P1 :   Int -> P1 [ctor] .
+
+  var P : P1 .   vars PS QS : P1Set .
+
+  sort P1Set .
+  subsort P1Set < Marking .
+  subsort P1 < P1Set .
+  op emptyP1 : -> P1Set [ctor] .
+  op _;_ : P1Set P1Set -> P1Set [ctor assoc comm id: emptyP1] .
+  eq P ; P = P .
+
+  op _\_ : P1Set P1Set -> P1Set .
+  eq (P ; PS) \ (P ; QS) = PS \ QS .
+  eq PS \ QS = PS [owise] .
+
+  sort P1PowerSet .
+  op OP-P1PowerSet : P1Set -> P1PowerSet [ctor] .
+  subsort P1PowerSet < Marking .
+endfm
+
+
+
+fmod P2-SET is
+  including MARKING .
+  sort P2 .
+  op OP-P2 :   Int -> P2 [ctor] .
+
+  var P : P2 .   vars PS QS : P2Set .
+
+  sort P2Set .
+  subsort P2Set < Marking .
+  subsort P2 < P2Set .
+  op emptyP2 : -> P2Set [ctor] .
+  op _;_ : P2Set P2Set -> P2Set [ctor assoc comm id: emptyP2] .
+  eq P ; P = P .
+
+  op _\_ : P2Set P2Set -> P2Set .
+  eq (P ; PS) \ (P ; QS) = PS \ QS .
+  eq PS \ QS = PS [owise] .
+
+  sort P2PowerSet .
+  op OP-P2PowerSet : P2Set -> P2PowerSet [ctor] .
+  subsort P2PowerSet < Marking .
+endfm
+
+
+
+fmod P3-SET is
+  including MARKING .
+  sort P3 .
+  op OP-P3 :   Int -> P3 [ctor] .
+
+  var P : P3 .   vars PS QS : P3Set .
+
+  sort P3Set .
+  subsort P3Set < Marking .
+  subsort P3 < P3Set .
+  op emptyP3 : -> P3Set [ctor] .
+  op _;_ : P3Set P3Set -> P3Set [ctor assoc comm id: emptyP3] .
+  eq P ; P = P .
+
+  op _\_ : P3Set P3Set -> P3Set .
+  eq (P ; PS) \ (P ; QS) = PS \ QS .
+  eq PS \ QS = PS [owise] .
+
+  sort P3PowerSet .
+  op OP-P3PowerSet : P3Set -> P3PowerSet [ctor] .
+  subsort P3PowerSet < Marking .
+endfm
+
+
+
+fmod P4-SET is
+  including MARKING .
+  sort P4 .
+  op OP-P4 :   Int -> P4 [ctor] .
+
+  var P : P4 .   vars PS QS : P4Set .
+
+  sort P4Set .
+  subsort P4Set < Marking .
+  subsort P4 < P4Set .
+  op emptyP4 : -> P4Set [ctor] .
+  op _;_ : P4Set P4Set -> P4Set [ctor assoc comm id: emptyP4] .
+  eq P ; P = P .
+
+  op _\_ : P4Set P4Set -> P4Set .
+  eq (P ; PS) \ (P ; QS) = PS \ QS .
+  eq PS \ QS = PS [owise] .
+
+  sort P4PowerSet .
+  op OP-P4PowerSet : P4Set -> P4PowerSet [ctor] .
+  subsort P4PowerSet < Marking .
+endfm
+
+
+
+fmod P5-SET is
+  including MARKING .
+  sort P5 .
+  op OP-P5 :   Int -> P5 [ctor] .
+
+  var P : P5 .   vars PS QS : P5Set .
+
+  sort P5Set .
+  subsort P5Set < Marking .
+  subsort P5 < P5Set .
+  op emptyP5 : -> P5Set [ctor] .
+  op _;_ : P5Set P5Set -> P5Set [ctor assoc comm id: emptyP5] .
+  eq P ; P = P .
+
+  op _\_ : P5Set P5Set -> P5Set .
+  eq (P ; PS) \ (P ; QS) = PS \ QS .
+  eq PS \ QS = PS [owise] .
+
+  sort P5PowerSet .
+  op OP-P5PowerSet : P5Set -> P5PowerSet [ctor] .
+  subsort P5PowerSet < Marking .
+endfm
+
+
+
+fmod P6-SET is
+  including MARKING .
+  sort P6 .
+  op OP-P6 :   Int -> P6 [ctor] .
+
+  var P : P6 .   vars PS QS : P6Set .
+
+  sort P6Set .
+  subsort P6Set < Marking .
+  subsort P6 < P6Set .
+  op emptyP6 : -> P6Set [ctor] .
+  op _;_ : P6Set P6Set -> P6Set [ctor assoc comm id: emptyP6] .
+  eq P ; P = P .
+
+  op _\_ : P6Set P6Set -> P6Set .
+  eq (P ; PS) \ (P ; QS) = PS \ QS .
+  eq PS \ QS = PS [owise] .
+
+  sort P6PowerSet .
+  op OP-P6PowerSet : P6Set -> P6PowerSet [ctor] .
+  subsort P6PowerSet < Marking .
+endfm
+
+
+
+fmod MUTEX-R-SET is
+  including MARKING .
+  sort mutex-r .
+  op OP-mutex-r :   Int -> mutex-r [ctor] .
+
+  var M : mutex-r .   vars MS NS : mutex-rSet .
+
+  sort mutex-rSet .
+  subsort mutex-rSet < Marking .
+  subsort mutex-r < mutex-rSet .
+  op emptymutex-r : -> mutex-rSet [ctor] .
+  op _;_ : mutex-rSet mutex-rSet -> mutex-rSet [ctor assoc comm id: emptymutex-r] .
+  eq M ; M = M .
+
+  op _\_ : mutex-rSet mutex-rSet -> mutex-rSet .
+  eq (M ; MS) \ (M ; NS) = MS \ NS .
+  eq MS \ NS = MS [owise] .
+endfm
+
+
+
+fmod READER-SET is
+  including MARKING .
+  sort reader .
+  op OP-reader :   Int -> reader [ctor] .
+
+  var R : reader .   vars RS SS : readerSet .
+
+  sort readerSet .
+  subsort readerSet < Marking .
+  subsort reader < readerSet .
+  op emptyreader : -> readerSet [ctor] .
+  op _;_ : readerSet readerSet -> readerSet [ctor assoc comm id: emptyreader] .
+  eq R ; R = R .
+
+  op _\_ : readerSet readerSet -> readerSet .
+  eq (R ; RS) \ (R ; SS) = RS \ SS .
+  eq RS \ SS = RS [owise] .
+endfm
+
+
+
+fmod MUTEX-W-SET is
+  including MARKING .
+  sort mutex-w .
+  op OP-mutex-w :   Int -> mutex-w [ctor] .
+
+  var M : mutex-w .   vars MS NS : mutex-wSet .
+
+  sort mutex-wSet .
+  subsort mutex-wSet < Marking .
+  subsort mutex-w < mutex-wSet .
+  op emptymutex-w : -> mutex-wSet [ctor] .
+  op _;_ : mutex-wSet mutex-wSet -> mutex-wSet [ctor assoc comm id: emptymutex-w] .
+  eq M ; M = M .
+
+  op _\_ : mutex-wSet mutex-wSet -> mutex-wSet .
+  eq (M ; MS) \ (M ; NS) = MS \ NS .
+  eq MS \ NS = MS [owise] .
+endfm
+
+
+
+fmod P7-SET is
+  including MARKING .
+  sort P7 .
+  op OP-P7 :   Int -> P7 [ctor] .
+
+  var P : P7 .   vars PS QS : P7Set .
+
+  sort P7Set .
+  subsort P7Set < Marking .
+  subsort P7 < P7Set .
+  op emptyP7 : -> P7Set [ctor] .
+  op _;_ : P7Set P7Set -> P7Set [ctor assoc comm id: emptyP7] .
+  eq P ; P = P .
+
+  op _\_ : P7Set P7Set -> P7Set .
+  eq (P ; PS) \ (P ; QS) = PS \ QS .
+  eq PS \ QS = PS [owise] .
+
+  sort P7PowerSet .
+  op OP-P7PowerSet : P7Set -> P7PowerSet [ctor] .
+  subsort P7PowerSet < Marking .
+endfm
+
+
+
+fmod P8-SET is
+  including MARKING .
+  sort P8 .
+  op OP-P8 :   Int -> P8 [ctor] .
+
+  var P : P8 .   vars PS QS : P8Set .
+
+  sort P8Set .
+  subsort P8Set < Marking .
+  subsort P8 < P8Set .
+  op emptyP8 : -> P8Set [ctor] .
+  op _;_ : P8Set P8Set -> P8Set [ctor assoc comm id: emptyP8] .
+  eq P ; P = P .
+
+  op _\_ : P8Set P8Set -> P8Set .
+  eq (P ; PS) \ (P ; QS) = PS \ QS .
+  eq PS \ QS = PS [owise] .
+
+  sort P8PowerSet .
+  op OP-P8PowerSet : P8Set -> P8PowerSet [ctor] .
+  subsort P8PowerSet < Marking .
+endfm
+
+
+
+mod MainMod is
+  including P1-SET .
+  including P2-SET .
+  including P3-SET .
+  including P4-SET .
+  including P5-SET .
+  including P6-SET .
+  including MUTEX-R-SET .
+  including READER-SET .
+  including MUTEX-W-SET .
+  including P7-SET .
+  including P8-SET .
+var P3S : P3Set .
+vars x16 x1 : P1 .
+vars x5 x2 x3 : P2 .
+vars x4 x6 x7 : P3 .
+vars x8 x9 : P4 .
+vars x11 x10 x13 : P5 .
+vars x12 x15 x14 : P6 .
+vars x17 x20 : P7 .
+vars x19 x18 : P8 .
+vars x13_f1 x2_f1 w2_f1 rc6'_f1 w4_f1 rc2'_f1 m1_f1 rc5_f1 rc1_f1 x6_f1 x19_f1 x4_f1 rc3_f1 m3_f1 rc3'_f1 x11_f1 x17_f1 x8_f1 x15_f1 rc4'_f1 x12_f1 x1_f1 x20_f1 w3_f1 rc6_f1 rc4_f1 rc5'_f1 w1_f1 rc1'_f1 x5_f1 x18_f1 rc2_f1 m4_f1 x3_f1 x10_f1 m2_f1 x7_f1 x14_f1 x9_f1 x16_f1 : Int .
+var P8S : P8Set .
+var P7S : P7Set .
+var P5S : P5Set .
+var P6S : P6Set .
+var P4S : P4Set .
+var P1S : P1Set .
+var P2S : P2Set .
+
+crl [T1]:
+OP-P1PowerSet(x1 ; P1S) OP-mutex-r(m1_f1)
+OP-reader(rc1_f1)
+OP-P2PowerSet(P2S)  => OP-P1PowerSet(P1S) OP-P2PowerSet(x2 ; P2S) OP-reader(rc1'_f1)
+if OP-P1(x1_f1) := x1 /\ 
+rc1'_f1 := (rc1_f1 + 1) /\ x2_f1 := x1_f1
+/\ x2 := OP-P2(x2_f1) . 
+
+crl [T3]:
+OP-P2PowerSet(x3 ; P2S) OP-reader(rc3_f1)
+OP-P3PowerSet(P3S)  => OP-P2PowerSet(P2S) OP-P3PowerSet(x4 ; P3S) OP-reader(rc3'_f1)
+if OP-P2(x3_f1) := x3 /\ 
+rc3_f1 =/= 1 /\ rc3'_f1 := rc3_f1 /\ x4_f1 := x3_f1
+/\ x4 := OP-P3(x4_f1) . 
+
+crl [T2]:
+OP-P2PowerSet(x5 ; P2S) OP-reader(rc2_f1)
+OP-mutex-w(w2_f1)
+OP-P3PowerSet(P3S)  => OP-P2PowerSet(P2S) OP-P3PowerSet(x6 ; P3S) OP-reader(rc2'_f1)
+if OP-P2(x5_f1) := x5 /\ 
+rc2_f1 = 1 /\ rc2'_f1 := 1 /\ x6_f1 := x5_f1
+/\ x6 := OP-P3(x6_f1) . 
+
+crl [T4]:
+OP-P3PowerSet(x7 ; P3S) OP-P4PowerSet(P4S)  => OP-P3PowerSet(P3S) OP-P4PowerSet(x8 ; P4S) OP-mutex-r(m2_f1)
+if OP-P3(x7_f1) := x7 /\ 
+x8_f1 := x7_f1 /\ m2_f1 := 1
+/\ x8 := OP-P4(x8_f1) . 
+
+crl [T5]:
+OP-P4PowerSet(x9 ; P4S) OP-mutex-r(m3_f1)
+OP-reader(rc4_f1)
+OP-P5PowerSet(P5S)  => OP-P4PowerSet(P4S) OP-P5PowerSet(x10 ; P5S) OP-reader(rc4'_f1)
+if OP-P4(x9_f1) := x9 /\ 
+rc4'_f1 := (rc4_f1 - 1) /\ x10_f1 := x9_f1
+/\ x10 := OP-P5(x10_f1) . 
+
+crl [T7]:
+OP-P5PowerSet(x11 ; P5S) OP-reader(rc5_f1)
+OP-P6PowerSet(P6S)  => OP-P5PowerSet(P5S) OP-P6PowerSet(x12 ; P6S) OP-reader(rc5'_f1)
+if OP-P5(x11_f1) := x11 /\ 
+rc5_f1 =/= 0 /\ x12_f1 := x11_f1 /\ rc5'_f1 := rc5_f1
+/\ x12 := OP-P6(x12_f1) . 
+
+crl [T6]:
+OP-P5PowerSet(x13 ; P5S) OP-reader(rc6_f1)
+OP-P6PowerSet(P6S)  => OP-P5PowerSet(P5S) OP-P6PowerSet(x14 ; P6S) OP-reader(rc6'_f1)
+OP-mutex-w(w1_f1)
+if OP-P5(x13_f1) := x13 /\ 
+rc6_f1 = 0 /\ x14_f1 := x13_f1 /\ w1_f1 := 1 /\ rc6'_f1 := rc6_f1
+/\ x14 := OP-P6(x14_f1) . 
+
+crl [T8]:
+OP-P6PowerSet(x15 ; P6S) OP-P1PowerSet(P1S)  => OP-P6PowerSet(P6S) OP-P1PowerSet(x16 ; P1S) OP-mutex-r(m4_f1)
+if OP-P6(x15_f1) := x15 /\ 
+x16_f1 := x15_f1 /\ m4_f1 := 1
+/\ x16 := OP-P1(x16_f1) . 
+
+crl [T9]:
+OP-P7PowerSet(x17 ; P7S) OP-mutex-w(w3_f1)
+OP-P8PowerSet(P8S)  => OP-P7PowerSet(P7S) OP-P8PowerSet(x18 ; P8S) if OP-P7(x17_f1) := x17 /\ 
+x18_f1 := x17_f1
+/\ x18 := OP-P8(x18_f1) . 
+
+crl [T10]:
+OP-P8PowerSet(x19 ; P8S) OP-P7PowerSet(P7S)  => OP-P8PowerSet(P8S) OP-P7PowerSet(x20 ; P7S) OP-mutex-w(w4_f1)
+if OP-P8(x19_f1) := x19 /\ 
+x20_f1 := x19_f1 /\ w4_f1 := 1
+/\ x20 := OP-P7(x20_f1) . 
+
+endm
+
+
+load model-checker
+
+mod ReaderWriter-CHECK is
+  including MainMod .
+  including MODEL-CHECKER .
+
+  op init : -> Marking .
+  eq init 
+   = OP-P1PowerSet(OP-P1(1); OP-P1(2); OP-P1(3); OP-P1(4); OP-P1(5);
+                   OP-P1(6); OP-P1(7); OP-P1(8); OP-P1(9); OP-P1(10);
+                   OP-P1(11); OP-P1(12); OP-P1(13); OP-P1(14); OP-P1(15);
+                   OP-P1(16); OP-P1(17); OP-P1(18); OP-P1(19); OP-P1(20))
+     OP-P7PowerSet(OP-P7(1); OP-P7(2); OP-P7(3); OP-P7(4); OP-P7(5);
+                   OP-P7(6); OP-P7(7); OP-P7(8); OP-P7(9); OP-P7(10);
+                   OP-P7(11); OP-P7(12); OP-P7(13); OP-P7(14); OP-P7(15);
+                   OP-P7(16); OP-P7(17); OP-P7(18); OP-P7(19); OP-P7(20))
+     OP-P2PowerSet(emptyP2)
+     OP-P3PowerSet(emptyP3)
+     OP-P4PowerSet(emptyP4)
+     OP-P5PowerSet(emptyP5)
+     OP-P6PowerSet(emptyP6)
+     OP-P8PowerSet(emptyP8)
+     OP-mutex-r(1)
+     OP-mutex-w(1)
+     OP-reader(0) .
+
+  var CF REST : Marking .
+  vars I1 I2 I3 : Nat .  
+
+  subsort Marking < State .
+
+--- search
+
+  op cond1 : Marking -> Bool .
+  eq cond1(CF) = notemptyP4(CF)  and notemptyP8(CF) .
+
+  op notemptyP4 : Marking -> Bool .
+  eq notemptyP4(OP-P4PowerSet(emptyP4) CF) = false .
+  eq notemptyP4(CF) = true [owise] .
+
+  op notemptyP8 : Marking -> Bool .
+  eq notemptyP8(OP-P8PowerSet(emptyP8) CF) = false .
+  eq notemptyP8(CF) = true [owise] .
+
+
+endm
+
+search init =>* M:Marking such that cond1(M:Marking) .
+---red modelCheck(init, [] cond1) .
