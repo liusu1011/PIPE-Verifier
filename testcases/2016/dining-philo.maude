@@ -95,31 +95,33 @@ OP-ChopsticksPowerSet(l' ;  r' ; ChopsticksS) if rp_f1 := e1_f1 /\ l'_f1 := e1_f
 /\ l' := OP-Chopsticks(l'_f1) /\ 
 r' := OP-Chopsticks(r'_f1) . 
 
+
+
 endm
 
+
+mod InitialMarking is
+  including MARKING .
+  including MainMod .
+
+  op init : -> Marking .
+  eq init = OP-Thinking(1) OP-Thinking(2) OP-Thinking(3) OP-Thinking(4) OP-Thinking(5) OP-ChopsticksPowerSet(OP-Chopsticks(1); OP-Chopsticks(2); OP-Chopsticks(3); OP-Chopsticks(4); OP-Chopsticks(5)) .
+
+endm
 
 load model-checker
 
 mod PHILO-CHECK is
-  including MainMod .
+  including InitialMarking .
+
   including MODEL-CHECKER .
+
 
   vars X Y N : Nat . var REST : Marking .
 
-  op mutex : -> Prop [ctor] .
-  op <_> : Marking -> State .
-
----  op init : -> State .
----  eq init = < OP-Thinking(1) OP-Thinking(2) OP-Thinking(3) OP-Thinking(4) OP-Thinking(5)  OP-Thinking(6) OP-Thinking(7) OP-Thinking(8) OP-Thinking(9) OP-Thinking(10) OP-ChopsticksPowerSet(OP-Chopsticks(1); OP-Chopsticks(2); OP-Chopsticks(3); OP-Chopsticks(4); OP-Chopsticks(5); OP-Chopsticks(6); OP-Chopsticks(7); OP-Chopsticks(8); OP-Chopsticks(9); OP-Chopsticks(10)) > .
-
-  ceq < OP-Eating(X) OP-Eating(Y) REST >  |= mutex = false if Y = (X + 1) rem 20 .
-  eq < REST > |= mutex = true [owise] .
-
-  op init : -> Marking .
-  eq init = OP-Thinking(1) OP-Thinking(2) OP-Thinking(3) OP-Thinking(4) OP-Thinking(5)  OP-Thinking(6) OP-Thinking(7) OP-Thinking(8) OP-Thinking(9) OP-Thinking(10) OP-Thinking(11) OP-Thinking(12) OP-Thinking(13) OP-Thinking(14) OP-Thinking(15)  OP-Thinking(16) OP-Thinking(17) OP-Thinking(18) OP-Thinking(19) OP-Thinking(20) OP-Thinking(21) OP-Thinking(22) OP-Thinking(23) OP-Thinking(24) OP-Thinking(25) OP-ChopsticksPowerSet(OP-Chopsticks(1); OP-Chopsticks(2); OP-Chopsticks(3); OP-Chopsticks(4); OP-Chopsticks(5); OP-Chopsticks(6); OP-Chopsticks(7); OP-Chopsticks(8); OP-Chopsticks(9); OP-Chopsticks(10); OP-Chopsticks(11); OP-Chopsticks(12); OP-Chopsticks(13); OP-Chopsticks(14); OP-Chopsticks(15); OP-Chopsticks(16); OP-Chopsticks(17); OP-Chopsticks(18); OP-Chopsticks(19); OP-Chopsticks(20); OP-Chopsticks(21); OP-Chopsticks(22); OP-Chopsticks(23); OP-Chopsticks(24); OP-Chopsticks(25)) .
 
   op cond1 : Marking -> Bool .
-  ceq cond1( OP-Eating(X) OP-Eating(Y) REST ) = false if Y = (X + 1) rem 25 .
+  ceq cond1( OP-Eating(X) OP-Eating(Y) REST ) = false if Y = (X + 1) rem 5 .
   eq cond1( REST ) = true [owise] .
 
 endm
@@ -129,3 +131,4 @@ set verbose on .
 
 search init =>* M:Marking such that not cond1 (M:Marking) .
 --- red modelCheck(init, [] mutex) .
+quit
